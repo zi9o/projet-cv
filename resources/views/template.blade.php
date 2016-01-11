@@ -217,7 +217,10 @@
                                     <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="icon-settings"></i></a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" class="img-circle"> </a>
+                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">
+                                        <img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" class="img-circle">
+                                        {{-- <img src="{{asset('assets/images/').'/'.$imgsrc}}"> --}}
+                                    </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
                                         <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
@@ -304,8 +307,8 @@
 
             <script type="text/javascript" src="https://cvmkr.com/public/?js=cleditor,global"></script>
             <!-- jQuery  -->
-<!--            {!! HTML::script('assets/js/jquery.min.js') !!}
-            {!! HTML::script('assets/js/bootstrap.min.js') !!}-->
+            <!--            {!! HTML::script('assets/js/jquery.min.js') !!}
+                        {!! HTML::script('assets/js/bootstrap.min.js') !!}-->
             {!! HTML::script('assets/js/detect.js') !!}
             {!! HTML::script('assets/js/fastclick.js') !!}
             {!! HTML::script('assets/js/jquery.slimscroll.js') !!}
@@ -333,8 +336,8 @@
 
             <!--AngularJS-->
 
-<!--            {!! HTML::script('AngularJS/angular.min.js') !!}
-            {!! HTML::script('AngularScripts/app.js') !!}-->
+            <!--            {!! HTML::script('AngularJS/angular.min.js') !!}
+                        {!! HTML::script('AngularScripts/app.js') !!}-->
 
             <script type="text/javascript">
                 jQuery(document).ready(function ($) {
