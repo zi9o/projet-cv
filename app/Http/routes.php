@@ -4,41 +4,39 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Routes File
-|--------------------------------------------------------------------------
-|
-| Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+  |--------------------------------------------------------------------------
+  | Routes File
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you will register all of the routes in an application.
+  | It's a breeze. Simply tell Laravel the URIs it should respond to
+  | and give it the controller to call when that URI is requested.
+  |
+ */
 
 
-Route::group (['prefix' =>  'api'], function ()
-{
-	Route::resource('etudiant', 'Api\EtudiantController');
-	Route::group(['prefix' =>  'etudiant'], function (){
-		Route::resource('cv', 'Api\CvController');
-		Route::get('filiere/{id}', [
-			'uses' => 'Api\EtudiantController@etudiantsfiliere',
-			'as' => 'filiere.etudiants'
-		])->where('id', '[0-9]+');
-		Route::group (['prefix' =>  'cv'], function ()
-		{
-			// Route::get('/etudiant/{id}', 'CvController@');
-			// Route::get('/', 'CvController');
-			Route::resource('formation', 'Api\FormationController') ;
-			Route::resource('etablissement', 'Api\EtablissementController') ;
-			Route::resource('competence', 'Api\CompetenceController') ;
+Route::group(['prefix' => 'api'], function () {
+    Route::resource('etudiant', 'Api\EtudiantController');
+    Route::group(['prefix' => 'etudiant'], function () {
+        Route::resource('cv', 'Api\CvController');
+        Route::get('filiere/{id}', [
+            'uses' => 'Api\EtudiantController@etudiantsfiliere',
+            'as' => 'filiere.etudiants'
+        ])->where('id', '[0-9]+');
+        Route::group(['prefix' => 'cv'], function () {
+            // Route::get('/etudiant/{id}', 'CvController@');
+            // Route::get('/', 'CvController');
+            Route::resource('formation', 'Api\FormationController');
+            Route::resource('etablissement', 'Api\EtablissementController');
+            Route::resource('competence', 'Api\CompetenceController');
 
-				/******           nawal           *******/
+            /*             * ****           nawal           ****** */
 
-			Route::resource('experience', 'Api\ExperienceController') ;
-			Route::resource('loisir', 'Api\LoisirController') ;
-			Route::resource('langue', 'Api\LangueController') ;
-		});
-	});
+            Route::resource('experience', 'Api\ExperienceController');
+            Route::resource('loisir', 'Api\LoisirController');
+            Route::resource('langue', 'Api\LangueController');
+        });
+    });
 });
 
 
@@ -66,26 +64,26 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 
 
-Route::get('etudiant',[
-		'uses' => 'etudiantController@index',
-		'as' => 'etudiant'
-	]);
+Route::get('etudiant', [
+    'uses' => 'etudiantController@index',
+    'as' => 'etudiant'
+]);
 
-Route::group (['prefix' =>  'etudiant'], function ()
-{
-	Route::get('cv/{id}',[
-		'uses' => 'etudiantController@view',
-		'as' => 'cv.show'
-	])->where('id', '[0-9]+');
-	Route::get('cv/create',[
-		'uses' => 'etudiantController@create',
-		'as' => 'createcv'
-	]);
-	Route::get('cv',[
-		'uses' => 'etudiantController@cv',
-		'as' => 'cv'
-	]);
+Route::group(['prefix' => 'etudiant'], function () {
+    Route::get('cv/{id}', [
+        'uses' => 'etudiantController@view',
+        'as' => 'cv.show'
+    ])->where('id', '[0-9]+');
 
+    Route::get('cv/create', [
+        'uses' => 'etudiantController@create',
+        'as' => 'createcv'
+    ]);
+
+    Route::get('cv', [
+        'uses' => 'etudiantController@cv',
+        'as' => 'cv'
+    ]);
 });
 
 

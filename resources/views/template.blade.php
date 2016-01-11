@@ -11,6 +11,8 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,latin-ext" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="assets/images/favicon_1.ico">
 
+        <link href="https://cvmkr.com/public/?css=Member,ui,cleditor" rel="stylesheet" type="text/css" />
+
         <title>cv-generator</title>
 
         <!--Morris Chart CSS -->
@@ -215,7 +217,7 @@
                                     <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="icon-settings"></i></a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
+                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
                                         <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
@@ -250,7 +252,7 @@
                             </li>
 
                             <li>
-                                <a href="{{ URL::route('etudiant') }}" class="waves-effect">
+                                <a href="{{ URL::route('createcv') }}" class="waves-effect">
                                     <i class="ti-pencil-alt"></i>
                                     <span> Nouveau cv </span> </a>
                             </li>
@@ -298,10 +300,12 @@
             <script>
                 var resizefunc = [];
             </script>
+            <script type="text/javascript" src="https://cvmkr.com/public/lang/en.js"></script>
 
+            <script type="text/javascript" src="https://cvmkr.com/public/?js=cleditor,global"></script>
             <!-- jQuery  -->
-            {!! HTML::script('assets/js/jquery.min.js') !!}
-            {!! HTML::script('assets/js/bootstrap.min.js') !!}
+<!--            {!! HTML::script('assets/js/jquery.min.js') !!}
+            {!! HTML::script('assets/js/bootstrap.min.js') !!}-->
             {!! HTML::script('assets/js/detect.js') !!}
             {!! HTML::script('assets/js/fastclick.js') !!}
             {!! HTML::script('assets/js/jquery.slimscroll.js') !!}
@@ -327,8 +331,12 @@
             {!! HTML::script('assets/js/jquery.core.js') !!}
             {!! HTML::script('assets/js/jquery.app.js') !!}
 
+            <!--AngularJS-->
 
-<!--            <script type="text/javascript">
+<!--            {!! HTML::script('AngularJS/angular.min.js') !!}
+            {!! HTML::script('AngularScripts/app.js') !!}-->
+
+            <script type="text/javascript">
                 jQuery(document).ready(function ($) {
                     $('.counter').counterUp({
                         delay: 100,
@@ -338,7 +346,7 @@
                     $(".knob").knob();
 
                 });
-            </script>-->
+            </script>
 
     </body>
 </html>
