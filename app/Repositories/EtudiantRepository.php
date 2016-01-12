@@ -116,4 +116,9 @@ class EtudiantRepository extends BaseRepository
 		return Etudiant::find($id);
 	}
     
+    public function getByCne($cne)
+	{
+		$etudiant = DB::table('etudiants')->where('cne', $cne)->first();
+		return $etudiant;
+	}
 }

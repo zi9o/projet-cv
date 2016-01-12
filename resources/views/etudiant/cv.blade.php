@@ -1,9 +1,14 @@
 @extends('template')
 
-@section('contenu')     
-                 
-    <?php extract($cv) ?>           
-    <div id="photo">
+@section('cv')
+    {!! HTML::style('assets/css/cv.css') !!}
+@endsection
+
+@section('contenu')                  
+    <?php extract($cv) ?>
+
+    <div id="main">
+        <div id="photo">
         <img src="{{$etudiant->photo}}" alt="" />
     </div>
     <div class="header photo">
@@ -74,5 +79,7 @@
                     </div>
             <div class="clear"> </div>
         </div>
+    </div>
+    
                     
-@stop
+@endsection

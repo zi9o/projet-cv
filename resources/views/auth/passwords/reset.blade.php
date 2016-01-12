@@ -1,32 +1,23 @@
-@extends('layouts.template')
+@extends('layouts.app')
 
-@section('contenu')
-
-<div class=" card-box">
-                <div class="panel-heading">
-                    <h3 class="text-center"> Sign Up to <strong class="text-custom">cv-generator</strong> </h3>
-                </div>
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Reset Password</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
                         {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <div class="col-xs-12">
-                                <input type="text" class="form-control" name="name" placeholder="username">
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                        <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            
-                            <div class="col-xs-12">
-                                <input type="email" class="form-control" name="email"  placeholder="Email Adress">
+                            <label class="col-md-4 control-label">E-Mail Address</label>
+
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" value="{{ $email or old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -37,8 +28,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <div class="col-xs-12">
-                                <input type="password" class="form-control" name="password" placeholder="password">
+                            <label class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -49,8 +42,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <div class="col-xs-12">
-                                <input type="password" class="form-control" name="password_confirmation"  placeholder="password confirm">
+                            <label class="col-md-4 control-label">Confirm Password</label>
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password_confirmation">
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -63,20 +57,14 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>Register
+                                    <i class="fa fa-btn fa-refresh"></i>Reset Password
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-
-            
-                <div class="alert alert-danger">{{ session('etudiant') }}</div>
-            
-                
-            
-            
-            
-      
+        </div>
+    </div>
+</div>
 @endsection

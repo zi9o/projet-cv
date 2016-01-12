@@ -29,6 +29,7 @@ class etudiantController extends Controller
 
     public function __construct(EtudiantRepository $etudiant_gestion, FiliereRepository $filiere_gestion)
     {
+        $this->middleware('auth');
         $this->etudiant_gestion = $etudiant_gestion;
         $this->filiere_gestion = $filiere_gestion;
     }
