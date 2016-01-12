@@ -9,9 +9,11 @@
         <meta name="author" content="Coderthemes">
 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,latin-ext" rel="stylesheet" type="text/css" />
-        <link rel="shortcut icon" href="assets/images/favicon_1.ico">
+        <link rel="shortcut icon" href="{{asset('assets/images/favicon_1.ico')}}">
+
 
         <link href="https://cvmkr.com/public/?css=Member,ui,cleditor" rel="stylesheet" type="text/css" />
+        
 
         <title>cv-generator</title>
 
@@ -62,11 +64,15 @@
             #autre{
                 clear: both;
             }
+            #wrapper
+            {
+                overflow: auto;
+            }
         </style>
     </head>
 
 
-    <body class="fixed-left">
+    <body class="fixed-left" ng-app="Cv">
 
         <!-- Begin page -->
         <div id="wrapper">
@@ -219,7 +225,7 @@
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">
                                         <img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" class="img-circle">
-                                        {{-- <img src="{{asset('assets/images/').'/'.$imgsrc}}"> --}}
+                                        {{-- < img src = "{{asset('assets/images/').'/'.$imgsrc}}"> --}}
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
@@ -301,14 +307,14 @@
 
 
             <script>
-                var resizefunc = [];
-            </script>
-            <script type="text/javascript" src="https://cvmkr.com/public/lang/en.js"></script>
+                        var resizefunc = [];</script>
+            {!! HTML::script('assets/js/jquery.min.js') !!}
+            {!! HTML::script('assets/js/bootstrap.min.js') !!}
+            <script type="text/javascript" src="https://cvmkr.com/public/lang/fr.js"></script>
 
             <script type="text/javascript" src="https://cvmkr.com/public/?js=cleditor,global"></script>
             <!-- jQuery  -->
-            <!--            {!! HTML::script('assets/js/jquery.min.js') !!}
-                        {!! HTML::script('assets/js/bootstrap.min.js') !!}-->
+
             {!! HTML::script('assets/js/detect.js') !!}
             {!! HTML::script('assets/js/fastclick.js') !!}
             {!! HTML::script('assets/js/jquery.slimscroll.js') !!}
@@ -336,20 +342,19 @@
 
             <!--AngularJS-->
 
-            <!--            {!! HTML::script('AngularJS/angular.min.js') !!}
-                        {!! HTML::script('AngularScripts/app.js') !!}-->
+            {!! HTML::script('AngularJS/angular.min.js') !!}
+            {!! HTML::script('AngularScripts/app.js') !!}
+            {!! HTML::script('Angularscripts/controllers/infoBasicController.js') !!}
 
-            <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                    $('.counter').counterUp({
-                        delay: 100,
+<!--            <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                $('.counter').counterUp({
+                delay: 100,
                         time: 1200
-                    });
-
-                    $(".knob").knob();
-
                 });
-            </script>
+                        $(".knob").knob();
+                });
+            </script>-->
 
     </body>
 </html>

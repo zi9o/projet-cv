@@ -10,13 +10,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Etudiant;
 use App\Models\Filiere;
 
-class EtudiantController extends Controller
-{
+class EtudiantController extends Controller {
+
     /**
      * The EtudiantRepository instance.
      *
      * @var App\Repositories\EtudiantRepository
-     */ 
+     */
     protected $etudiant_gestion;
 
     /**
@@ -27,8 +27,7 @@ class EtudiantController extends Controller
      */
     protected $filiere_gestion;
 
-    public function __construct(EtudiantRepository $etudiant_gestion, FiliereRepository $filiere_gestion)
-    {
+    public function __construct(EtudiantRepository $etudiant_gestion, FiliereRepository $filiere_gestion) {
         $this->etudiant_gestion = $etudiant_gestion;
         $this->filiere_gestion = $filiere_gestion;
     }
@@ -38,8 +37,7 @@ class EtudiantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         return $this->etudiant_gestion->index();
     }
 
@@ -48,8 +46,7 @@ class EtudiantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -59,8 +56,7 @@ class EtudiantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
 
         $etudiant = $this->etudiant_gestion->store($request->all());
 
@@ -73,8 +69,7 @@ class EtudiantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $etudiant = $this->etudiant_gestion->getCvsEtudiant($id);
         return $etudiant;
     }
@@ -85,8 +80,7 @@ class EtudiantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -97,10 +91,18 @@ class EtudiantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $etudiant = $this->etudiant_gestion->update($request->all(), $id);
+    public function update(Request $request, $id) {
+//        $etudiant = $this->etudiant_gestion->update($request->all(), $id);
+        $etudiant = Etudiant::find($id);
 
+        if (isset($request->all()['nom'])) {
+
+            $etudiant->nom = $request->all()['nom'];
+        }
+        if (isset($inputs['email'])) {
+			$this->model->email = $inputs['email'];
+		}
+        return $etudiant;
         return redirect()->route('api.etudiant.show', array($etudiant->id));
     }
 
@@ -110,14 +112,12 @@ class EtudiantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         return $this->etudiant_gestion->destroy($id);
-
     }
 
-    public function etudiantsfiliere($id)
-    {
+    public function etudiantsfiliere($id) {
         return $this->etudiant_gestion->index($id);
     }
+
 }
