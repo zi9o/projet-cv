@@ -50,6 +50,13 @@ Route::group (['prefix' =>  'api'], function ()
 
 
 
+//Routes AngularJS views
+
+//Route::get('cv-section-basic', function()
+//{
+//    return view('etudiant.sections.informationsBasic');
+//});
+
 // // Admin
 // Route::get('admin', [
 // 	'uses' => 'AdminCvController@admin',
