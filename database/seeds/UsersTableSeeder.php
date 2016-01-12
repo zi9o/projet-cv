@@ -15,20 +15,26 @@ class UsersTableSeeder extends Seeder
 			            'email' => 'dialloimran@gmail.com',
 			            'password' => bcrypt('lelouma'),
 			            'admin' => true,
+			            'etudiant_id' => 1,
+
 					],
 
 					[
 						'name' => 'elfakhryzakaria',
 			            'email' => 'elfakhry.zakaria@gmail.com',
 			            'password' => bcrypt('zakaria'),
-			            'admin' => false
+			            'admin' => false,
+			            'etudiant_id' => 2,
+
 					],
 
 					[
 						'name' => 'boudcharnawal',
 			            'email' => 'boudchar.nawal@gmail.com',
 			            'password' => bcrypt('nawal'),
-			            'admin' => false
+			            'admin' => false,
+			            'etudiant_id' => 3,
+
 					]
 			   ];
 	}
