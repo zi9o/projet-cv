@@ -12,7 +12,7 @@ app.controller('infoBasicController', function ($scope, $http, API_URL)
         $http.get(API_URL + '/' + 2).
                 success(function (data, status, headers, config) {
                     $scope.etudiant = data;
-                    $scope.situation.selectedOption= {id: '-1', name: $scope.etudiant.situation};
+                    $scope.situation.selectedOption = {id: '-1', name: $scope.etudiant.situation};
                     $scope.loading = false;
 
                 });
@@ -23,7 +23,12 @@ app.controller('infoBasicController', function ($scope, $http, API_URL)
 
         $http.put(API_URL + '/' + 2, {
             nom: etudiant.nom,
-            prenom: etudiant.prenom
+            prenom: etudiant.prenom,
+            email: etudiant.email,
+            telephone: etudiant.telephone,
+            adresse: etudiant.adresse,
+            situation: etudiant.situation
+
         }).success(function (data, status, headers, config) {
             $scope.etudiant = data;
             $scope.loading = false;

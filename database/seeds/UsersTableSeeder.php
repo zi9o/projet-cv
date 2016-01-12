@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
 
 					[
 						'name' => 'elfakhryzakaria',
-			            'email' => 'elfakhry.zakaria@gmail.com',
+			            'email' => 'zakariaelfakhry@gmail.com',
 			            'password' => bcrypt('zakaria'),
 			            'admin' => false
 					],

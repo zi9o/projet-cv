@@ -95,13 +95,30 @@ class EtudiantController extends Controller {
 //        $etudiant = $this->etudiant_gestion->update($request->all(), $id);
         $etudiant = Etudiant::find($id);
 
-        if (isset($request->all()['nom'])) {
 
+        if (isset($request->all()['email'])) {
+            $etudiant->email = $request->all()['email'];
+        }
+
+        if (isset($request->all()['nom'])) {
             $etudiant->nom = $request->all()['nom'];
         }
-        if (isset($inputs['email'])) {
-			$this->model->email = $inputs['email'];
-		}
+
+        if (isset($request->all()['prenom'])) {
+            $etudiant->prenom = $request->all()['prenom'];
+        }
+
+        if (isset($request->all()['telephone'])) {
+            $etudiant->telephone = $request->all()['telephone'];
+        }
+
+        if (isset($request->all()['adresse'])) {
+            $etudiant->adresse = $request->all()['adresse'];
+        }
+
+        if (isset($request->all()['situation'])) {
+            $etudiant->situation = $request->all()['situation'];
+        }
         return $etudiant;
         return redirect()->route('api.etudiant.show', array($etudiant->id));
     }
