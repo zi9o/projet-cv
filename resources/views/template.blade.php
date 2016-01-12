@@ -48,20 +48,33 @@
         @yield('cv')
 
         <style type="text/css">
-
-            #panel-body{
-                min-height: 35em ;
-                padding: 1em ;
-            }
-            #wrapper{
-                overflow: : auto;
+            #photoProfil{
+                float: left;
+                width: 150px;
+                height: 160px;
             }
 
+            #infosPersonnel{
+                margin-left: 170px;
+            }
+
+            #panelBody{
+                min-height: 35em;
+                padding: 1em;
+            }
+
+            #autre{
+                clear: both;
+            }
+            #wrapper
+            {
+                overflow: auto;
+            }
         </style>
     </head>
 
 
-    <body class="fixed-left">
+    <body class="fixed-left" ng-app="Cv">
 
         <!-- Begin page -->
         <div id="wrapper">
@@ -242,7 +255,10 @@
 
             <!-- ========== Left Sidebar Start ========== -->
 
-            <div class="left side-menu">
+            @if (Auth::guest())
+
+            @else
+              <div class="left side-menu">
                 <div class="sidebar-inner slimscrollleft">
                     <!--- Divider -->
                     <div id="sidebar-menu">
@@ -276,6 +292,8 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
+            @endif
+            
             <!-- Left Sidebar End -->
 
 

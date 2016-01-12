@@ -1,7 +1,7 @@
 var app = angular.module('Cv', [], function($interpolateProvider) {
 	$interpolateProvider.startSymbol('<%');
 	$interpolateProvider.endSymbol('%>');
-}).constant('API_URL', 'http://localhost:8000/api/etudiant');
+}).constant('API_URL', 'http://localhost/projet-cv/public/api/etudiant');
 
 //app.config(['$routeProvider', function ($routeProvider) {        
 //
