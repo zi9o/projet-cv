@@ -8,7 +8,9 @@ use App\Repositories\FiliereRepository;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Etudiant;
-use App\Models\Filiere;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class EtudiantController extends Controller {
 
@@ -95,9 +97,11 @@ class EtudiantController extends Controller {
 //        $etudiant = $this->etudiant_gestion->update($request->all(), $id);
         $etudiant = Etudiant::find($id);
 
-
+//        if (Input::hasFile('photo')) {
+//            return $etudiant.photo;
+//        }
         if (isset($request->all()['email'])) {
-            $etudiant->email = $request->all()['email'];
+            $etudiant->email = $request->input('email');
         }
 
         if (isset($request->all()['nom'])) {
@@ -119,8 +123,50 @@ class EtudiantController extends Controller {
         if (isset($request->all()['situation'])) {
             $etudiant->situation = $request->all()['situation'];
         }
+        $etudiant->save();
         return $etudiant;
+
         return redirect()->route('api.etudiant.show', array($etudiant->id));
+    }
+
+    public function upload(Request $request) {
+        $id = $request->input('id');
+        $etudiant = Etudiant::find($id);
+        // getting all of the post data
+        $file = array('image' => Input::file('file'));
+
+        if (!Input::hasFile('file')) {
+            return $etudiant;
+        }
+        // setting up rules
+        $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
+        // doing the validation, passing post data, rules and the messages
+        $validator = Validator::make($file, $rules);
+        if ($validator->fails()) {
+            // send back to the page with the input data and errors
+            return $etudiant;
+        } 
+        else
+            {
+            // checking file is valid.
+            if (Input::file('file')->isValid()) {
+                $destinationPath = '../storage/uploads'; // upload path
+                $extension = Input::file('file')->getClientOriginalExtension(); // getting image extension
+                $fileName = Input::file('file')->getClientOriginalName();
+                $fileName = str_replace(" ", "_", $fileName);
+                $fileName = $fileName . '_' . rand(11111, 99999) . '.' . $extension; // renameing image
+                Input::file('file')->move($destinationPath, $fileName); // uploading file to given path
+                // sending back with message
+                Session::flash('success', 'Upload successfully');
+                $etudiant->photo=$fileName;
+                $etudiant->save();
+                return $etudiant;
+            } else {
+                // sending back with error message.
+                Session::flash('error', 'uploaded file is not valid');
+                return $etudiant;
+            }
+        }
     }
 
     /**

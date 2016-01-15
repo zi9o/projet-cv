@@ -19,6 +19,7 @@ Route::get('confirm','ConfirmController@confirm');
 Route::group (['prefix' =>  'api'], function ()
 {
 	Route::resource('etudiant', 'Api\EtudiantController');
+        Route::post('etudiant/upload', 'Api\EtudiantController@upload');
 	Route::group(['prefix' =>  'etudiant'], function (){
 		Route::resource('cv', 'Api\CvController');
 		Route::get('filiere/{id}', [

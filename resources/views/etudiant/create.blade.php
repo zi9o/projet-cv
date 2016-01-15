@@ -1,6 +1,9 @@
 @extends('template')
 
 @section('contenu')
+
+{!! HTML::script('ng-file-upload/ng-file-upload-shim.min.js') !!} <!-- for no html5 browsers support -->
+{!! HTML::script('ng-file-upload/ng-file-upload.min.js') !!}
 <div class="CV"> <!-- Start content -->	
     <div id="main">
         <div id="cv">
@@ -88,19 +91,20 @@
                                 <p class="field field_">
                                     <label>Situation familialle</label>
                                     <select ng-model="etudiant.situation">
-                                        <option ng-repeat="option in situation.availableOptions" value="<% option.id %>">
+                                        <option ng-repeat="option in situation.availableOptions" value="<% option.name %>">
                                             <% option.name %>
                                         </option>
                                     </select>
 
                                 </p>
                                 <hr>
-                                <div id="photo-preview">
-                                </div>
-                                S'il vous plaît connecter pour télécharger votre photo
+                                <div class="btn btn-primary" ngf-select="upload($file,2)">Uploader une nouvelle photo</div> 
+                                <i ng-show="loadingUploadPhoto" class="fa fa-spinner fa-spin"></i>
+                                <img class="img-responsive" ng-cloack ng-src="{{ asset('../storage/uploads').'/'.'<% etudiant.photo %>' }}" style="width: inherit; height: inherit;">
+                                {{-- < img src = "{{asset('assets/images/').'/'.$imgsrc}}"> --}}
                                 <p class="field field_photo">
                                     <label for="photo">Photo</label>
-                                    <input type="file" id="photo" name="photo" class="text" value="">
+
                                     <span class="info">gif, jpg, png, jpeg<br>320 x 400 px</span>
                                 </p>
                                 <p class="field field_bt-photo">
@@ -300,18 +304,17 @@
 
 
         <script type="text/javascript">
-            var CV_INIT = true, CV_ID = "", CV_DATA = null, CV_USER = '',
+                    var CV_INIT = true, CV_ID = "", CV_DATA = null, CV_USER = '',
                     CV_SECTIONS =
-                    {
-                        "basic": {"addable": false, "renamable": false, "name": "Informations"},
-                        "work": {"addable": true, "renamable": true, "name": "Expérience professionnelle"},
-                        "qualifications": {"addable": false, "renamable": true, "name": "Compétences"},
-                        "education": {"addable": true, "renamable": true, "name": "Formations"},
-                        "interests": {"addable": false, "renamable": true, "name": "Langues"},
-                        "references": {"addable": false, "renamable": true, "name": "Centres d'intêret"}},
-            CV_ORDER = ["basic", "work", "qualifications", "education", "interests", "references"], CV_MAX_ADDABLES = 1,
-                    CV_MAX_SECTIONS = 0, CV_PHOTO_FILES = ["gif", "jpg", "png", "jpeg"], CV_PHOTO_SIZE = 900;
-        </script>
+            {
+            "basic": {"addable": false, "renamable": false, "name": "Informations"},
+                    "work": {"addable": true, "renamable": true, "name": "Expérience professionnelle"},
+                    "qualifications": {"addable": false, "renamable": true, "name": "Compétences"},
+                    "education": {"addable": true, "renamable": true, "name": "Formations"},
+                    "interests": {"addable": false, "renamable": true, "name": "Langues"},
+                    "references": {"addable": false, "renamable": true, "name": "Centres d'intêret"}},
+                    CV_ORDER = ["basic", "work", "qualifications", "education", "interests", "references"], CV_MAX_ADDABLES = 1,
+                    CV_MAX_SECTIONS = 0, CV_PHOTO_FILES = ["gif", "jpg", "png", "jpeg"], CV_PHOTO_SIZE = 900;        </script>
 
         <noscript>&lt;h2&gt;You need to have javascript enabled in your browser to use this feature.
         &lt;/h2&gt;To know how, &lt;a href="https://www.google.com/adsense/support/bin/answer.py?hl=en&amp;answer=12654"&gt;click here&lt;/a&gt;.
@@ -391,18 +394,17 @@
 <script type="text/javascript"></script>
 <script>var CV_ROOT = "https://cvmkr.com/";</script>
 <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-5537752-3']);
-    _gaq.push(['_trackPageview']);
-
-    (function () {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
-    })();
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-5537752-3']);
+            _gaq.push(['_trackPageview']);
+            (function () {
+            var ga = document.createElement('script');
+                    ga.type = 'text/javascript';
+                    ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(ga, s);
+            })();
 
 </script>
 @stop
