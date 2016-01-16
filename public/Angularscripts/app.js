@@ -1,5 +1,5 @@
 var app = angular.module('Cv', ['ngFileUpload'], function($interpolateProvider) {
-	$interpolateProvider.startSymbol('<%');
+	$interpolateProvider.startSymbol('<%=');
 	$interpolateProvider.endSymbol('%>');
 }).constant('API_URL', 'http://localhost/projet-cv/public/api/etudiant');
 

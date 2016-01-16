@@ -154,6 +154,7 @@ class EtudiantController extends Controller {
                 $extension = Input::file('file')->getClientOriginalExtension(); // getting image extension
                 $fileName = Input::file('file')->getClientOriginalName();
                 $fileName = str_replace(" ", "_", $fileName);
+                $fileName = str_replace($extension, "_", $fileName);
                 $fileName = $fileName . '_' . rand(11111, 99999) . '.' . $extension; // renameing image
                 Input::file('file')->move($destinationPath, $fileName); // uploading file to given path
                 // sending back with message

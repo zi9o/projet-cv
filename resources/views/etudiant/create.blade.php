@@ -8,15 +8,15 @@
     <div id="main">
         <div id="cv">
 
-            <div class="controls">
-                <span id="notice" class="notice"> </span>
-                <a href="https://cvmkr.com/Pages/help" target="_blank" class="button" id="bt-help">
-                    <span class="ui-icon ui-icon-info"></span> Help</a>
-                <a href="#" class="button" id="bt-preview"><span class="ui-icon ui-icon-search"></span> Quick preview</a>
-                <a href="#" class="button" id="bt-save"><span class="ui-icon ui-icon-disk"></span> Save</a>
-
-                <a href="#" class="button" id="bt-download"><span class="ui-icon ui-icon-check"></span> Download</a>
-            </div>
+            <!--            <div class="controls">
+                            <span id="notice" class="notice"> </span>
+                            <a href="https://cvmkr.com/Pages/help" target="_blank" class="button" id="bt-help">
+                                <span class="ui-icon ui-icon-info"></span> Help</a>
+                            <a href="#" class="button" id="bt-preview"><span class="ui-icon ui-icon-search"></span> Quick preview</a>
+                            <a href="#" class="button" id="bt-save"><span class="ui-icon ui-icon-disk"></span> Save</a>
+            
+                            <a href="#" class="button" id="bt-download"><span class="ui-icon ui-icon-check"></span> Download</a>
+                        </div>-->
             <div class="clear"> </div>
 
 
@@ -34,7 +34,7 @@
                     <li class="item section-education">
                         <a href="#">Formations </a>
                     </li>
-                    <li class="item section-interests selected">
+                    <li class="item section-interests">
                         <a href="#">Langues</a>
                     </li>
                     <li class="item section-references">
@@ -49,127 +49,163 @@
             </div>
 
             <form name="cv" id="cvform" class="edit" enctype="multipart/form-data" target="postframe" novalidate="">
-                <div ng-controller="infoBasicController">
-                    <div id="section-basic" class="section " style="display: block;">
-                        <h2 class="title">
-                            <span class="name">Informations</span>
-                        </h2>
-                        <div class="sets">
-                            <div class="set">
-                                <input type="hidden" class="action" name="action" value="cv">
-                                <input type="hidden" class="style" name="style" value="executive">
-                                <input type="hidden" class="type" name="type" value="pdf">
-                                <input type="hidden" class="page_size" name="page_size" value="pdf">
-                                <input type="hidden" class="section_name" name="sections[basic][section_name]" value="Informations">
 
-                                <p class="field field_">
-                                    <label>Nom de famille</label>
-                                    <input maxlength="50" type="text" ng-model="etudiant.nom" class="text" placeholder="Nom" />
-                                </p>
+                <div id="section-basic" class="section " style="display: none;" ng-controller="infoBasicController">
 
-                                <p class="field field_">
-                                    <label>Prénom</label>
-                                    <input maxlength="50" type="text" ng-model="etudiant.prenom" class="text" placeholder="Prénom" />
-                                </p>
-
-
-                                <p class="field field_">
-                                    <label for="email">Adresse E-mail</label>
-                                    <input maxlength="100" type="email" ng-model="etudiant.email" id="email" class="text" placeholder='e-mail' />
-                                </p>
-
-                                <p class="field field_">
-                                    <label>Numéro de téléphone</label>
-                                    <input maxlength="100" type="text" ng-model="etudiant.telephone" class="text" placeholder='+(212)' />
-<!--                                    <span class="info">If you have more than one number, separate with commas</span>-->
-                                </p>
-
-                                <p class="field field_">
-                                    <label>Addresse</label>
-                                    <input maxlength="100" type="text" ng-model="etudiant.adresse" class="text" placeholder='Hay Lalla Meriem'/>
-                                </p>
-                                <p class="field field_">
-                                    <label>Situation familialle</label>
-                                    <select ng-model="etudiant.situation">
-                                        <option ng-repeat="option in situation.availableOptions" value="<% option.name %>">
-                                            <% option.name %>
-                                        </option>
-                                    </select>
-
-                                </p>
-                                <hr>
-                                <div class="btn btn-primary" ngf-select="upload($file,2)">Uploader une nouvelle photo</div> 
-                                <i ng-show="loadingUploadPhoto" class="fa fa-spinner fa-spin"></i>
-                                <img class="img-responsive" ng-cloack ng-src="{{ asset('../storage/uploads').'/'.'<% etudiant.photo %>' }}" style="width: inherit; height: inherit;">
-                                {{-- < img src = "{{asset('assets/images/').'/'.$imgsrc}}"> --}}
-                                <p class="field field_photo">
-                                    <label for="photo">Photo</label>
-
-                                    <span class="info">gif, jpg, png, jpeg<br>320 x 400 px</span>
-                                </p>
-                                <p class="field field_bt-photo">
-                                    <input type="button" id="bt-photo" name="bt-photo" class="button" value="Téléchargez">
-                                </p>
-                                <p class="field field_bt-photo-remove">
-                                    <input type="button" id="bt-photo-remove" name="bt-photo-remove" class="button" value="Supprimer">
-                                </p>
-                            </div>
-                            <div class="set row">
-                                <div class="col col-md-4"></div>
-                                <div class="col col-md-4">
-                                    <button class="btn btn-primary btn-lg" ng-click="updateInfoBasic(etudiant)" >Sauvegarder</button>
-                                    <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
-                                </div>
-                                <div class="col col-md-4"></div>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-                <div id="section-work" class="section addable renamable ui-sortable">
-                    <h2 class="title"><span class="name">Expérience professionnelle</span>
-                        <a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Rename section</a>
-                        <a href="#" class="ui-icon ui-icon-carat-2-n-s collapse" title="Collapse entries for easy sorting">Expand / Colapse</a>
-                    </h2>
-                    <div class="sets"></div>
-                    <a href="#" class="button bt_cloneset"><span class="ui-icon ui-icon-plusthick"></span> Add entry</a>
-                </div>
-                <div id="section-qualifications" class="section renamable">
-                    <input type="hidden" class="section_name" name="section_name" value="Qualifications">
                     <h2 class="title">
-                        <span class="name">Qualifications</span>
-                        <a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Rename section</a>
+                        <span class="name">Informations</span>
                     </h2>
                     <div class="sets">
                         <div class="set">
+                            <input type="hidden" class="action" name="action" value="cv">
+                            <input type="hidden" class="style" name="style" value="executive">
+                            <input type="hidden" class="type" name="type" value="pdf">
+                            <input type="hidden" class="page_size" name="page_size" value="pdf">
+                            <input type="hidden" class="section_name" name="sections[basic][section_name]" value="Informations">
+
                             <p class="field field_">
-                                <label>Qualifications</label>
+                                <label>Nom de famille</label>
+                                <input maxlength="50" type="text" ng-model="etudiant.nom" class="text" placeholder="Nom" />
+                            </p>
+
+                            <p class="field field_">
+                                <label>Prénom</label>
+                                <input maxlength="50" type="text" ng-model="etudiant.prenom" class="text" placeholder="Prénom" />
+                            </p>
+
+
+                            <p class="field field_">
+                                <label for="email">Adresse E-mail</label>
+                                <input maxlength="100" type="email" ng-model="etudiant.email" id="email" class="text" placeholder='e-mail' />
+                            </p>
+
+                            <p class="field field_">
+                                <label>Numéro de téléphone</label>
+                                <input maxlength="100" type="text" ng-model="etudiant.telephone" class="text" placeholder='+(212)' />
+<!--                                    <span class="info">If you have more than one number, separate with commas</span>-->
+                            </p>
+
+                            <p class="field field_">
+                                <label>Addresse</label>
+                                <input maxlength="100" type="text" ng-model="etudiant.adresse" class="text" placeholder='Hay Lalla Meriem'/>
+                            </p>
+                            <p class="field field_">
+                                <label>Situation familialle</label>
+                                <select ng-model="etudiant.situation">
+                                    <option ng-repeat="option in situation.availableOptions" value="<%= option.name %>">
+                                        <%= option.name %>
+                                    </option>
+                                </select>
+
+                            </p>
+                            <hr>
+                            <div class="btn btn-primary" ngf-select="upload($file,2)" ngf-pattern="'image/*'"
+    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" 
+    ngf-resize="{width: 100, height: 100}">Uploader une nouvelle photo</div> 
+                            <i ng-show="loadingUploadPhoto" class="fa fa-spinner fa-spin"></i>
+
+                            {{-- < img src = "{{asset('assets/images/').'/'.$imgsrc}}"> --}}
+                            <p class="field field_">
+                                <label for="photo">Photo</label>
+                                <img class="img-responsive" ng-cloack 
+                                     ng-src="<%= '{{ asset('../storage/uploads')}}/' + etudiant.photo %>"
+                                     style="width: inherit; height: inherit;">
+                                <span class="info">gif, jpg, png, jpeg<br>320 x 400 px</span>
+                            </p>
+
+                        </div>
+                        <div class="set row">
+                            <div class="col col-md-2 col-md-offset-5">
+                                <button class="btn btn-primary btn-lg" ng-click="updateInfoBasic(etudiant)" >Sauvegarder</button>
+                                <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <div id="section-work" class="section addable ui-sortable" style="display: none;">
+                    <h2 class="title">
+                        <span class="name">Expérience professionnelle</span>
+                        <!--                        <a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Renommer la section</a>
+                                                <a href="#" class="ui-icon ui-icon-carat-2-n-s collapse" title="Regrouper les éléments pour faciliter leur tri">
+                                                    Développer / Regrouper</a>-->
+                    </h2>
+                    <div class="sets">
+                        <div class="set">
+                            <input type="hidden" class="section_name" name="sections[work][section_name]" value="Expérience professionnelle">
+                            <hr>
+                            <p class="field field_">
+                                <label>Poste</label>
+                                <input maxlength="100" type="text" name="sections[work][data][job_title][]" class="text" value="">
+                            </p>
+                            <p class="field field_">
+                                <label>Entreprise</label>
+                                <input maxlength="100" type="text" name="sections[work][data][company][]" class="text" value="">
+                            </p>
+                            <hr>
+                            <p class="field field_">
+                                <label>Date de début</label>
+                                <input maxlength="100" type="text" name="sections[work][data][start][]" class="text" value="">
+                                <span class="info">Ex: Janvier 2005</span>
+                            </p>
+                            <p class="field field_">
+                                <label>Date de fin</label>
+                                <input maxlength="100" type="text" name="sections[work][data][end][]" class="text" value="">
+                                <span class="info">Ex: Janvier 2009, ou Actuellement</span>
+                            </p>
+                            <hr>
+                            <p class="field field_">
+                                <label>Autres informations</label><hr>
+                            <div class="cleditorMain" style="width: 658px; height: 250px;">
+                                
+                                <textarea name="sections[work][data][info][]" 
+                                          class="textarea" id="t0" style="display: none; width: 658px; height: 223px;">
+
+                                </textarea>
+                                <!--<iframe frameborder="0" src="javascript:true;" style="width: 658px; height: 223px;"></iframe>-->
+                            </div>
+                            <span class="info">Détails supplémentaires comme les responsabilités, résultats, etc.</span>
+                        </p>
+                            <hr>
+                            <!--<a href="#" class="button bt_delete_set"><span class="ui-icon ui-icon-closethick"></span>Supprimer</a>-->
+                        </div>
+                    </div>
+                    <!--<a href="#" class="button bt_cloneset"><span class="ui-icon ui-icon-plusthick"></span> Ajouter un élément</a>-->
+                </div>
+
+                <div id="section-qualifications" class="section addable ui-sortable" style="display: none;">
+                    <input type="hidden" class="section_name" name="sections[qualifications][section_name]" value="Compétences">
+                    <h2 class="title">
+                        <span class="name">Compétences</span>
+                        <!--<a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Renommer la section</a>-->
+                    </h2>
+                    <div class="sets">
+                        <div class="set">
+                            <p class="field field_"><label>Compétences</label>
                             <div class="cleditorMain" style="width: 658px; height: 250px;">
                                 <div class="cleditorToolbar" style="height: 27px;">
                                     <div class="cleditorGroup">
                                         <div class="cleditorButton cleditorDisabled" title="Bold" disabled="disabled"></div>
-                                        <div class="cleditorButton cleditorDisabled" title="Italic" disabled="disabled" style="background-position: -24px 50%;">
-
-                                        </div>
-                                        <div class="cleditorButton cleditorDisabled" title="Underline" disabled="disabled" style="background-position: -48px 50%;"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Italic" style="background-position: -24px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Underline" style="background-position: -48px 50%;" disabled="disabled"></div>
                                         <div class="cleditorDivider"></div>
                                     </div>
                                     <div class="cleditorGroup">
-                                        <div class="cleditorButton cleditorDisabled" title="Bullets" disabled="disabled" style="background-position: -288px 50%;"></div>
-                                        <div class="cleditorButton cleditorDisabled" title="Numbering" disabled="disabled" style="background-position: -312px 50%;"></div>
-                                        <div class="cleditorDivider"> </div>
+                                        <div class="cleditorButton cleditorDisabled" title="Bullets" style="background-position: -288px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Numbering" style="background-position: -312px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorDivider"></div>
                                     </div>
                                     <div class="cleditorGroup">
-                                        <div class="cleditorButton cleditorDisabled" title="Indent" disabled="disabled" style="background-position: -360px 50%;"></div>
-                                        <div class="cleditorButton cleditorDisabled" title="Outdent" disabled="disabled" style="background-position: -336px 50%;"></div>
-                                        <div class="cleditorDivider"> </div>
+                                        <div class="cleditorButton cleditorDisabled" title="Indent" style="background-position: -360px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Outdent" style="background-position: -336px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorDivider"></div>
                                     </div>
-
                                     <div class="cleditorGroup">
-                                        <div class="cleditorButton cleditorDisabled" title="Insert page-break" disabled="disabled" style="background-position: -648px 50%;"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Insert page-break" style="background-position: -648px 50%;" disabled="disabled"></div>
                                         <div class="cleditorDivider"></div>
                                     </div>
                                     <div class="cleditorGroup">
@@ -181,58 +217,104 @@
                                         <div class="cleditorButton cleditorDisabled" title="Remove Formatting" disabled="disabled" style="background-position: -264px 50%;"></div>
                                     </div>
                                 </div>
-
                                 <textarea name="sections[qualifications][data][info][]" class="textarea" style="display: none; width: 658px; height: 223px;"></textarea>
                                 <iframe frameborder="0" src="javascript:true;" style="width: 658px; height: 223px;"></iframe>
                             </div>
-                            <span class="info">Certifications, accreditions etc. that you have received</span></p><hr>
+                            <span class="info">Certifications, accréditations que vous avez reçu par exemple</span></p>
+                            <hr>
                         </div>
                     </div>
                 </div>
 
-
-                <div id="section-education" class="section addable renamable ui-sortable">
+                <div id="section-education" class="section addable ui-sortable" style="display: none;">
                     <h2 class="title">
-                        <span class="name">Education</span>
-                        <a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Rename section</a>
-                        <a href="#" class="ui-icon ui-icon-carat-2-n-s collapse" title="Collapse entries for easy sorting">Expand / Colapse</a>
-
+                        <span class="name">Formation</span>
+<!--                        <a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Renommer la section</a>
+                        <a href="#" class="ui-icon ui-icon-carat-2-n-s collapse" title="Regrouper les éléments pour faciliter leur tri">Développer / Regrouper</a>-->
                     </h2>
-                    <div class="sets"></div>
-                    <a href="#" class="button bt_cloneset">
-                        <span class="ui-icon ui-icon-plusthick"></span> Add entry
-                    </a>
+                    <div class="sets">
+                        <div class="set">
+                            <input type="hidden" class="section_name" name="sections[education][section_name]" value="Formation">
+                            <p class="field field_"><label>Titre</label><input maxlength="100" type="text" name="sections[education][data][course][]" class="text" value=""></p>
+                            <p class="field field_"><label>Établissement</label><input maxlength="100" type="text" name="sections[education][data][school][]" class="text" value=""></p>
+                            <p class="field field_"><label>Date de début</label><input maxlength="100" type="text" name="sections[education][data][start][]" class="text" value="">
+                                <span class="info">Ex: Janvier 2005</span>
+                            </p>
+                            <p class="field field_"><label>Date de fin</label><input maxlength="100" type="text" name="sections[education][data][end][]" class="text" value="">
+                                <span class="info">Ex: Janvier 2009, ou Actuellement</span>
+                            </p>
+                            <p class="field field_"><label>Autres informations</label>
+                            <div class="cleditorMain" style="width: 658px; height: 250px;">
+                                <div class="cleditorToolbar" style="height: 27px;">
+                                    <div class="cleditorGroup">
+                                        <div class="cleditorButton cleditorDisabled" title="Bold" style="background-color: transparent;" disabled="disabled"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Italic" style="background-color: transparent; background-position: -24px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Underline" style="background-position: -48px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorDivider"></div>
+                                    </div>
+                                    <div class="cleditorGroup">
+                                        <div class="cleditorButton cleditorDisabled" title="Bullets" style="background-position: -288px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Numbering" style="background-position: -312px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorDivider"></div>
+                                    </div>
+                                    <div class="cleditorGroup">
+                                        <div class="cleditorButton cleditorDisabled" title="Indent" style="background-position: -360px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Outdent" style="background-position: -336px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorDivider"></div>
+                                    </div>
+                                    <div class="cleditorGroup">
+                                        <div class="cleditorButton cleditorDisabled" title="Insert page-break" style="background-position: -648px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorDivider"></div>
+                                    </div>
+                                    <div class="cleditorGroup">
+                                        <div class="cleditorButton cleditorDisabled" title="Undo" style="background-position: -480px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Redo" style="background-position: -504px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorDivider"></div>
+                                    </div>
+                                    <div class="cleditorGroup">
+                                        <div class="cleditorButton cleditorDisabled" title="Remove Formatting" style="background-position: -264px 50%;" disabled="disabled"></div>
+                                    </div>
+                                </div>
+                                <textarea name="sections[education][data][info][]" class="textarea" id="t1" style="display: none; width: 658px; height: 223px;"></textarea>
+                                <iframe frameborder="0" src="javascript:true;" style="width: 658px; height: 223px;"></iframe>
+                            </div>
+                            <span class="info">Détails supplémentaires comme la description de la formation, notes, etc.</span></p>
+                            <hr>
+                            <a href="#" class="button bt_delete_set"><span class="ui-icon ui-icon-closethick"></span>Supprimer</a>
+                        </div>
+                    </div>
+                    <a href="#" class="button bt_cloneset"><span class="ui-icon ui-icon-plusthick"></span> Ajouter un élément</a>
                 </div>
 
-                <div id="section-interests" class="section renamable" style="display: block;">
-                    <input type="hidden" class="section_name" name="sections[interests][section_name]" value="Interests">
+                <div id="section-interests" class="section addable ui-sortable" style="display: none;">
+                    <input type="hidden" class="section_name" name="sections[interests][section_name]" value="Centres d'intêret">
                     <h2 class="title">
-                        <span class="name">Interests</span>
-                        <a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Rename section</a>
+                        <span class="name">Centres d'intêret</span>
+                        <!--<a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Renommer la section</a>-->
                     </h2>
-                    <div class="sets"><div class="set">
-                            <p class="field field_">
-                                <label>Interests</label>
+                    <div class="sets">
+                        <div class="set">
+                            <p class="field field_"><label>Centres d'intêret</label>
                             <div class="cleditorMain" style="width: 658px; height: 250px;">
                                 <div class="cleditorToolbar" style="height: 27px;">
                                     <div class="cleditorGroup">
                                         <div class="cleditorButton cleditorDisabled" title="Bold" disabled="disabled"></div>
-                                        <div class="cleditorButton cleditorDisabled" title="Italic" disabled="disabled" style="background-position: -24px 50%;"></div>
-                                        <div class="cleditorButton cleditorDisabled" title="Underline" disabled="disabled" style="background-position: -48px 50%;"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Italic" style="background-position: -24px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Underline" style="background-position: -48px 50%;" disabled="disabled"></div>
                                         <div class="cleditorDivider"></div>
                                     </div>
                                     <div class="cleditorGroup">
-                                        <div class="cleditorButton cleditorDisabled" title="Bullets" disabled="disabled" style="background-position: -288px 50%;"></div>
-                                        <div class="cleditorButton cleditorDisabled" title="Numbering" disabled="disabled" style="background-position: -312px 50%;"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Bullets" style="background-position: -288px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Numbering" style="background-position: -312px 50%;" disabled="disabled"></div>
                                         <div class="cleditorDivider"></div>
                                     </div>
                                     <div class="cleditorGroup">
-                                        <div class="cleditorButton cleditorDisabled" title="Indent" disabled="disabled" style="background-position: -360px 50%;"></div>
-                                        <div class="cleditorButton cleditorDisabled" title="Outdent" disabled="disabled" style="background-position: -336px 50%;"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Indent" style="background-position: -360px 50%;" disabled="disabled"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Outdent" style="background-position: -336px 50%;" disabled="disabled"></div>
                                         <div class="cleditorDivider"></div>
                                     </div>
                                     <div class="cleditorGroup">
-                                        <div class="cleditorButton cleditorDisabled" title="Insert page-break" disabled="disabled" style="background-position: -648px 50%;"></div>
+                                        <div class="cleditorButton cleditorDisabled" title="Insert page-break" style="background-position: -648px 50%;" disabled="disabled"></div>
                                         <div class="cleditorDivider"></div>
                                     </div>
                                     <div class="cleditorGroup">
@@ -251,51 +333,54 @@
                         </div>
                     </div>
                 </div>
-
-                <div id="section-references" class="section renamable">
-                    <input type="hidden" class="section_name" name="sections[references][section_name]" value="References">
+                <div id="section-references" class="section addable ui-sortable" style="display: none;">
+                    <input type="hidden" class="section_name" name="sections[references][section_name]" value="Références">
                     <h2 class="title">
-                        <span class="name">References</span>
-                        <a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Rename section</a></h2>
+                        <span class="name">Références</span>
+                        <!--<a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Renommer la section</a>-->
+                    </h2>
                     <div class="sets">
                         <div class="set">
-                            <p class="field field_"><label>References</label>
+                            <p class="field field_"><label>Références</label>
                             <div class="cleditorMain" style="width: 658px; height: 250px;">
                                 <div class="cleditorToolbar" style="height: 27px;">
                                     <div class="cleditorGroup">
-                                        <div class="cleditorButton cleditorDisabled" title="Bold" disabled="disabled">
-
-                                        </div>
-                                        <div class="cleditorButton cleditorDisabled" title="Italic" disabled="disabled" style="background-position: -24px 50%;">
-
-                                        </div><div class="cleditorButton cleditorDisabled" title="Underline" disabled="disabled" style="background-position: -48px 50%;"></div>
-                                        <div class="cleditorDivider">
-
-                                        </div>
-
+                                        <div class="cleditorButton" title="Bold"></div>
+                                        <div class="cleditorButton" title="Italic" style="background-position: -24px 50%;"></div>
+                                        <div class="cleditorButton" title="Underline" style="background-position: -48px 50%;"></div>
+                                        <div class="cleditorDivider"></div>
                                     </div>
                                     <div class="cleditorGroup">
-                                        <div class="cleditorButton cleditorDisabled" title="Bullets" disabled="disabled" style="background-position: -288px 50%;">
-
-                                        </div><div class="cleditorButton cleditorDisabled" title="Numbering" disabled="disabled" style="background-position: -312px 50%;"></div>
-                                        <div class="cleditorDivider"></div></div><div class="cleditorGroup">
-                                        <div class="cleditorButton cleditorDisabled" title="Indent" disabled="disabled" style="background-position: -360px 50%;"></div>
-                                        <div class="cleditorButton cleditorDisabled" title="Outdent" disabled="disabled" style="background-position: -336px 50%;"></div>
-                                        <div class="cleditorDivider"></div></div><div class="cleditorGroup">
-                                        <div class="cleditorButton cleditorDisabled" title="Insert page-break" disabled="disabled" style="background-position: -648px 50%;">
-
-                                        </div><div class="cleditorDivider"></div></div><div class="cleditorGroup">
+                                        <div class="cleditorButton" title="Bullets" style="background-position: -288px 50%;"></div>
+                                        <div class="cleditorButton" title="Numbering" style="background-color: transparent; background-position: -312px 50%;"></div>
+                                        <div class="cleditorDivider"></div>
+                                    </div>
+                                    <div class="cleditorGroup">
+                                        <div class="cleditorButton" title="Indent" style="background-position: -360px 50%;"></div>
+                                        <div class="cleditorButton" title="Outdent" style="background-position: -336px 50%;"></div>
+                                        <div class="cleditorDivider"></div>
+                                    </div>
+                                    <div class="cleditorGroup">
+                                        <div class="cleditorButton" title="Insert page-break" style="background-position: -648px 50%;"></div>
+                                        <div class="cleditorDivider"></div>
+                                    </div>
+                                    <div class="cleditorGroup">
                                         <div class="cleditorButton cleditorDisabled" title="Undo" disabled="disabled" style="background-position: -480px 50%;"></div>
-                                        <div class="cleditorButton cleditorDisabled" title="Redo" disabled="disabled" style="background-position: -504px 50%;"></div>
-                                        <div class="cleditorDivider"></div></div><div class="cleditorGroup">
-                                        <div class="cleditorButton cleditorDisabled" title="Remove Formatting" disabled="disabled" style="background-position: -264px 50%;">
-
-                                        </div></div></div>
-                                <textarea name="sections[references][data][info][]" class="textarea" style="display: none; width: 658px; height: 223px;">
-                                References available upon request.
-                                </textarea>
-                                <iframe frameborder="0" src="javascript:true;" style="width: 658px; height: 223px;"></iframe></div>
-                            </p></div></div></div></form>
+                                        <div class="cleditorButton cleditorDisabled" title="Redo" disabled="disabled" style="background-color: transparent; background-position: -504px 50%;"></div>
+                                        <div class="cleditorDivider"></div>
+                                    </div>
+                                    <div class="cleditorGroup">
+                                        <div class="cleditorButton cleditorDisabled" title="Remove Formatting" disabled="disabled" style="background-position: -264px 50%;"></div>
+                                    </div>
+                                </div>
+                                <textarea name="sections[references][data][info][]" class="textarea" style="display: none; width: 658px; height: 223px;">Références disponibles sur demande.</textarea>
+                                <iframe frameborder="0" src="javascript:true;" style="width: 658px; height: 223px;"></iframe>
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </form>
             <div class="clear"> </div>
         </div>
 
@@ -308,13 +393,13 @@
                     CV_SECTIONS =
             {
             "basic": {"addable": false, "renamable": false, "name": "Informations"},
-                    "work": {"addable": true, "renamable": true, "name": "Expérience professionnelle"},
-                    "qualifications": {"addable": false, "renamable": true, "name": "Compétences"},
-                    "education": {"addable": true, "renamable": true, "name": "Formations"},
-                    "interests": {"addable": false, "renamable": true, "name": "Langues"},
-                    "references": {"addable": false, "renamable": true, "name": "Centres d'intêret"}},
-                    CV_ORDER = ["basic", "work", "qualifications", "education", "interests", "references"], CV_MAX_ADDABLES = 1,
-                    CV_MAX_SECTIONS = 0, CV_PHOTO_FILES = ["gif", "jpg", "png", "jpeg"], CV_PHOTO_SIZE = 900;        </script>
+                    "work": {"addable": true, "renamable": false, "name": "Expérience professionnelle"},
+                    "qualifications": {"addable": true, "renamable": false, "name": "Compétences"},
+                    "education": {"addable": true, "renamable": false, "name": "Formations"},
+                    "interests": {"addable": false, "renamable": false, "name": "Langues"},
+                    "references": {"addable": false, "renamable": false, "name": "Centres d'intêret"}},
+                    CV_ORDER = ["basic", "work", "qualifications", "education", "interests", "references"], CV_MAX_ADDABLES = 2,
+                    CV_MAX_SECTIONS = 0, CV_PHOTO_FILES = ["gif", "jpg", "png", "jpeg"], CV_PHOTO_SIZE = 900;</script>
 
         <noscript>&lt;h2&gt;You need to have javascript enabled in your browser to use this feature.
         &lt;/h2&gt;To know how, &lt;a href="https://www.google.com/adsense/support/bin/answer.py?hl=en&amp;answer=12654"&gt;click here&lt;/a&gt;.
@@ -386,25 +471,11 @@
                     </div>
                 </div>
             </div>
-        </div>	</div>
+        </div>	
+    </div>
 
 </div>
 
 
-<script type="text/javascript"></script>
-<script>var CV_ROOT = "https://cvmkr.com/";</script>
-<script>
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-5537752-3']);
-            _gaq.push(['_trackPageview']);
-            (function () {
-            var ga = document.createElement('script');
-                    ga.type = 'text/javascript';
-                    ga.async = true;
-                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                    var s = document.getElementsByTagName('script')[0];
-                    s.parentNode.insertBefore(ga, s);
-            })();
 
-</script>
 @stop

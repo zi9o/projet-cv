@@ -52,7 +52,7 @@ app.controller('infoBasicController', ['$scope', '$http', 'API_URL', 'Upload', f
             }).then(function (resp) {
                 $scope.loadingUploadPhoto = false;
                 console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-//                $scope.filename = '/Images/' + resp.config.data.file.name;
+                $scope.etudiant=resp.data;
             }, function (resp) {
                 console.log('Error status: ' + resp.status);
             }, function (evt) {
