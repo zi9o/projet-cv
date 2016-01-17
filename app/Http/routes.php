@@ -19,6 +19,7 @@ Route::get('confirm','ConfirmController@confirm');
 Route::group (['prefix' =>  'api'], function ()
 {
 	Route::resource('etudiant', 'Api\EtudiantController');
+        Route::post('etudiant/upload', 'Api\EtudiantController@upload');
 	Route::group(['prefix' =>  'etudiant'], function (){
 		Route::resource('cv', 'Api\CvController');
 		Route::get('filiere/{id}', [
@@ -118,13 +119,26 @@ Route::group (['prefix' =>  'api'], function ()
 |
 */
 
-Route::get('/', 'ConfirmController@index');
+Route::get('/', function ()
+{
+	return view('welcome');
+});
 
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('home', 'HomeController@index');
+
+    Route::get('user',[
+		'uses' => 'UserController@index',
+		'as' => 'user'
+	]);
+
+    Route::get('admin',[
+		'uses' => 'AdminController@index',
+		'as' => 'admin'
+	]);
 
     Route::get('etudiant',[
 		'uses' => 'etudiantController@index',

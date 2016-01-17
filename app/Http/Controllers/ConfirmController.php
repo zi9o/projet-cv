@@ -21,10 +21,7 @@ class ConfirmController extends Controller
         $this->etudiant_gestion = $etudiant_gestion;
     }
 
-    public function index()
-    {
-        return view('welcome');
-    }
+    
     public function confirm(Request $request)
     {
         extract($request->all());

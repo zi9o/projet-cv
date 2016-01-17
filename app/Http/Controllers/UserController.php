@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
 	/**
      * Create a new controller instance.
@@ -24,9 +25,12 @@ class AdminController extends Controller
      *
      * @return Response
      */
-    public function index ()
-    { 
-        return view('admin.index');
-    }
+    public function index()
+    {
+    	if(Auth::user()->admin){
+    		return redirect()->route('admin');
+        }
 
+        return redirect()->route('etudiant');
+    }
 }

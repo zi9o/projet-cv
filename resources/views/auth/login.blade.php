@@ -121,7 +121,7 @@
                 </div>
         </div>
       <br>
-
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
       <script>
         $('#confirm-cne').on('show.bs.modal', function(e) {
           $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));

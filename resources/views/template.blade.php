@@ -25,7 +25,7 @@
         {!! HTML::style('assets/css/pages.css') !!}
         {!! HTML::style('assets/css/responsive.css') !!}
 
-        <link href="https://cvmkr.com/public/?css=Member,ui,cleditor" rel="stylesheet" type="text/css" />
+        {!! HTML::style('assets/css/cleditor.css') !!}
 
         <!--  <link href="assets/plugins/morris/morris.css" rel="stylesheet">
               <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -328,8 +328,8 @@
             {!! HTML::script('assets/js/jquery.min.js') !!}
             {!! HTML::script('assets/js/bootstrap.min.js') !!}
 
-            {!! HTML::script('https://cvmkr.com/public/lang/en.js') !!}
-            {!! HTML::script('https://cvmkr.com/public/?js=cleditor,global') !!}
+            {!! HTML::script('assets/js/fr.js') !!}
+            {!! HTML::script('assets/js/cleditor.js') !!}
 
             {!! HTML::script('assets/js/detect.js') !!}
             {!! HTML::script('assets/js/fastclick.js') !!}
