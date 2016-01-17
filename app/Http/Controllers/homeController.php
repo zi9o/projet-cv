@@ -24,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return return redirect()->route('etudiant');
+        
+
+        var_dump(Auth::user());
+        //return view('home');
     }
 }

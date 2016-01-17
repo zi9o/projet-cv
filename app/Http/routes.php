@@ -25,6 +25,8 @@ Route::group (['prefix' =>  'api'], function ()
 			'uses' => 'Api\EtudiantController@etudiantsfiliere',
 			'as' => 'filiere.etudiants'
 		])->where('id', '[0-9]+');
+
+		
 		Route::group (['prefix' =>  'cv'], function ()
 		{
 			// Route::get('/etudiant/{id}', 'CvController@');
@@ -116,10 +118,7 @@ Route::group (['prefix' =>  'api'], function ()
 |
 */
 
-Route::get('/', function()
-{
-	return view('welcome');
-});
+Route::get('/', 'ConfirmController@index');
 
 
 Route::group(['middleware' => 'web'], function () {
@@ -146,6 +145,12 @@ Route::group(['middleware' => 'web'], function () {
 			'uses' => 'etudiantController@cv',
 			'as' => 'cv'
 		]);
+
+		Route::get('cv/help', [
+			'uses' => 'ConfirmController@help',
+			'as' => 'cv.help'
+		]);
+
 
 });
 

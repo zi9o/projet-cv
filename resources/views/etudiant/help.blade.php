@@ -3,7 +3,8 @@
 @section('contenu')
 
 	<div id="main">
-		<div id="help" class="page" >
+
+	<div id="help" class="page" >
 	<h1>Quick help</h1>
 
 	<div class="index">
@@ -131,34 +132,6 @@
 	<div class="push"> </div>
 </div><!-- wrap //-->
 
-<div id="footer-container">
-	<div id="footer">
-		<div class="content friendly">
-			
-			<div class="share">
-
-			</div>
-		</div>
-
-		<div class="clear"> </div>
-
-		<div class="bar">
-			<div class="content">
-				<p class="copyright">
-					CV Maker © 2010 - 2013. Tous droits réservés					<span class="ssl"></span>
-				</p>
-				<ul class="nav noul">
-					<li><a href="https://cvmkr.com/fr/Pages/privacy">Conditions générales & politique de confidentialité</a></li>
-					<li><a href="https://cvmkr.com/fr/Contact/">Contact</a></li>
-				</ul>
-				<div class="">
-					
-				</div>
-				<div class="clear"> </div>
-			</div>
-		</div>
-
-	</div><!-- footer //-->
 
 	<script>var CV_ROOT = "https://cvmkr.com/";</script>
 
@@ -174,6 +147,6 @@
 	  })();
 
 	</script>
-</div></div></div></div></div>
+
 </var>
 @stop

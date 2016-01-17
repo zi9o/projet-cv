@@ -8,12 +8,8 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    {{ Auth::user()->name }}
 
-                    {{ Auth::user()->etudiant_id }}
-
-
-                    <?php var_dump(Auth::user()->etudiant) ?>
+                    <?php var_dump(Auth::user()) ?>
                 </div>
             </div>
         </div>

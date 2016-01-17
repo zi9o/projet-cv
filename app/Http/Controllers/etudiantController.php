@@ -53,6 +53,7 @@ class etudiantController extends Controller
         return view('etudiant.show', compact('etudiant', 'mes_cv'));
     }
 
+    
     public function create()
     { 
     	return view('etudiant.create');

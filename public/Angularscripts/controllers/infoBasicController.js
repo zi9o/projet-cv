@@ -36,7 +36,5 @@ app.controller('infoBasicController', function ($scope, $http, API_URL)
         });
         ;
     };
-
-
     $scope.init();
 });
