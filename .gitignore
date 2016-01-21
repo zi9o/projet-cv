@@ -4,7 +4,6 @@ Homestead.yaml
 Homestead.json
 .env
 !/.env
-/storage/uploads/
 /public/Angularscripts/views/fooTable.html
 /public/Angularscripts/views/fadeInModal.html
 /public/Angularscripts/views/Modal_Experience.html
