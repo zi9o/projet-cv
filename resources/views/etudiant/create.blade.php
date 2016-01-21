@@ -2,6 +2,18 @@
 
 @section('contenu')
 
+<!--Footable-->
+{!! HTML::style('assets/plugins/footable/css/footable.core.css') !!}
+{!! HTML::style('assets/plugins/bootstrap-select/dist/css/bootstrap-select.min.css') !!}
+
+
+<!-- for modal fadeIn -->
+{!! HTML::style('assets/plugins/custombox/dist/custombox.min.css') !!}
+
+<!-- timePicker -->
+{!! HTML::style('assets/plugins/timepicker/bootstrap-timepicker.min.css') !!}
+
+<!-- activate ng upload file -->
 {!! HTML::script('ng-file-upload/ng-file-upload-shim.min.js') !!} <!-- for no html5 browsers support -->
 {!! HTML::script('ng-file-upload/ng-file-upload.min.js') !!}
 <div class="CV"> <!-- Start content -->	
@@ -100,8 +112,8 @@
                             </p>
                             <hr>
                             <div class="btn btn-primary" ngf-select="upload($file,2)" ngf-pattern="'image/*'"
-    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" 
-    ngf-resize="{width: 100, height: 100}">Uploader une nouvelle photo</div> 
+                                 ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" 
+                                 ngf-resize="{width: 100, height: 100}">Uploader une nouvelle photo</div> 
                             <i ng-show="loadingUploadPhoto" class="fa fa-spinner fa-spin"></i>
 
                             {{-- < img src = "{{asset('assets/images/').'/'.$imgsrc}}"> --}}
@@ -127,53 +139,23 @@
 
                 </div>
 
-                <div id="section-work" class="section addable ui-sortable" style="display: none;">
+                <div id="section-work" class="section addable ui-sortable" style="display: none;" ng-controller="experienceController">
                     <h2 class="title">
                         <span class="name">Expérience professionnelle</span>
-                        <!--                        <a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Renommer la section</a>
-                                                <a href="#" class="ui-icon ui-icon-carat-2-n-s collapse" title="Regrouper les éléments pour faciliter leur tri">
-                                                    Développer / Regrouper</a>-->
+                        <!--<a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Renommer la section</a>-->
+                        <!--                                                <a href="#" class="ui-icon ui-icon-carat-2-n-s collapse" title="Regrouper les éléments pour faciliter leur tri">
+                                                                            Développer / Regrouper</a>-->
                     </h2>
                     <div class="sets">
-                        <div class="set">
-                            <input type="hidden" class="section_name" name="sections[work][section_name]" value="Expérience professionnelle">
-                            <hr>
-                            <p class="field field_">
-                                <label>Poste</label>
-                                <input maxlength="100" type="text" name="sections[work][data][job_title][]" class="text" value="">
-                            </p>
-                            <p class="field field_">
-                                <label>Entreprise</label>
-                                <input maxlength="100" type="text" name="sections[work][data][company][]" class="text" value="">
-                            </p>
-                            <hr>
-                            <p class="field field_">
-                                <label>Date de début</label>
-                                <input maxlength="100" type="text" name="sections[work][data][start][]" class="text" value="">
-                                <span class="info">Ex: Janvier 2005</span>
-                            </p>
-                            <p class="field field_">
-                                <label>Date de fin</label>
-                                <input maxlength="100" type="text" name="sections[work][data][end][]" class="text" value="">
-                                <span class="info">Ex: Janvier 2009, ou Actuellement</span>
-                            </p>
-                            <hr>
-                            <p class="field field_">
-                                <label>Autres informations</label><hr>
-                            <div class="cleditorMain" style="width: 658px; height: 250px;">
-                                
-                                <textarea name="sections[work][data][info][]" 
-                                          class="textarea" id="t0" style="display: none; width: 658px; height: 223px;">
-
-                                </textarea>
-                                <!--<iframe frameborder="0" src="javascript:true;" style="width: 658px; height: 223px;"></iframe>-->
-                            </div>
-                            <span class="info">Détails supplémentaires comme les responsabilités, résultats, etc.</span>
-                        </p>
-                            <hr>
-                            <!--<a href="#" class="button bt_delete_set"><span class="ui-icon ui-icon-closethick"></span>Supprimer</a>-->
+                        <div class="set" > 
+                            <button class="btn btn-primary waves-effect waves-light" 
+                                    data-toggle="modal" data-target="#con-close-modal">Ajouter une expérience</button>
+                            
                         </div>
+                        
                     </div>
+                    <!-- for fooTable-->
+                    <!---- forModal ----->
                     <!--<a href="#" class="button bt_cloneset"><span class="ui-icon ui-icon-plusthick"></span> Ajouter un élément</a>-->
                 </div>
 
@@ -229,8 +211,8 @@
                 <div id="section-education" class="section addable ui-sortable" style="display: none;">
                     <h2 class="title">
                         <span class="name">Formation</span>
-<!--                        <a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Renommer la section</a>
-                        <a href="#" class="ui-icon ui-icon-carat-2-n-s collapse" title="Regrouper les éléments pour faciliter leur tri">Développer / Regrouper</a>-->
+                        <!--                        <a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Renommer la section</a>
+                                                <a href="#" class="ui-icon ui-icon-carat-2-n-s collapse" title="Regrouper les éléments pour faciliter leur tri">Développer / Regrouper</a>-->
                     </h2>
                     <div class="sets">
                         <div class="set">
@@ -476,6 +458,67 @@
 
 </div>
 
+<!-- Modal -->
+<div id="con-close-modal" ng-controller="experienceController" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog"> 
+        <div class="modal-content"> 
+            <div class="modal-header"> 
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+                <h4 class="modal-title">Expérience professionnelle</h4> 
+            </div> 
+            <div class="modal-body"> 
+                <div class="row"> 
+                    <div class="col-md-12"> 
+                        <div class="form-group"> 
+                            <label for="field-1" class="control-label">Experience</label> 
+                            <input type="text" class="form-control" ng-model="experience.intitule" id="field-1" placeholder="Website Developer"> 
+                        </div> 
+                    </div> 
 
+                </div> 
+                <div class="row"> 
+                    <div class="col-md-6"> 
+                        <div class="form-group"> 
+                            <label for="field-3" class="control-label">Entreprise</label> 
+                            <input type="text" class="form-control" ng-model="experience.organisation" id="field-2" placeholder="Evosolution"> 
+                        </div> 
+                    </div> 
+                    <div class="col-md-6"> 
+                        <div class="form-group"> 
+                            <label for="field-1" class="control-label">Ville</label> 
+                            <input type="text" class="form-control" ng-model="experience.ville" id="field-3" placeholder="Casablanca"> 
+                        </div> 
+                    </div> 
+                </div> 
+                <div class="row"> 
+                    <div class="col-md-6"> 
+                        <div class="form-group"> 
+                            <label for="field-4" class="control-label">Date début</label> 
+                            <input type="text" class="form-control" ng-model="experience.date_dedut" id="field-4" placeholder="01/03/2016" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask> 
+                        </div> 
+                    </div> 
+                    <div class="col-md-6"> 
+                        <div class="form-group"> 
+                            <label for="field-5" class="control-label">Date fin</label> 
+                            <input type="text" class="form-control" ng-model="experience.date_fin" id="field-5" placeholder="30/09/2016" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask> 
+                        </div> 
+                    </div>
+                </div> 
+                <div class="row"> 
+                    <div class="col-md-12"> 
+                        <div class="form-group no-margin"> 
+                            <label for="field-7" class="control-label">Autres informations</label> 
+                            <textarea class="form-control autogrow" ng-model="experience.description" id="field-7" placeholder="Décrire votre expérience" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+            <div class="modal-footer"> 
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Annuler</button> 
+                <button type="button" class="btn btn-info waves-effect waves-light" ng-click="addExperience()">Sauvegarder</button> 
+            </div> 
+        </div> 
+    </div>
+</div><!-- /.modal -->
 
 @stop
