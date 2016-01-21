@@ -8774,7 +8774,7 @@ var CV = new function() {
                     a.find(".set").css("height", "auto");
                     a.removeClass("collapsed");
                     $(this).removeClass("expand");
-                    c.refreshRTEs(b)
+//                    c.refreshRTEs(b)
                 }
                 return false
             });
@@ -9029,25 +9029,25 @@ var CV = new function() {
                     var a = g.find(".set:first");
                     var b = a.clone();
                     b.find("input[type='text'], textarea, select").val();
-                    b.append($(
-                        '<a href="#" class="button bt_delete_set"><span class="ui-icon ui-icon-closethick"></span>' +
-                        _lang["delete"] + "</a>"));
+//                    b.append($(
+//                        '<a href="#" class="button bt_delete_set"><span class="ui-icon ui-icon-closethick"></span>' +
+//                        _lang["delete"] + "</a>"));
                     c.addable_sets[h] = b;
-                    a.remove();
-                    g.find(".sets").after($(
-                        '<a href="#" class="button bt_cloneset"><span class="ui-icon ui-icon-plusthick"></span> ' +
-                        _lang.add_entry + "</a>").data("id",
-                        h).click(function() {
-                        var e = $(this).data("id").toString();
-                        if (c.numSets(e) >= c.MAX_ADDABLES) {
-                            c.noticeDialog(_lang.max_entries
-                                .replace("%s", c.MAX_ADDABLES)
-                            );
-                            return false
-                        }
-                        c.cloneSet(e);
-                        return false
-                    }))
+//                    a.remove();
+//                    g.find(".sets").after($(
+//                        '<a href="#" class="button bt_cloneset"><span class="ui-icon ui-icon-plusthick"></span> ' +
+//                        _lang.add_entry + "</a>").data("id",
+//                        h).click(function() {
+//                        var e = $(this).data("id").toString();
+//                        if (c.numSets(e) >= c.MAX_ADDABLES) {
+//                            c.noticeDialog(_lang.max_entries
+//                                .replace("%s", c.MAX_ADDABLES)
+//                            );
+//                            return false
+//                        }
+//                        c.cloneSet(e);
+//                        return false
+//                    }))
                 }
             }
         },
