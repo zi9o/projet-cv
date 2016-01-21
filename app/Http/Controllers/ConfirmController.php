@@ -21,7 +21,6 @@ class ConfirmController extends Controller
         $this->etudiant_gestion = $etudiant_gestion;
     }
 
-    
     public function confirm(Request $request)
     {
         extract($request->all());

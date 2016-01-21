@@ -140,6 +140,11 @@ Route::group(['middleware' => 'web'], function () {
 		'as' => 'admin'
 	]);
 
+    Route::get('listecv',[
+		'uses' => 'AdminController@liste',
+		'as' => 'listecv'
+	]);
+
     Route::get('etudiant',[
 		'uses' => 'etudiantController@index',
 		'as' => 'etudiant'

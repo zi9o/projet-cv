@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Etudiant;
 use App\Models\Filiere;
+use Illuminate\Support\Facades\Auth;
 
 class etudiantController extends Controller
 {
@@ -30,6 +31,10 @@ class etudiantController extends Controller
     public function __construct(EtudiantRepository $etudiant_gestion, FiliereRepository $filiere_gestion)
     {
         $this->middleware('auth');
+        if(Auth::user()->admin){
+            return redirect()->route('admin');
+        }
+
         $this->etudiant_gestion = $etudiant_gestion;
         $this->filiere_gestion = $filiere_gestion;
     }
@@ -42,9 +47,8 @@ class etudiantController extends Controller
 
     public function index ()
     { 
-        $etudiant = $this->etudiant_gestion->get(1);
-        $mes_cv = $this->etudiant_gestion->getCvsEtudiant(1);
-        return view('etudiant.index', compact('etudiant', 'mes_cv'));
+        $etudiant = Auth::user()->etudiant;
+        return view('etudiant.index', compact('etudiant'));
     }
 
     public function cv()

@@ -85,7 +85,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="index.html" class="logo"><i class="icon-magnet icon-c-logo"></i><span>CV-generator</span></a>
+                        <a href="{{ url('/user') }}" class="logo"><i class="icon-magnet icon-c-logo"></i><span>CV-generator</span></a>
                     </div>
                 </div>
 
@@ -265,25 +265,39 @@
                         <ul>
 
                             <li class="text-muted menu-title">Menu</li>
+                              @if(Auth::user()->admin)
+                                  <li>
+                                      <a href="{{ URL::route('admin') }}" class="waves-effect">
+                                      <i class="ti-home"></i>
+                                      <span> Accueil </span> </a>
+                                    </li>
 
-                            <li>
+                                  <li>
+                                      <a href="{{ URL::route('listecv') }}" class="waves-effect">
+                                      <i class="ti-pencil-alt"></i>
+                                      <span> liste de cv's </span> </a>
+                                  </li>
 
-                                <a href="{{ URL::route('etudiant') }}" class="waves-effect">
-                                    <i class="ti-home"></i>
-                                    <span> Accueil </span> </a>
-                            </li>
+                              @else
+                                <li>
+                                  <a href="{{ URL::route('etudiant') }}" class="waves-effect">
+                                      <i class="ti-home"></i>
+                                      <span> Accueil </span> </a>
+                                  </li>
 
-                            <li>
-                                <a href="{{ URL::route('createcv') }}" class="waves-effect">
-                                    <i class="ti-pencil-alt"></i>
-                                    <span> Nouveau cv </span> </a>
-                            </li>
+                                  <li>
+                                      <a href="{{ URL::route('createcv') }}" class="waves-effect">
+                                      <i class="ti-pencil-alt"></i>
+                                      <span> Nouveau cv </span> </a>
+                                  </li>
 
-                            <li>
-                                <a href="{{ URL::route('cv') }}" class="waves-effect">
+                                  <li>
+                                    <a href="{{ URL::route('cv') }}" class="waves-effect">
                                     <i class="ti-menu-alt"></i>
                                     <span> Mes CVs </span> </a>
 
+                              @endif
+                            
 
                             </li>
                         </ul>
