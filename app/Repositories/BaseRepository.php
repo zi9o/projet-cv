@@ -109,7 +109,7 @@ abstract class BaseRepository {
 
         $cv = array();
         foreach ($query as $value) {
-            $cv[] = $this->getcv($value->id);
+            $cv[] = $this->getcvDetails($value->id);
         }
         $filiere = DB::table('filieres')->where('id', $var->filiere_id)->first();
 

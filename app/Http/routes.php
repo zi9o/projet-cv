@@ -39,6 +39,10 @@ Route::group (['prefix' =>  'api'], function ()
 				/******           nawal           *******/
 
 			Route::resource('experience', 'Api\ExperienceController') ;
+			Route::get('{id}/experience', [
+				'uses' => 'Api\ExperienceController@experiences',
+				'as' => 'cv.experiences'
+			])->where('id', '[0-9]+');
 			Route::resource('loisir', 'Api\LoisirController') ;
 			Route::resource('langue', 'Api\LangueController') ;
 		});
