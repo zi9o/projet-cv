@@ -26,6 +26,16 @@
         {!! HTML::style('assets/css/responsive.css') !!}
 
         {!! HTML::style('assets/css/cleditor.css') !!}
+        <!--Footable-->
+        {!! HTML::style('assets/plugins/footable/css/footable.core.css') !!}
+        {!! HTML::style('assets/plugins/bootstrap-select/dist/css/bootstrap-select.min.css') !!}
+
+
+        <!-- for modal fadeIn -->
+        {!! HTML::style('assets/plugins/custombox/dist/custombox.min.css') !!}
+
+        <!-- timePicker -->
+        {!! HTML::style('assets/plugins/timepicker/bootstrap-timepicker.min.css') !!}
 
         <!--  <link href="assets/plugins/morris/morris.css" rel="stylesheet">
               <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -85,7 +95,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="{{ url('/user') }}" class="logo"><i class="icon-magnet icon-c-logo"></i><span>CV-generator</span></a>
+                        <a href="{{ url('/user')}}" class="logo"><i class="icon-magnet icon-c-logo"></i><span>CV-generator</span></a>
                     </div>
                 </div>
 
@@ -265,39 +275,39 @@
                         <ul>
 
                             <li class="text-muted menu-title">Menu</li>
-                              @if(Auth::user()->admin)
-                                  <li>
-                                      <a href="{{ URL::route('admin') }}" class="waves-effect">
-                                      <i class="ti-home"></i>
-                                      <span> Accueil </span> </a>
-                                    </li>
+                            @if(Auth::user()->admin)
+                            <li>
+                                <a href="{{ URL::route('admin') }}" class="waves-effect">
+                                    <i class="ti-home"></i>
+                                    <span> Accueil </span> </a>
+                            </li>
 
-                                  <li>
-                                      <a href="{{ URL::route('listecv') }}" class="waves-effect">
-                                      <i class="ti-pencil-alt"></i>
-                                      <span> liste de cv's </span> </a>
-                                  </li>
+                            <li>
+                                <a href="{{ URL::route('listecv') }}" class="waves-effect">
+                                    <i class="ti-pencil-alt"></i>
+                                    <span> liste de cv's </span> </a>
+                            </li>
 
-                              @else
-                                <li>
-                                  <a href="{{ URL::route('etudiant') }}" class="waves-effect">
-                                      <i class="ti-home"></i>
-                                      <span> Accueil </span> </a>
-                                  </li>
+                            @else
+                            <li>
+                                <a href="{{ URL::route('etudiant') }}" class="waves-effect">
+                                    <i class="ti-home"></i>
+                                    <span> Accueil </span> </a>
+                            </li>
 
-                                  <li>
-                                      <a href="{{ URL::route('createcv') }}" class="waves-effect">
-                                      <i class="ti-pencil-alt"></i>
-                                      <span> Nouveau cv </span> </a>
-                                  </li>
+                            <li>
+                                <a href="{{ URL::route('createcv') }}" class="waves-effect">
+                                    <i class="ti-pencil-alt"></i>
+                                    <span> Nouveau cv </span> </a>
+                            </li>
 
-                                  <li>
-                                    <a href="{{ URL::route('cv') }}" class="waves-effect">
+                            <li>
+                                <a href="{{ URL::route('cv') }}" class="waves-effect">
                                     <i class="ti-menu-alt"></i>
                                     <span> Mes CVs </span> </a>
 
-                              @endif
-                            
+                                @endif
+
 
                             </li>
                         </ul>
@@ -336,7 +346,7 @@
 
 
             <script>
-                        var resizefunc = [];            </script>
+                        var resizefunc = [];</script>
             <!-- jQuery  -->
             {!! HTML::script('assets/js/jquery.min.js') !!}
             {!! HTML::script('assets/js/bootstrap.min.js') !!}
@@ -373,6 +383,9 @@
             {!! HTML::script('assets/plugins/footable/js/footable.all.min.js') !!}
             {!! HTML::script('assets/plugins/bootstrap-select/dist/js/bootstrap-select.min.js') !!}
 
+            <!--FooTable Example-->
+            {!! HTML::script('assets/pages/jquery.footable.js') !!}
+
             <!-- InputMask -->
             {!! HTML::script('assets/plugins/input-mask/jquery.inputmask.js') !!}
             {!! HTML::script('assets/plugins/input-mask/jquery.inputmask.date.extensions.js') !!}
@@ -384,11 +397,15 @@
             {!! HTML::script('AngularJS/angular-resource.min.js') !!}
             {!! HTML::script('AngularJS/angular-route.min.js') !!}
             {!! HTML::script('AngularJS/angular-animate.min.js') !!}
+            <!-- activate ng upload file -->
+            {!! HTML::script('ng-file-upload/ng-file-upload-shim.min.js') !!} <!-- for no html5 browsers support -->
+            {!! HTML::script('ng-file-upload/ng-file-upload.min.js') !!}
+
             {!! HTML::script('AngularScripts/app.js') !!}
             {!! HTML::script('AngularScripts/controllers/infoBasicController.js') !!}
             {!! HTML::script('AngularScripts/controllers/experienceController.js') !!}
-            
-            
+
+
             <!--
                         <script type="text/javascript">
                             jQuery(document).ready(function ($) {

@@ -2,20 +2,8 @@
 
 @section('contenu')
 
-<!--Footable-->
-{!! HTML::style('assets/plugins/footable/css/footable.core.css') !!}
-{!! HTML::style('assets/plugins/bootstrap-select/dist/css/bootstrap-select.min.css') !!}
 
 
-<!-- for modal fadeIn -->
-{!! HTML::style('assets/plugins/custombox/dist/custombox.min.css') !!}
-
-<!-- timePicker -->
-{!! HTML::style('assets/plugins/timepicker/bootstrap-timepicker.min.css') !!}
-
-<!-- activate ng upload file -->
-{!! HTML::script('ng-file-upload/ng-file-upload-shim.min.js') !!} <!-- for no html5 browsers support -->
-{!! HTML::script('ng-file-upload/ng-file-upload.min.js') !!}
 <div class="CV"> <!-- Start content -->	
     <div id="main">
         <div id="cv">
@@ -138,8 +126,10 @@
 
 
                 </div>
-
-                <div id="section-work" class="section addable ui-sortable" style="display: none;" ng-controller="experienceController">
+                
+                <div id="section-work" class="section addable ui-sortable" ng-controller="experienceController">
+                    <!--<input type="checkbox" ng-change="!displayBlock ? AllExperience='' : init()" ng-model="displayBlock" />-->
+                    <div >
                     <h2 class="title">
                         <span class="name">Expérience professionnelle</span>
                         <!--<a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Renommer la section</a>-->
@@ -148,14 +138,59 @@
                     </h2>
                     <div class="sets">
                         <div class="set" > 
-                            <button class="btn btn-primary waves-effect waves-light" 
-                                    data-toggle="modal" data-target="#con-close-modal">Ajouter une expérience</button>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card-box">
+                                        <table id="demo-foo-accordion" class="table m-b-0 toggle-arrow-tiny">
+                                            <thead>
+                                                <tr>
+                                                    
+                                                    <th data-toggle="true">Expérience</th>
+                                                    <th>Date début</th>
+                                                    <th>Date fin</th>
+                                                    <th data-hide="all">Ville</th>
+                                                    <th data-hide="all">Description</th>
+                                                    <th style="text-align: center;">Actions</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td>Isidra</td>
+                                                    <td>Boudreaux</td>
+                                                    <td>Traffic Court Referee</td>
+                                                    <td>22 Jun 1972</td>
+                                                    <td><span class="label label-table label-success">Active</span></td>
+                                                    <td style="text-align: center;">
+                                                        <button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-edit" ></span></button>
+                                                        <button class="btn btn-danger btn-xs" ng-click="deleteExperience($index)"><span class="glyphicon glyphicon-remove" ></span></button>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+<!--                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="5">
+                                                        <div class="text-right">
+                                                            <ul class="pagination pagination-split m-t-30 m-b-0"></ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>-->
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                             
+
                         </div>
-                        
+
+                    </div>
                     </div>
                     <!-- for fooTable-->
                     <!---- forModal ----->
+                    <button class="btn btn-primary waves-effect waves-light" 
+                                    data-toggle="modal" data-target="#con-close-modal">Ajouter une expérience</button>
                     <!--<a href="#" class="button bt_cloneset"><span class="ui-icon ui-icon-plusthick"></span> Ajouter un élément</a>-->
                 </div>
 

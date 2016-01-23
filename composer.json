@@ -12,7 +12,9 @@
         "fzaninotto/faker": "^1.5",
         "dingo/api": "1.0.x@dev",
         "barryvdh/laravel-debugbar": "^2.1",
-        "bestmomo/scafold": "dev-master"
+        "bestmomo/scafold": "dev-master",
+        "barryvdh/laravel-ide-helper": "^2.1",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -49,6 +51,8 @@
             "php artisan clear-compiled"
         ],
         "post-update-cmd": [
+            "php artisan clear-compiled",
+            "php artisan ide-helper:generate",
             "php artisan optimize"
         ]
     },

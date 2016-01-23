@@ -530,7 +530,7 @@ hr {
     margin: 10px 0;
 }
 
-.button,button {
+/*.button,button {
     background: #f3f3f3 url(https://cvmkr.com/images/bg_button.png) repeat-x bottom left;
     padding: 2px 10px 3px;
     padding: 2px 10px 3px;
@@ -543,7 +543,7 @@ hr {
     border-radius: 15px;
     overflow: hidden;
     display: inline-block;
-}
+}*/
 
 .button2 {
     background: #18c7e1;
@@ -560,13 +560,13 @@ hr {
     padding: 0;
 }
 
-.button:hover,.button:focus,button:hover,button:focus {
+/*.button:hover,.button:focus,button:hover,button:focus {
     background: #18c7e1 url(https://cvmkr.com/images/bg_button2.png) repeat-x bottom left;
     color: #fff;
     text-shadow: 1px 1px #089fb3;
     border-color: #089fb3;
     box-shadow: none;
-}
+}*/
 
 .button:hover .ui-icon,.button:focus .ui-icon {
     background-image: url(https://cvmkr.com/images/ui/ui-icons_ffffff_256x240.png);

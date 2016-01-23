@@ -493,7 +493,7 @@
                         return e.makeArray(a, this)
                     },
                     selector: "",
-                    jquery: "1.7.2",
+                    jquery: "2.1.4",
                     length: 0,
                     size: function() {
                         return this.length

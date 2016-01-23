@@ -160,6 +160,7 @@ return [
         Bestmomo\Scafold\ScafoldServiceProvider::class,
         App\Services\Html\HtmlServiceProvider::class,
         Bestmomo\Filemanager\FilemanagerServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*

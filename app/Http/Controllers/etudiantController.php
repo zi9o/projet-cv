@@ -31,7 +31,7 @@ class etudiantController extends Controller
     public function __construct(EtudiantRepository $etudiant_gestion, FiliereRepository $filiere_gestion)
     {
         $this->middleware('auth');
-        if(Auth::user()->admin){
+        if(Auth::check() && Auth::user()->admin){
             return redirect()->route('admin');
         }
 
@@ -53,7 +53,7 @@ class etudiantController extends Controller
 
     public function cv()
     {
-        $etudiant = $this->etudiant_gestion->getCvsEtudiant(1);
+        $etudiant = $this->etudiant_gestion->getCvsEtudiant(2);
         return view('etudiant.show', compact('etudiant', 'mes_cv'));
     }
 

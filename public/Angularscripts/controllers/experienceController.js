@@ -3,10 +3,11 @@ app.controller('experienceController', ['$scope', '$http', 'API_URL', 'Upload', 
         $ID = 2;
         $ID_CV=4;
 
+        
         $scope.addExperience = function () {
 
 
-            $http.post(API_URL + '/cv/experience ', {
+            $http.post(API_URL + '/cv/experience', {
                 intitule: $scope.experience.intitule,
                 organisation: $scope.experience.organisation,
                 ville: $scope.experience.ville,
@@ -19,7 +20,7 @@ app.controller('experienceController', ['$scope', '$http', 'API_URL', 'Upload', 
             });
         };
 
-        $scope.delete = function (index) {
+        $scope.deleteExperience = function (index) {
             $scope.loading = true;
 
             var todo = $scope.todos[index];

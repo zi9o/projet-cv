@@ -26,6 +26,6 @@ class User extends Authenticatable
 
     public function etudiant()
     {
-        return $this->belongsTo('App\Models\Etudiant');;
+        return $this->belongsTo('App\Models\Etudiant');
     }
 }
