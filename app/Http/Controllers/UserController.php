@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function index()
     {
-    	if(Auth::user()->admin){
+    	if(Auth::check() && Auth::user()->admin){
     		return redirect()->route('admin');
         }
 

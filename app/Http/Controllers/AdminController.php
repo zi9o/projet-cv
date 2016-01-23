@@ -35,7 +35,7 @@ class AdminController extends Controller
     public function __construct(EtudiantRepository $etudiant_gestion, FiliereRepository $filiere_gestion)
     {
         $this->middleware('auth');
-        if(!Auth::user()->admin){
+        if(!(Auth::check() && Auth::user()->admin)){
     		return redirect()->route('etudiant');
         }
 

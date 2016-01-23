@@ -9,7 +9,7 @@
 
     <div id="main">
         <div id="photo">
-        <img src="{{$etudiant->photo}}" alt="" />
+        <img src="{{ asset('../storage/uploads').'/'.$etudiant->photo}}" alt="{{$etudiant->photo}}" />
     </div>
     <div class="header photo">
     

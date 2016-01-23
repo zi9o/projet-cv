@@ -100,14 +100,13 @@
                             </p>
                             <hr>
                             <div class="btn btn-primary" ngf-select="upload($file,2)" ngf-pattern="'image/*'"
-                                 ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" 
-                                 ngf-resize="{width: 100, height: 100}">Uploader une nouvelle photo</div> 
+                                 ngf-accept="'image/*'" ngf-max-size="20MB" >Uploader une nouvelle photo</div> 
                             <i ng-show="loadingUploadPhoto" class="fa fa-spinner fa-spin"></i>
 
                             {{-- < img src = "{{asset('assets/images/').'/'.$imgsrc}}"> --}}
                             <p class="field field_">
                                 <label for="photo">Photo</label>
-                                <img class="img-responsive" ng-cloack 
+                                <img class="img img-responsive" ng-cloack 
                                      ng-src="<%= '{{ asset('../storage/uploads')}}/' + etudiant.photo %>"
                                      style="width: inherit; height: inherit;">
                                 <span class="info">gif, jpg, png, jpeg<br>320 x 400 px</span>
