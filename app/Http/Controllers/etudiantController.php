@@ -53,7 +53,7 @@ class etudiantController extends Controller
 
     public function cv()
     {
-        $etudiant = $this->etudiant_gestion->getCvsEtudiant(2);
+        $etudiant = $this->etudiant_gestion->getCvsEtudiant(1);
         return view('etudiant.show', compact('etudiant', 'mes_cv'));
     }
 

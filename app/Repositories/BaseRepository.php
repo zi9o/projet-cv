@@ -198,7 +198,7 @@ abstract class BaseRepository {
             "situation" => $e->situation,
             "adresse" => $e->adresse,
             "filiere" => $e->filiere,
-            "cv" => $cv
+            "mes_cv" => $cv
         ];
 
         return ["etudiant" => $etudiant];

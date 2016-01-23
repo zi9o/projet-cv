@@ -3,12 +3,35 @@
 namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 
+use App\Repositories\ExperienceRepository;
+use App\Repositories\CvRepository;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Experience;
+use App\Models\Cv;
 
 class ExperienceController extends Controller
 {
+    /**
+     * The ExperienceRepository instance.
+     *
+     * @var App\Repositories\ExperienceRepository
+     */
+    protected $experience_gestion;
+
+    /**
+     * The CvRepository instance.
+     *
+     * @var App\Repositories\CvRepository
+     *
+     */
+    protected $cv_gestion;
+
+    public function __construct(ExperienceRepository $experience_gestion, CvRepository $cv_gestion) {
+        $this->experience_gestion = $experience_gestion;
+        $this->cv_gestion = $cv_gestion;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,39 +60,14 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
-        $experience = new Experience() ;
-
-        if (isset($request->all()['intitule'])) {
-            $experience->intitule = $request->all()['intitule']; 
-        }
-        if (isset($request->all()['description'])) {
-            $experience->description = $request->all()['description'];
-        }
-        if (isset($request->all()['organisation'])) {
-            $experience->organisation = $request->all()['organisation'];
-        }
-        if (isset($request->all()['debut'])) {
-            $experience->date_debut = $request->all()['debut'];
-        }
-
-        if (isset($request->all()['fin'])) {
-            $experience->date_fin = $request->all()['fin'];
-        }
-        if (isset($request->all()['cv_id'])) {
-            $experience->cv = \App\Models\Cv::find(intval($request->all()['cv_id']));
-            if($this->cv != null) {
-                $experience->cv_id = $this->cv->id;
-            }
-        }
-
-        $experience->save();
-
-        return $experience;
+        
+        $experience = $this->experience_gestion->store($request->all());
+        return $experience->cv->experiences ;
     }
 
     public function experiences($id)
     {
-        $cv = \App\Models\Cv::find($id);
+        $cv = Cv::find($id);
         return $cv->experiences;
     }
 
@@ -81,7 +79,7 @@ class ExperienceController extends Controller
      */
     public function show($id)
     {
-        $cv = \App\Models\Cv::find($id);
+        $cv = Cv::find($id);
         return $cv->experiences;
     }
 
@@ -107,31 +105,9 @@ class ExperienceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $experience = Experience::find($id) ;
-
-        if (isset($request->all()['intitule'])) {
-            $experience->intitule = $request->all()['intitule']; 
-        }
-        if (isset($request->all()['description'])) {
-            $experience->description = $request->all()['description'];
-        }
-        if (isset($request->all()['organisation'])) {
-            $experience->organisation = $request->all()['organisation'];
-        }
-        if (isset($request->all()['ville'])) {
-            $experience->organisation = $request->all()['ville'];
-        }
-        if (isset($request->all()['debut'])) {
-            $experience->date_debut = $request->all()['debut'];
-        }
-
-        if (isset($request->all()['fin'])) {
-            $experience->date_fin = $request->all()['fin'];
-        }
+        $experience = $this->experience_gestion->update($request->all(), $id);
         
-        $experience->save();
-
-        return $experience ;
+        return $experience->cv->experiences ;
     }
 
     /**
@@ -140,8 +116,9 @@ class ExperienceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy ($id)
     {
-        //
+        $experience = $this->experience_gestion->destroy($id);
+        return $experience->cv->experiences;
     }
 }

@@ -8,6 +8,6 @@ class Experience extends Model
 {
     public function cv() 
 	{
-		return $this->belongsTo('App\Cv');
+		return $this->belongsTo('App\Models\Cv');
 	}
 }

@@ -45,6 +45,10 @@ Route::group (['prefix' =>  'api'], function ()
 			])->where('id', '[0-9]+');
 			Route::resource('loisir', 'Api\LoisirController') ;
 			Route::resource('langue', 'Api\LangueController') ;
+			Route::get('{id}/langue', [
+				'uses' => 'Api\LangueController@langues',
+				'as' => 'cv.langues'
+			])->where('id', '[0-9]+');
 		});
 	});
 });
