@@ -62,7 +62,7 @@ class ExperienceController extends Controller
     {
         
         $experience = $this->experience_gestion->store($request->all());
-        return $experience->cv->experiences ;
+        return $experience ;
     }
 
     public function experiences($id)
@@ -107,7 +107,7 @@ class ExperienceController extends Controller
     {
         $experience = $this->experience_gestion->update($request->all(), $id);
         
-        return $experience->cv->experiences ;
+        return $experience ;
     }
 
     /**
@@ -119,6 +119,6 @@ class ExperienceController extends Controller
     public function destroy ($id)
     {
         $experience = $this->experience_gestion->destroy($id);
-        return $experience->cv->experiences;
+        return $experience;
     }
 }

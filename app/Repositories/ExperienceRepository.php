@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Experience;
 use App\Models\Cv;
+use DB;
 
 class ExperienceRepository extends BaseRepository {
 
@@ -119,7 +120,7 @@ class ExperienceRepository extends BaseRepository {
 
         $this->model = new Experience() ;
         $this->model = $this->save($inputs);
-
+        
         return $this->model;
     }
 

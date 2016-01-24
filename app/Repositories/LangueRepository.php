@@ -74,7 +74,7 @@ class LangueRepository extends BaseRepository {
      * @return void
      */
 
-        public function destroy($id) {
+    public function destroy($id) {
         try {
             $this->model = $this->getById($id);
             $this->model->delete();
