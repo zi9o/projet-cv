@@ -30,20 +30,32 @@ Route::group (['prefix' =>  'api'], function ()
 		
 		Route::group (['prefix' =>  'cv'], function ()
 		{
-			// Route::get('/etudiant/{id}', 'CvController@');
-			// Route::get('/', 'CvController');
-			Route::resource('formation', 'Api\FormationController') ;
+			
 			Route::resource('etablissement', 'Api\EtablissementController') ;
+			Route::resource('formation', 'Api\FormationController') ;
+			Route::get('{id}/formation', [
+				'uses' => 'Api\FormationController@formations',
+				'as' => 'cv.formations'
+			])->where('id', '[0-9]+');
+			
 			Route::resource('competence', 'Api\CompetenceController') ;
-
-				/******           nawal           *******/
-
+			Route::get('{id}/competence', [
+				'uses' => 'Api\CompetenceController@competences',
+				'as' => 'cv.competences'
+			])->where('id', '[0-9]+');			
+			
 			Route::resource('experience', 'Api\ExperienceController') ;
 			Route::get('{id}/experience', [
 				'uses' => 'Api\ExperienceController@experiences',
 				'as' => 'cv.experiences'
 			])->where('id', '[0-9]+');
+			
 			Route::resource('loisir', 'Api\LoisirController') ;
+			Route::get('{id}/loisir', [
+				'uses' => 'Api\LoisirController@loisirs',
+				'as' => 'cv.loisirs'
+			])->where('id', '[0-9]+');
+			
 			Route::resource('langue', 'Api\LangueController') ;
 			Route::get('{id}/langue', [
 				'uses' => 'Api\LangueController@langues',

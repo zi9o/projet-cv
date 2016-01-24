@@ -4,19 +4,43 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
+use App\Repositories\LoisirRepository;
+use App\Repositories\CvRepository;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Loisir;
+use App\Models\Cv;
 
 class LoisirController extends Controller
 {
+    /**
+     * The LoisirRepository instance.
+     *
+     * @var App\Repositories\LoisirRepository
+     */
+    protected $loisir_gestion;
+
+    /**
+     * The CvRepository instance.
+     *
+     * @var App\Repositories\CvRepository
+     *
+     */
+    protected $cv_gestion;
+
+    public function __construct(LoisirRepository $loisir_gestion, CvRepository $cv_gestion) {
+        $this->loisir_gestion = $loisir_gestion;
+        $this->cv_gestion = $cv_gestion;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -26,7 +50,7 @@ class LoisirController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -37,7 +61,14 @@ class LoisirController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $loisir = $this->loisir_gestion->store($request->all());
+        return $loisir->cv->loisirs ;
+    }
+
+    public function loisirs($id)
+    {
+        $cv = Cv::find($id);
+        return $cv->loisirs;
     }
 
     /**
@@ -48,7 +79,8 @@ class LoisirController extends Controller
      */
     public function show($id)
     {
-        //
+        $cv = Cv::find($id);
+        return $cv->loisirs;
     }
 
     /**
@@ -57,6 +89,8 @@ class LoisirController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function edit($id)
     {
         //
@@ -71,7 +105,9 @@ class LoisirController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $loisir = $this->loisir_gestion->update($request->all(), $id);
+        
+        return $loisir->cv->loisirs ;
     }
 
     /**
@@ -80,8 +116,9 @@ class LoisirController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy ($id)
     {
-        //
+        $loisir = $this->loisir_gestion->destroy($id);
+        return $loisir->cv->loisirs;
     }
 }
