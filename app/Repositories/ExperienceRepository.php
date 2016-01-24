@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Experience;
 use App\Models\Cv;
 
-class experienceRepository extends BaseRepository {
+class ExperienceRepository extends BaseRepository {
 
     /**
      * The Tag instance.

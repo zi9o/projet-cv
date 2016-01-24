@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Formation;
+use App\Models\Cv;
 class FormationController extends Controller
 {
     /**
@@ -60,6 +61,12 @@ class FormationController extends Controller
     public function create()
     {
         //
+    }
+
+    public function formations($id)
+    {
+        
+        return $this->formation_gestion->getFormations($id);
     }
 
     /**
