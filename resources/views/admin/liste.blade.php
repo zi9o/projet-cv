@@ -11,10 +11,24 @@
                                     </div> <!-- form-group -->
                                 </form>
                         	</div>
-                        	<div class="col-sm-4">
-                        		 <a href="#custom-modal" class="btn btn-default btn-md waves-effect waves-light m-b-30" data-animation="fadein" data-plugin="custommodal" 
-                                                    	data-overlaySpeed="200" data-overlayColor="#36404a"><i class="md md-add"></i> Add New</a>
-                        	</div>
+
+
+										<div class="col-md-4">
+											<div class="p-20">
+												
+												<select class="selectpicker" data-style="btn-default btn-custom">
+													<option>Mustard</option>
+													<option>Ketchup</option>
+													<option>Relish</option>
+												</select>
+												
+					
+												
+											</div>
+										</div>
+										
+
+                        	
                         </div>
                         <div class="row">
                         	<div class="col-sm-8">
@@ -23,9 +37,61 @@
                         </div>
                         <div class="row">
                         	<div class="col-lg-8">
+
+                        	  	<div class="card-box m-b-10">
+                        			<div class="table-box opport-box" id="etudiants">
+                        				<div class="table-detail">
+                        					<img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="imrana" alt="img" class="img-circle thumb-lg m-r-15" />
+                        				</div>
+                        				
+                        				<div class="table-detail">
+                        					<div class="member-info">
+	                                            <h4 class="m-t-0"><b>DIALLO &nbsp;Imrana </b></h4>
+	                                            <p class="text-dark m-b-5"><b>E-mail: </b> <span class="text-muted">dialloimran@gmail.com</span></p>
+	                                        </div>
+                        				</div>
+                        				<!-- 
+                        				<div class="table-detail lable-detail">
+                        					<span class="label label-info">Hot</span>
+                        				</div>
+                        				 -->
+                        				 <div class="table-detail table-actions-bar">
+                        				
+                        				 
+                        				 		<a class="accordion-toggle accordion-toggle-styled collapsed" 
+                                                           data-toggle="collapse" data-parent="#etudiants" href="#etud">  mes cv</a>
+	                        					<!-- <a href="#" class="btn btn-sm btn-primary waves-effect waves-light">mes cv</a>
+                        					 -->
+                        				</div>
+
+
+                        			</div>
+
+                        			<div id="etud" class="panel-collapse collapse">
+                                                    <div class="panel-body" style=" overflow-y:auto;">
+                                                        <div class="col-md-12 col-sm-12">
+
+                                                            <div class="portlet-body">
+                                                                <div class="row static-info">
+                                                                    <div class="col-md-5 name"> Entreprise: </div>
+                                                                    <div class="col-md-7 value"> </div>
+                                                                </div>
+                                                                
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                        		
+                        		</div>
+
+                                      
+
                         		@foreach ($etudiants as $etudiant)
-					                    <div class="card-box m-b-10">
-                        			<div class="table-box opport-box">
+
+                        			<div class="card-box m-b-10">
+                        			<div class="table-box opport-box" id="etudiants">
                         				<div class="table-detail">
                         					<img src="{{$etudiant->photo}}" alt="img" class="img-circle thumb-lg m-r-15" />
                         				</div>
@@ -36,26 +102,39 @@
 	                                            <p class="text-dark m-b-5"><b>E-mail: </b> <span class="text-muted">{{$etudiant->email}}</span></p>
 	                                        </div>
                         				</div>
-                        				<!-- 
-                        				<div class="table-detail lable-detail">
-                        					<span class="label label-info">Hot</span>
-                        				</div>
-                        				 -->
-                        				<div class="table-detail">
-	                        				<!-- {{var_dump($etudiant->nom)}} -->
-	                        				@foreach ($etudiant->cvs as $cv)
-	                        					<!-- {!! link_to_route('cv.show', 'cv', [$cv->id], ['class' => 'btn btn-sm btn-primary waves-effect waves-light']) !!} -->
-	                        					<a href="#" class="btn btn-sm btn-primary waves-effect waves-light">{{$cv->id}}</a>
-                        					@endforeach
-	                        				
-                        				</div>
                         				
-                        				<div class="table-detail table-actions-bar">
-                        					<a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
-                                        	<a href="#" class="table-action-btn"><i class="md md-close"></i></a>
+                        				 <div class="table-detail table-actions-bar">
+                        				
+                        				 
+                        				 		<a class="accordion-toggle accordion-toggle-styled collapsed" 
+                                                           data-toggle="collapse" data-parent="#etudiants" href="#etud{{$etudiant->id}}">  mes cv</a>
+	                        					
                         				</div>
+
+
                         			</div>
+
+                        			<div id="etud{{$etudiant->id}}" class="panel-collapse collapse">
+                                                    <div class="panel-body" style="overflow-y:auto;">
+                                                        <div class="col-md-12 col-sm-12">
+
+                                                            <div class="portlet-body">
+                                                            	<div class="row static-info">
+                                                            		@foreach ($etudiant->cvs as $cv)
+							                        					<a href="{{ URL::route('cv.show', $cv->id) }}" class="btn btn-sm btn-primary waves-effect waves-light">{{$cv->nom_cv}}</a>
+						                        					@endforeach
+						                        				</div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                        		
                         		</div>
+
+
+					             
 					            @endforeach
                         		
                             </div> <!-- end col -->

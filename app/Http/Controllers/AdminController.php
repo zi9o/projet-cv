@@ -43,21 +43,20 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
         if (Auth::check()) {
-                if(!Auth::user()->admin){
+                if(Auth::user()->admin==false){
                     return redirect()->route('etudiant');
                 }else{
                      $this->etudiant_gestion = $etudiant_gestion;
                      $this->filiere_gestion = $filiere_gestion;
                 }
 
-            
+
         }else{
             return redirect()->guest('login');
         }
 
        
     }
-
 
     /**
      * Show the application dashboard.
@@ -66,8 +65,13 @@ class AdminController extends Controller
      */
     public function index ()
     { 
-    	$etudiants = $this->etudiant_gestion->index();
-        return view('admin.index', compact('etudiants'));
+        if(Auth::user()->admin==false){
+            return redirect()->route('etudiant');
+        }else{
+                $etudiants = $this->etudiant_gestion->index();
+                return view('admin.index', compact('etudiants'));
+        }
+    	
     }
 
     public function liste ()

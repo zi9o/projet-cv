@@ -6,8 +6,7 @@
 
 @section('contenu')
     <?php extract($cv) ?>
-	
-	<div class="page">
+		<div class="page">
 			<div class="infophoto">
 				<div class="info">
 					<p>
@@ -16,7 +15,7 @@
 					</p>
 					<p>
 						{{$etudiant->adresse}}<br/>
-						06-27-68-52-92 <br/>
+						{{$etudiant->telephone}}<br/>
 						{{$etudiant->email}}
 					</p>
 					

@@ -75,52 +75,14 @@ class etudiantController extends Controller
 
     public function index ()
     { 
-        $etudiant = Auth::user()->etudiant;
-        $aujourdhui = date("F j, Y, g:i a"); 
-        return view('etudiant.index', compact('etudiant', 'aujourdhui'));
-        //return $this->etudiant ;
-    }
-
-    public function cv()
-    {
-        $etudiant = $this->etudiant_gestion->getCvsEtudiant(1);
-        return view('etudiant.show', compact('etudiant', 'mes_cv'));
-    }
-
-    
-    public function create()
-    { 
-    	return view('etudiant.create');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-    public function createcv(Request $request = null)
-    {
-        $cv = $this->cv_gestion->store($request->all());
-            
-        return redirect()->route('createcv');;
-    }
-
-    public function show()
-    {
-        $etudiants = Etudiant::get();       
-        return view('etudiant.show', compact('etudiants'));
-    }
-
-    
-    public function view($id)
-    {
-        $cv = $this->etudiant_gestion->getcvDetails($id);
-        $format = "1" ;
-        if ($format==="1") {
-            return view('etudiant.format1', compact('cv'));
+        if(Auth::user()->admin){
+            return redirect()->route('admin');
+        }else{
+                $etudiant = Auth::user()->etudiant;
+                $aujourdhui = date("F j, Y, g:i a"); 
+                return view('etudiant.index', compact('etudiant', 'aujourdhui'));
         }
-        return view('etudiant.cv', compact('cv'));
+        
+        //return $this->etudiant ;
     }
 }

@@ -176,22 +176,23 @@ Route::group(['middleware' => 'web'], function () {
 	Route::group (['prefix' =>  'etudiant'], function ()
 	{
 		Route::get('cv/{id}',[
-			'uses' => 'etudiantController@view',
+			'uses' => 'cvController@show',
 			'as' => 'cv.show'
 		])->where('id', '[0-9]+');
+		
 		Route::get('cv/create',[
-			'uses' => 'etudiantController@create',
+			'uses' => 'cvController@create',
 			'as' => 'createcv'
 		]);
 
 		Route::post('cv/create',[
-			'uses' => 'etudiantController@createcv',
+			'uses' => 'cvController@store',
 			'as' => 'storecv'
 		]);
 
 		
 		Route::get('cv',[
-			'uses' => 'etudiantController@cv',
+			'uses' => 'cvController@cv',
 			'as' => 'cv'
 		]);
 
@@ -199,8 +200,6 @@ Route::group(['middleware' => 'web'], function () {
 			'uses' => 'ConfirmController@help',
 			'as' => 'cv.help'
 		]);
-
-
 });
 
 });
