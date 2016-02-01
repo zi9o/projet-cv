@@ -34,7 +34,7 @@ class EtablissementController extends Controller
      */
     public function index()
     {
-        return $this->etablissement_gestion->all();
+        return $this->etablissement_gestion->index();
     }
 
     /**
@@ -66,7 +66,7 @@ class EtablissementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    { 
         return $this->etablissement_gestion->getById($id);
     }
 

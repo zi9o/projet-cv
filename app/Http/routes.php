@@ -18,8 +18,12 @@ Route::get('confirm','ConfirmController@confirm');
 
 Route::group (['prefix' =>  'api'], function ()
 {
+	
+	Route::resource('etablissement', 'Api\EtablissementController') ;
+	
 	Route::resource('etudiant', 'Api\EtudiantController');
-        Route::post('etudiant/upload', 'Api\EtudiantController@upload');
+    
+    Route::post('etudiant/upload', 'Api\EtudiantController@upload');
 	Route::group(['prefix' =>  'etudiant'], function (){
 		Route::resource('cv', 'Api\CvController');
 		Route::get('filiere/{id}', [
@@ -31,7 +35,6 @@ Route::group (['prefix' =>  'api'], function ()
 		Route::group (['prefix' =>  'cv'], function ()
 		{
 			
-			Route::resource('etablissement', 'Api\EtablissementController') ;
 			Route::resource('formation', 'Api\FormationController') ;
 			Route::get('{id}/formation', [
 				'uses' => 'Api\FormationController@formations',

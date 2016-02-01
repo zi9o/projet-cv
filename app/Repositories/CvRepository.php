@@ -189,82 +189,35 @@ class CvRepository extends BaseRepository {
         return compact('cv', 'tags');
     }
 
-    /**
-     * Get cv collection.
-     *
-     * @param  int  $id
-     * @return array
-     */
-    public function GetByIdWithTags($id)
-    {
-        return $this->model->with('tags')->findOrFail($id);
-    }
 
-    
     /**
-     * Update "seen" in cv.
+     * Create a Model.
      *
      * @param  array  $inputs
-     * @param  int    $id
-     * @return void
+     * @return model
      */
-    public function updateSeen($inputs, $id)
-    {
-        $cv = $this->getById($id);
+    public function store($inputs) {
+        // $model->created_at = date("F j, Y, g:i a");
 
-        $this->model->seen = $inputs['seen'] == 'true';
+        $this->model = new Cv();
+        $this->model = $this->save($inputs);
 
-        $this->model->save();
+        return $this->model;
     }
 
     /**
-     * Update "active" in cv.
+     * Update a model.
      *
      * @param  array  $inputs
-     * @param  int    $id
+     * @param  $id
      * @return void
      */
-    public function updateActive($inputs, $id)
-    {
-        $cv = $this->getById($id);
-
-        $this->model->active = $inputs['active'] == 'true';
-
-        $this->model->save();
-    }
-    /**
-     * Destroy a cv.
-     *
-     * @param  App\Models\cv $cv
-     * @return void
-     */
-    // public function destroy($cv) {
-    //     $this->model->tags()->detach();
-
-    //     $this->model->delete();
-    // }
-
-    /**
-     * Get cv slug.
-     *
-     * @param  int  $comment_id
-     * @return string
-     */
-    public function getSlug($comment_id)
-    {
-        return $this->comment->findOrFail($comment_id)->cv->slug;
+    public function update($inputs, $id) {
+        $this->model = Cv::find($id);
+        $this->model = $this->save($inputs);
+        return $this->model;
     }
 
-    /**
-     * Get tag name by id.
-     *
-     * @param  int  $tag_id
-     * @return string
-     */
-    public function getTagById($tag_id)
-    {
-        return $this->tag->findOrFail($tag_id)->tag;
-    }
 
     
 }

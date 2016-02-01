@@ -81,7 +81,7 @@ class CvController extends Controller
     {
         $cv = $this->cv_gestion->store($request->all());
 
-        return redirect()->route('api.etudiant.cv.show', [$cv->id]);
+        return ['cv_id'=>$cv->id, 'etudiant_id'=>$cv->etudiant_id];
     }
 
     /**
