@@ -59,11 +59,11 @@ class FormationRepository extends BaseRepository {
         if (isset($inputs['diplome'])) {
             $this->model->diplome = $inputs['diplome'];
         }
-        if (isset($inputs['date_debut'])) {
-            $this->model->date_debut = $inputs['date_debut'];
+        if (isset($inputs['date_dedut'])) {
+            $this->model->date_dedut = $inputs['date_dedut'];
         }
         if (isset($inputs['date_fin'])) {
-            $this->model->date_fin = $inputs['date_debut'];
+            $this->model->date_fin = $inputs['date_fin'];
         }
         if (isset($inputs['mention'])) {
             $this->model->mention = $inputs['mention'];
@@ -76,14 +76,14 @@ class FormationRepository extends BaseRepository {
         }
 
         if (isset($inputs['etablissement_id'])) {
-            $this->etablissement = Cv::find(intval($inputs['etablissement_id']));
-            if($this->cv != null) {
+            $this->etablissement = Etablissement::find(intval($inputs['etablissement_id']));
+            if($this->etablissement != null) {
                 $this->model->etablissement_id = $this->etablissement->id;
             }
         }
         
         $this->model->save();
-
+        $this->model->etablissement = $this->etablissement ;
         return $this->model;
     }
 

@@ -9,23 +9,31 @@ app.controller('formationController', ['$scope', '$http', 'API_URL', 'Upload', f
         $scope.deletedFormation=-1;
 
         $scope.initFormation = function () {
-           
+           $scope.initEtablissemment();
             $http.get(API_URL + '/cv/' + $ID_CV + '/formation').
                     success(function (data, status, headers, config) {
                         $scope.Formations = data;
                     });
         };
-
+        
+        $scope.initEtablissemment=function ()
+        {
+            $http.get('http://localhost/projet-cv/public/api/etablissement').
+                    success(function (data, status, headers, config) {
+                        $scope.Etablissements = data;
+                    });
+        };
 
         $scope.addFormation = function () {
 
             $http.post(API_URL + '/cv/formation', {
                 intitule: $scope.formation.intitule,
-                organisation: $scope.formation.organisation,
-                ville: $scope.formation.ville,
+                diplome: $scope.formation.diplome,
+                mention: $scope.formation.mention,
+                etablissement_id: $scope.formation.etablissement.id,
                 date_dedut: new Date($scope.formation.date_dedut),
                 date_fin: new Date($scope.formation.date_fin),
-                description: $scope.formation.description,
+                
                 cv_id: $ID_CV
             }).success(function (data, status, headers, config) {
                 $scope.Formations.push(data);
@@ -40,15 +48,16 @@ app.controller('formationController', ['$scope', '$http', 'API_URL', 'Upload', f
             $scope.EditFormation.date_fin=new Date(temp.date_fin);
             $scope.editedFormation=index;
         };
-        $scope.updateFormation = function (exp) {
+        $scope.updateFormation = function (FR) {
 
-            $http.put(API_URL + '/cv/formation' + '/' + exp.id, {
-                intitule: exp.intitule,
-                organisation: exp.organisation,
-                ville: exp.ville,
-                date_dedut: exp.date_dedut,
-                date_fin: exp.date_fin,
-                description: exp.description,
+            $http.put(API_URL + '/cv/formation' + '/' + FR.id, {
+                intitule: FR.intitule,
+                diplome: FR.diplome,
+                mention: FR.mention,
+                etablissement_id : FR.etablissement.id,
+                date_dedut: FR.date_dedut,
+                date_fin: FR.date_fin,
+                
                 cv_id: $ID_CV
             }).success(function (data, status, headers, config) {
                 $scope.Formations[$scope.editedFormation]=data;
@@ -62,9 +71,9 @@ app.controller('formationController', ['$scope', '$http', 'API_URL', 'Upload', f
         };
         $scope.deleteFormation = function () {
 
-            var exp = $scope.Formations[$scope.deletedFormation];
+            var FR = $scope.Formations[$scope.deletedFormation];
 
-            $http.delete(API_URL + '/cv/formation' + '/' + exp.id)
+            $http.delete(API_URL + '/cv/formation' + '/' + FR.id)
                     .success(function () {
                         $scope.Formations.splice($scope.deletedFormation, 1);
 

@@ -200,7 +200,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-lg-12">
 
@@ -273,7 +273,7 @@
                                             data-target="#custom-modal-AddExperience" data-toggle="modal"
                                             class="btn btn-primary waves-effect waves-light" data-animation="fadein" 
                                             data-overlaySpeed="200" data-overlayColor="#36404a">Ajouter une expérience
-                                            </a>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -298,13 +298,13 @@
                                 <div class="row"> 
                                     <div class="col-md-6"> 
                                         <div class="form-group"> 
-                                            <label for="field-3" class="control-label">Entreprise</label> 
+                                            <label for="field-2" class="control-label">Entreprise</label> 
                                             <input type="text" class="form-control" required ng-model="experience.organisation" id="field-2" placeholder="Evosolution"> 
                                         </div> 
                                     </div> 
                                     <div class="col-md-6"> 
                                         <div class="form-group"> 
-                                            <label for="field-1" class="control-label">Ville</label> 
+                                            <label for="field-3" class="control-label">Ville</label> 
                                             <input type="text" class="form-control" required ng-model="experience.ville" id="field-3" placeholder="Casablanca"> 
                                         </div> 
                                     </div> 
@@ -348,15 +348,15 @@
                         </div>
                         <div class="modal-body">
                             <div class="bootbox-body">
-                               Êtes-vous sûr de vouloir supprimer ?
+                                Êtes-vous sûr de vouloir supprimer ?
                             </div>
                         </div>
                         <div class="modal-footer">
-                            
+
                             <button class="btn red"  data-dismiss="modal" type="button" ng-click="deleteExperience()">Supprimer
                             </button>
                             <button class="btn blue"
-                                     data-dismiss="modal" type="button">Annuler
+                                    data-dismiss="modal" type="button">Annuler
                             </button>
                         </div>
                     </div><!-- End Delete Experience Modal -->
@@ -379,13 +379,13 @@
                             <div class="row"> 
                                 <div class="col-md-6"> 
                                     <div class="form-group"> 
-                                        <label for="field-3" class="control-label">Entreprise</label> 
+                                        <label for="field-2" class="control-label">Entreprise</label> 
                                         <input type="text" class="form-control" required ng-model="EditExperience.organisation" id="field-2" placeholder="Evosolution"> 
                                     </div> 
                                 </div> 
                                 <div class="col-md-6"> 
                                     <div class="form-group"> 
-                                        <label for="field-1" class="control-label">Ville</label> 
+                                        <label for="field-3" class="control-label">Ville</label> 
                                         <input type="text" class="form-control" required ng-model="EditExperience.ville" id="field-3" placeholder="Casablanca"> 
                                     </div> 
                                 </div> 
@@ -436,7 +436,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-lg-12">
 
@@ -456,7 +456,7 @@
                                                             <div class="portlet-body">
                                                                 <div class="row static-info">
                                                                     <div class="col-md-5 name"> Établissement: </div>
-                                                                    <div class="col-md-7 value"> <%=formation.etablissement.code %> / <%=formation.etablissement.ville %></div>
+                                                                    <div class="col-md-4 value">         <%=formation.etablissement.code %></div><div class="col-md-3 value"> <%=formation.etablissement.ville %></div>
                                                                 </div>
                                                                 <div class="row static-info">
                                                                     <div class="col-md-5 name"> Date début: </div>
@@ -509,13 +509,162 @@
                                             data-target="#custom-modal-AddFormation" data-toggle="modal"
                                             class="btn btn-primary waves-effect waves-light" data-animation="fadein" 
                                             data-overlaySpeed="200" data-overlayColor="#36404a">Ajouter une formation
-                                            </a>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!--Add Formation Modal -->
+                    <div id="custom-modal-AddFormation" class="modal fade" data-width="780" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                        <form class="form-horizontal " >
+                            <div class="modal-header">
+                                <h4 class="custom-modal-title">Formation</h4> 
+                            </div> 
+                            <div class="modal-body">
+                                <div class="row"> 
+                                    <div class="col-md-12"> 
+                                        <div class="form-group"> 
+                                            <label for="field-1" class="control-label">Formation</label> 
+                                            <input type="text" class="form-control" required ng-model="formation.intitule" id="field-1" placeholder=""> 
+                                        </div> 
+                                    </div> 
 
+                                </div> 
+                                <div class="row"> 
+                                    <div class="col-md-12"> 
+                                        <div class="form-group"> 
+                                            <label for="field-6" class="control-label">Diplôme</label> 
+                                            <input type="text" class="form-control" required ng-model="formation.diplome" id="field-6" placeholder="Ingénieur"> 
+                                        </div> 
+                                    </div> 
+
+                                </div>
+                                <div class="row"> 
+                                    <div class="col-md-6"> 
+                                        <div class="form-group"> 
+                                            <label for="field-2" class="control-label">Établissement</label> 
+                                            <select ng-cloak="" style="width: 90%" class="form-control" id="field-2" 
+                                                    ng-options="table.code for table in Etablissements track by table.id" 
+                                                    ng-model="formation.etablissement" ng-change="formation.etablissement">
+
+                                            </select>
+                                        </div> 
+                                    </div> 
+                                    <div class="col-md-6"> 
+                                        <div class="form-group"> 
+                                            <label for="field-3" class="control-label">Mention</label> 
+                                            <input type="text" class="form-control" required ng-model="formation.mention" id="field-3" placeholder="Mention Bien"> 
+                                        </div> 
+                                    </div> 
+                                </div> 
+                                <div class="row"> 
+                                    <div class="col-md-6"> 
+                                        <div class="form-group"> 
+                                            <label for="field-4" class="control-label">Date début</label> 
+                                            <input type="date" class="form-control" required ng-model="formation.date_dedut" id="field-4" placeholder="01/03/2016" > 
+                                        </div> 
+                                    </div> 
+                                    <div class="col-md-6"> 
+                                        <div class="form-group"> 
+                                            <label for="field-5" class="control-label">Date fin</label> 
+                                            <input type="date" class="form-control" required ng-model="formation.date_fin" id="field-5" placeholder="30/09/2016" > 
+                                        </div> 
+                                    </div>
+                                </div> 
+                            </div> 
+                            <div class="modal-footer"> 
+                                <button type="button" data-dismiss="modal" ng-click="formation = null" class="btn btn-default waves-effect" >Annuler</button> 
+                                <button type="submit" data-dismiss="modal" class="btn btn-info waves-effect waves-light" ng-click="addFormation()">Sauvegarder</button> 
+                            </div> 
+                        </form>
+                    </div><!-- End Add Formation Modal -->
+                    <!-- Delete Formation Modal-->
+                    <div id="custom-modal-DeleteFormation" class="modal fade" data-width="780" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-header">
+                            <button aria-hidden="true" class="bootbox-close-button close"
+                                    data-dismiss="modal" type="button">×</button>
+                            <h4 class="modal-title">Confirmation</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="bootbox-body">
+                                Êtes-vous sûr de vouloir supprimer ?
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button class="btn red"  data-dismiss="modal" type="button" ng-click="deleteFormation()">Supprimer
+                            </button>
+                            <button class="btn blue"
+                                    data-dismiss="modal" type="button">Annuler
+                            </button>
+                        </div>
+                    </div><!-- End Delete Formation Modal -->
+                    <!-- Edit Formation Modal -->
+                    <div id="custom-modal-EditFormation" class="modal fade" data-width="780" tabindex="-1" data-backdrop="static" data-keyboard="false">
+
+                        <div class="modal-header">
+                            <h4 class="custom-modal-title">Formation</h4> 
+                        </div> 
+                        <div class="modal-body">
+                            <div class="row"> 
+                                <div class="col-md-12"> 
+                                    <div class="form-group"> 
+                                        <label for="field-1" class="control-label">Formation</label> 
+                                        <input type="text" class="form-control" required ng-model="EditFormation.intitule" id="field-1" placeholder=""> 
+                                    </div> 
+                                </div> 
+
+                            </div> 
+                            <div class="row"> 
+                                <div class="col-md-12"> 
+                                    <div class="form-group"> 
+                                        <label for="field-6" class="control-label">Diplôme</label> 
+                                        <input type="text" class="form-control" required ng-model="EditFormation.diplome" id="field-6" placeholder="Ingénieur"> 
+                                    </div> 
+                                </div> 
+
+                            </div>
+                            <div class="row"> 
+                                <div class="col-md-6"> 
+                                    <div class="form-group"> 
+                                        <label for="field-2" class="control-label">Établissement</label> 
+                                        <select ng-cloak="" style="width: 90%" class="form-control" id="field-2" 
+                                                ng-options="table.code for table in Etablissements track by table.id" 
+                                                ng-model="EditFormation.etablissement" ng-change="EditFormation.etablissement">
+
+                                        </select>
+
+                                    </div> 
+                                </div> 
+                                <div class="col-md-6"> 
+                                    <div class="form-group"> 
+                                        <label for="field-3" class="control-label">Mention</label> 
+                                        <input type="text" class="form-control" required ng-model="EditFormation.mention" id="field-3" placeholder="Mention Bien"> 
+                                    </div> 
+                                </div> 
+                            </div> 
+                            <div class="row"> 
+                                <div class="col-md-6"> 
+                                    <div class="form-group"> 
+                                        <label for="field-4" class="control-label">Date début</label> 
+                                        <input type="date" class="form-control" required ng-model="EditFormation.date_dedut" id="field-4" placeholder="01/03/2016" > 
+                                    </div> 
+                                </div> 
+                                <div class="col-md-6"> 
+                                    <div class="form-group"> 
+                                        <label for="field-5" class="control-label">Date fin</label> 
+                                        <input type="date" class="form-control" required ng-model="EditFormation.date_fin" id="field-5" placeholder="30/09/2016" > 
+                                    </div> 
+                                </div>
+                            </div> 
+                        </div> 
+                        <div class="modal-footer"> 
+                            <button type="button" data-dismiss="modal" ng-click="EditFormation = null" class="btn btn-default waves-effect" >Annuler</button> 
+                            <button type="button" data-dismiss="modal" class="btn btn-info waves-effect waves-light" ng-click="updateFormation(EditFormation)">Sauvegarder</button> 
+                        </div> 
+
+                    </div><!-- End Edit Formation Modal -->
                 </div> 
                 <div class="tab-pane" id="section-langue"> 
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p> 
