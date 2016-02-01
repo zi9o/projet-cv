@@ -3,14 +3,13 @@ app.controller('experienceController', ['$scope', '$http', 'API_URL', 'Upload', 
         $ID = 2;
         $ID_CV = 4;
         
-
-        $scope.addExperience = function () {
         $scope.Experiences = [];
         $scope.loadingExperience = false;
         $scope.experience = null;
         $scope.isEditing=false;
         $scope.editedExperience=-1;
         $scope.deletedExperience=-1;
+        
 
         $scope.initExperience = function () {
            

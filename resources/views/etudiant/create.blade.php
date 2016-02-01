@@ -196,18 +196,11 @@
                                     <div class="col-md-12">
                                         <h4 class="m-t-0 header-title"><b>Expérience professionnelle</b></h4>
                                         <p class="text-muted font-13 m-b-30">
-                                            Informations about experiences.
+                                            Informations sur vos experiences.
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-4 col-md-offset-4">
-                                        <a
-                                            data-target="#custom-modal-AddExperience" data-toggle="modal"
-                                            class="btn btn-primary waves-effect waves-light" data-animation="fadein" 
-                                            data-overlaySpeed="200" data-overlayColor="#36404a">Ajouter une expérience</a>
-                                    </div>
-                                </div>
+                                
                                 <div class="row">
                                     <div class="col-lg-12">
 
@@ -274,12 +267,15 @@
 
                                     </div>
                                 </div>
-                                <!--                                <div class="row">
-                                                                    <div class="col-md-4 col-md-offset-4">
-                                                                        <a href="#custom-modal-AddExperience" class="btn btn-primary waves-effect waves-light" data-animation="fadein" data-plugin="custommodal" 
-                                                                           data-overlaySpeed="200" data-overlayColor="#36404a">Ajouter une expérience</a>
-                                                                    </div>
-                                                                </div>-->
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <a
+                                            data-target="#custom-modal-AddExperience" data-toggle="modal"
+                                            class="btn btn-primary waves-effect waves-light" data-animation="fadein" 
+                                            data-overlaySpeed="200" data-overlayColor="#36404a">Ajouter une expérience
+                                            </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -332,6 +328,7 @@
                                         <div class="form-group no-margin"> 
                                             <label for="field-7" class="control-label">Autres informations</label> 
                                             <textarea class="form-control autogrow" ng-model="experience.description" id="field-7" placeholder="Décrire votre expérience" style="overflow: auto; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
+                                            <span class="info">Détails supplémentaires comme les responsabilités, résultats, etc.</span>
                                         </div> 
                                     </div> 
                                 </div> 
@@ -412,6 +409,7 @@
                                     <div class="form-group no-margin"> 
                                         <label for="field-7" class="control-label">Autres informations</label> 
                                         <textarea class="form-control autogrow" ng-model="EditExperience.description" id="field-7" placeholder="Décrire votre expérience" style="overflow: auto; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
+                                        <span class="info">Détails supplémentaires comme les responsabilités, résultats, etc.</span>
                                     </div> 
                                 </div> 
                             </div> 
@@ -426,9 +424,98 @@
                 <div class="tab-pane" id="section-competance"> 
 
                 </div> 
-                <div class="tab-pane" id="section-formation"> 
-                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p> 
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p> 
+                <div class="tab-pane" id="section-formation" ng-controller="formationController"> 
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card-box"  ng-init="initFormation();" >
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 class="m-t-0 header-title"><b>Formation</b></h4>
+                                        <p class="text-muted font-13 m-b-30">
+                                            Informations sur vos formations .
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                        <div class="panel-group accordion" id="formations">
+
+                                            <div class="panel panel-default" ng-repeat='formation in Formations track by formation.id'>
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a class="accordion-toggle accordion-toggle-styled collapsed" 
+                                                           data-toggle="collapse" data-parent="#formations" href="#formation<%=formation.id %>">  <%=formation.intitule %></a>
+                                                    </h4>
+                                                </div>
+                                                <div id="formation<%=formation.id %>" class="panel-collapse collapse">
+                                                    <div class="panel-body" style="height:200px; overflow-y:auto;">
+                                                        <div class="col-md-12 col-sm-12">
+
+                                                            <div class="portlet-body">
+                                                                <div class="row static-info">
+                                                                    <div class="col-md-5 name"> Établissement: </div>
+                                                                    <div class="col-md-7 value"> <%=formation.etablissement.code %> / <%=formation.etablissement.ville %></div>
+                                                                </div>
+                                                                <div class="row static-info">
+                                                                    <div class="col-md-5 name"> Date début: </div>
+                                                                    <div class="col-md-7 value"> <%=formation.date_dedut | date:'dd/MM/yyyy' %></div>
+                                                                </div>
+                                                                <div class="row static-info">
+                                                                    <div class="col-md-5 name"> Date fin: </div>
+                                                                    <div class="col-md-7 value"> <%=formation.date_fin | date:'dd/MM/yyyy' %></div>
+                                                                </div>
+                                                                <div class="row static-info">
+                                                                    <div class="col-md-5 name"> Diplôme: </div>
+                                                                    <div class="col-md-7 value"> <%=formation.diplome %></div>
+                                                                </div>
+                                                                <div class="row static-info">
+                                                                    <div class="col-md-5 name"> Mention: </div>
+                                                                    <div class="col-md-7 value"> <%=formation.mention %></div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-footer clearfix">
+                                                        <div class="pull-right">
+                                                            <button class="btn btn-success btn-xs" ng-click="prepareUpdateFormation(formation, $index)"
+                                                                    data-target="#custom-modal-EditFormation" data-toggle="modal"
+                                                                    class="btn btn-primary waves-effect waves-light" data-animation="fadein" 
+                                                                    data-overlaySpeed="200" data-overlayColor="#36404a">
+                                                                <span class="glyphicon glyphicon-edit" ></span>Modifier
+                                                            </button>
+                                                            <button class="btn btn-danger btn-xs" ng-click="prepareDeleteFormation($index)"
+                                                                    data-target="#custom-modal-DeleteFormation" data-toggle="modal"
+                                                                    class="btn btn-primary waves-effect waves-light" data-animation="slidetogether" 
+                                                                    data-overlaySpeed="200" data-overlayColor="#36404a">
+                                                                <span class="glyphicon glyphicon-remove" ></span>Supprimer
+                                                            </button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <a
+                                            data-target="#custom-modal-AddFormation" data-toggle="modal"
+                                            class="btn btn-primary waves-effect waves-light" data-animation="fadein" 
+                                            data-overlaySpeed="200" data-overlayColor="#36404a">Ajouter une formation
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div> 
                 <div class="tab-pane" id="section-langue"> 
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p> 

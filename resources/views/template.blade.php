@@ -225,14 +225,7 @@
                                 <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="icon-settings"></i></a>
                             </li>
 
-<<<<<<< HEAD
-                            <li>
-                                <a class="waves-effect" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="ti-pencil-alt"></i>
-                                    <span> Nouveau cv </span></a>
-                                <!-- <a href="{{ URL::route('createcv') }}" class="waves-effect">
-                                    <i class="ti-pencil-alt"></i>
-                                    <span> Nouveau cv </span> </a> -->
-=======
+
                             <li class="dropdown">
                                 <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">
                                     <img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" class="img-circle">
@@ -244,7 +237,7 @@
                                     <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
                                     <li><a href="{{ url('/logout')}}"><i class="ti-power-off m-r-5"></i>Logout</a></li>
                                 </ul>
->>>>>>> 6c99fe5cd0f8828d22e27d1eb1bb6e85734f2ac3
+
                             </li>
 
                             @endif
@@ -291,11 +284,11 @@
                                 <span> Accueil </span> </a>
                         </li>
 
-<!--                        <li>
-                            <a href="{{ URL::route('createcv') }}" class="waves-effect">
-                                <i class="ti-pencil-alt"></i>
-                                <span> Nouveau cv </span> </a>
-                        </li>-->
+                        <!--                        <li>
+                                                    <a href="{{ URL::route('createcv') }}" class="waves-effect">
+                                                        <i class="ti-pencil-alt"></i>
+                                                        <span> Nouveau cv </span> </a>
+                                                </li>-->
 
                         <li>
                             <a href="{{ URL::route('cv') }}" class="waves-effect">
@@ -318,56 +311,7 @@
 
 
 
-<<<<<<< HEAD
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
-            <div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
-                        <!-- Page-Title -->
-                        <!-- <div class="row">
-                            <div class="col-sm-12">
-                                <div class="panel panel-primary" id="panelBody">
- -->
-                                    @yield('contenu')
 
-                                    @if (!Auth::guest())
-
-                                        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
-                                            <div class="modal-dialog modal-sm">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">                                                                      
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        <strong>création d'un nouveau cv</strong>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div>&nbsp;</div>
-                                                        <form class="form-horizontal" role="form" method="post" action="{{ url('/etudiant/cv/create') }}">
-                                                                {{ csrf_field() }}
-                                                                <div class="form-group">
-                                                                    <div class="col-xs-12">
-                                                                        <input type="text" class="form-control" name="nom_cv" placeholder="entrez un nom pour votre cv">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group text-center m-t-40">
-                                                                    <div class="col-xs-12">
-                                                                        <input type="hidden" name="etudiant_id" value="{{Auth::user()->etudiant_id}}">
-                                                                        <button class="btn btn-inverse btn-block waves-effect waves-light" type="submit">envoyer</button>
-                                                                    </div>
-                                                                </div>
-                                                        </form>
-                                                    </div>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal-dialog -->
-                                        </div><!-- /.modal -->
-                                    @endif  
-<!-- 
-                                </div>
-
-                            </div -->
-=======
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
@@ -376,157 +320,192 @@
             <div class="content">
                 <div class="container">
                     <!-- Page-Title -->
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-sm-12">
+                            <div class="panel panel-primary" id="panelBody">
+                    -->
+                    @yield('contenu')
 
-                            @yield('contenu')
+                    @if (!Auth::guest())
 
+                    <div id="custom-modal-CreateCV" class="modal fade" data-width="780" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                        <form class="form-horizontal" method="post" action="{{ url('/etudiant/cv/create')}}"> 
+                            <div class="modal-header">                                                                      
 
+                                <h4 class="custom-modal-title">Création d'un nouveau cv</h4>
+                            </div>
+                            <div class="modal-body">
 
->>>>>>> 6c99fe5cd0f8828d22e27d1eb1bb6e85734f2ac3
-                        </div>
-                    </div>
+                                {{ csrf_field()}}
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="text" class="form-control" name="nom_cv" placeholder="entrez un nom pour votre cv">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="hidden" name="etudiant_id" value="{{Auth::user()->etudiant_id}}">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer"> 
+                                <button type="button" data-dismiss="modal" class="btn btn-default waves-effect" >Annuler</button> 
+                                <button class="btn btn-info waves-effect waves-light" type="submit">envoyer</button>
+                            </div>
+                        </form>
+                    </div><!-- /.modal -->
+                    @endif  
+                    <!-- 
+                                                    </div>
+                    
+                                                </div -->
+
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 
+<script>
+            var resizefunc = [];
+</script>
+<!-- jQuery  -->
+
+
+{!! HTML::script('assets/assets/global/plugins/jquery.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/bootstrap/js/bootstrap.min.js') !!}
+
+{!! HTML::script('assets/js/detect.js') !!}
+{!! HTML::script('assets/js/fastclick.js') !!}
+{!! HTML::script('assets/js/jquery.slimscroll.js') !!}
+{!! HTML::script('assets/js/jquery.blockUI.js') !!}
+{!! HTML::script('assets/js/waves.js') !!}
+{!! HTML::script('assets/js/wow.min.js') !!}
+{!! HTML::script('assets/js/jquery.nicescroll.js') !!}
+{!! HTML::script('assets/js/jquery.scrollTo.min.js') !!}
+
+{!! HTML::script('assets/plugins/peity/jquery.peity.min.js') !!}
+
+<!-- jQuery  -->
+{!! HTML::script('assets/plugins/waypoints/lib/jquery.waypoints.js') !!}
+{!! HTML::script('assets/plugins/counterup/jquery.counterup.min.js') !!}
+
+{!! HTML::script('assets/plugins/morris/morris.min.js') !!}
+{!! HTML::script('assets/plugins/raphael/raphael-min.js') !!}
+
+{!! HTML::script('assets/plugins/jquery-knob/jquery.knob.js') !!}
+
+{{-- {!! HTML::script('assets/pages/jquery.dashboard.js') !!} --}}
+
+{!! HTML::script('assets/js/jquery.core.js') !!}
+{!! HTML::script('assets/js/jquery.app.js') !!}
+
+<!-- For Maxlength input -->
+{!! HTML::script('assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') !!}
+
+<!-- Modal-Effect -->
+{!! HTML::script('assets/plugins/custombox/dist/custombox.min.js') !!}
+{!! HTML::script('assets/plugins/custombox/dist/legacy.min.js') !!}
+
+<!--FooTable-->
+{!! HTML::script('assets/plugins/footable/js/footable.all.min.js') !!}
+{!! HTML::script('assets/plugins/bootstrap-select/dist/js/bootstrap-select.min.js') !!}
+
+<!--FooTable Example-->
+{!! HTML::script('assets/pages/jquery.footable.js') !!}
+
+<!-- InputMask -->
+{!! HTML::script('assets/plugins/input-mask/jquery.inputmask.js') !!}
+{!! HTML::script('assets/plugins/input-mask/jquery.inputmask.date.extensions.js') !!}
+{!! HTML::script('assets/plugins/input-mask/jquery.inputmask.extensions.js') !!}
+
+<!--AngularJS-->
+
+{!! HTML::script('AngularJS/angular.min.js') !!}
+{!! HTML::script('AngularJS/angular-resource.min.js') !!}
+{!! HTML::script('AngularJS/angular-route.min.js') !!}
+{!! HTML::script('AngularJS/angular-animate.min.js') !!}
+<!-- activate ng upload file -->
+{!! HTML::script('ng-file-upload/ng-file-upload-shim.min.js') !!} <!-- for no html5 browsers support -->
+{!! HTML::script('ng-file-upload/ng-file-upload.min.js') !!}
+
+{!! HTML::script('AngularScripts/app.js') !!}
+{!! HTML::script('AngularScripts/controllers/infoBasicController.js') !!}
+{!! HTML::script('AngularScripts/controllers/experienceController.js') !!}
+{!! HTML::script('AngularScripts/controllers/formationController.js') !!}
+
+
+<!-- BEGIN CORE PLUGINS -->
+{!! HTML::script('assets/assets/global/plugins/js.cookie.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/jquery.blockui.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/uniform/jquery.uniform.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') !!}
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+{!! HTML::script('assets/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js') !!}
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+{!! HTML::script('assets/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js') !!}
+{!! HTML::script('assets/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js') !!}
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+{!! HTML::script('assets/assets/pages/scripts/ui-extended-modals.min.js') !!}
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+{!! HTML::script('assets/assets/global/plugins/jquery-validation/js/jquery.validate.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/jquery-validation/js/additional-methods.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/bootstrap-markdown/lib/markdown.js') !!}
+{!! HTML::script('assets/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js') !!}
+<!-- END PAGE LEVEL SCRIPTS -->
+
+
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+{!! HTML::script('assets/assets/global/scripts/app.min.js') !!}
+
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+{!! HTML::script('assets/assets/pages/scripts/form-validation.min.js') !!}
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+{!! HTML::script('assets/assets/layouts/layout/scripts/layout.min.js') !!}
+{!! HTML::script('assets/assets/layouts/layout/scripts/demo.min.js') !!}
+{!! HTML::script('assets/assets/layouts/global/scripts/quick-sidebar.min.js') !!}
+<!-- END THEME LAYOUT SCRIPTS -->
+
+<!--
+            <script type="text/javascript">
+                jQuery(document).ready(function ($) {
+                    $('.counter').counterUp({
+                        delay: 100,
+                        time: 1200
+                    });
+
+                    $(".knob").knob();
+
+                });
+            </script>
+-->
+<!--
         <script>
-                    var resizefunc = [];
-        </script>
-        <!-- jQuery  -->
-
-
-        {!! HTML::script('assets/assets/global/plugins/jquery.min.js') !!}
-        {!! HTML::script('assets/assets/global/plugins/bootstrap/js/bootstrap.min.js') !!}
-
-        {!! HTML::script('assets/js/detect.js') !!}
-        {!! HTML::script('assets/js/fastclick.js') !!}
-        {!! HTML::script('assets/js/jquery.slimscroll.js') !!}
-        {!! HTML::script('assets/js/jquery.blockUI.js') !!}
-        {!! HTML::script('assets/js/waves.js') !!}
-        {!! HTML::script('assets/js/wow.min.js') !!}
-        {!! HTML::script('assets/js/jquery.nicescroll.js') !!}
-        {!! HTML::script('assets/js/jquery.scrollTo.min.js') !!}
-
-        {!! HTML::script('assets/plugins/peity/jquery.peity.min.js') !!}
-
-        <!-- jQuery  -->
-        {!! HTML::script('assets/plugins/waypoints/lib/jquery.waypoints.js') !!}
-        {!! HTML::script('assets/plugins/counterup/jquery.counterup.min.js') !!}
-
-        {!! HTML::script('assets/plugins/morris/morris.min.js') !!}
-        {!! HTML::script('assets/plugins/raphael/raphael-min.js') !!}
-
-        {!! HTML::script('assets/plugins/jquery-knob/jquery.knob.js') !!}
-
-        {{-- {!! HTML::script('assets/pages/jquery.dashboard.js') !!} --}}
-
-        {!! HTML::script('assets/js/jquery.core.js') !!}
-        {!! HTML::script('assets/js/jquery.app.js') !!}
-
-        <!-- For Maxlength input -->
-        {!! HTML::script('assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') !!}
-
-        <!-- Modal-Effect -->
-        {!! HTML::script('assets/plugins/custombox/dist/custombox.min.js') !!}
-        {!! HTML::script('assets/plugins/custombox/dist/legacy.min.js') !!}
-
-        <!--FooTable-->
-        {!! HTML::script('assets/plugins/footable/js/footable.all.min.js') !!}
-        {!! HTML::script('assets/plugins/bootstrap-select/dist/js/bootstrap-select.min.js') !!}
-
-        <!--FooTable Example-->
-        {!! HTML::script('assets/pages/jquery.footable.js') !!}
-
-        <!-- InputMask -->
-        {!! HTML::script('assets/plugins/input-mask/jquery.inputmask.js') !!}
-        {!! HTML::script('assets/plugins/input-mask/jquery.inputmask.date.extensions.js') !!}
-        {!! HTML::script('assets/plugins/input-mask/jquery.inputmask.extensions.js') !!}
-
-        <!--AngularJS-->
-
-        {!! HTML::script('AngularJS/angular.min.js') !!}
-        {!! HTML::script('AngularJS/angular-resource.min.js') !!}
-        {!! HTML::script('AngularJS/angular-route.min.js') !!}
-        {!! HTML::script('AngularJS/angular-animate.min.js') !!}
-        <!-- activate ng upload file -->
-        {!! HTML::script('ng-file-upload/ng-file-upload-shim.min.js') !!} <!-- for no html5 browsers support -->
-        {!! HTML::script('ng-file-upload/ng-file-upload.min.js') !!}
-
-        {!! HTML::script('AngularScripts/app.js') !!}
-        {!! HTML::script('AngularScripts/controllers/infoBasicController.js') !!}
-        {!! HTML::script('AngularScripts/controllers/experienceController.js') !!}
-
-
-        <!-- BEGIN CORE PLUGINS -->
-        {!! HTML::script('assets/assets/global/plugins/js.cookie.min.js') !!}
-        {!! HTML::script('assets/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') !!}
-        {!! HTML::script('assets/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') !!}
-        {!! HTML::script('assets/assets/global/plugins/jquery.blockui.min.js') !!}
-        {!! HTML::script('assets/assets/global/plugins/uniform/jquery.uniform.min.js') !!}
-        {!! HTML::script('assets/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') !!}
-        <!-- END CORE PLUGINS -->
-
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        {!! HTML::script('assets/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js') !!}
-        <!-- END PAGE LEVEL PLUGINS -->
-
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        {!! HTML::script('assets/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js') !!}
-        {!! HTML::script('assets/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js') !!}
-        <!-- END PAGE LEVEL PLUGINS -->
-
-        <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        {!! HTML::script('assets/assets/pages/scripts/ui-extended-modals.min.js') !!}
-        <!-- END PAGE LEVEL SCRIPTS -->
-
-        <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        {!! HTML::script('assets/assets/global/plugins/jquery-validation/js/jquery.validate.min.js') !!}
-        {!! HTML::script('assets/assets/global/plugins/jquery-validation/js/additional-methods.min.js') !!}
-        {!! HTML::script('assets/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') !!}
-        {!! HTML::script('assets/assets/global/plugins/bootstrap-markdown/lib/markdown.js') !!}
-        {!! HTML::script('assets/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js') !!}
-        <!-- END PAGE LEVEL SCRIPTS -->
-
-
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        {!! HTML::script('assets/assets/global/scripts/app.min.js') !!}
-
-
-        <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        {!! HTML::script('assets/assets/pages/scripts/form-validation.min.js') !!}
-        <!-- END PAGE LEVEL SCRIPTS -->
-
-        <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        {!! HTML::script('assets/assets/layouts/layout/scripts/layout.min.js') !!}
-        {!! HTML::script('assets/assets/layouts/layout/scripts/demo.min.js') !!}
-        {!! HTML::script('assets/assets/layouts/global/scripts/quick-sidebar.min.js') !!}
-        <!-- END THEME LAYOUT SCRIPTS -->
-
-        <!--
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $('.counter').counterUp({
-                                delay: 100,
-                                time: 1200
-                            });
-        
-                            $(".knob").knob();
-        
-                        });
-                    </script>
-        -->
-        <!--
-                <script>
-                            $(function () {
-                            //Datemask dd/mm/yyyy
-                            $("#datemask").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
-                                    //Datemask2 mm/dd/yyyy
-                                    $("#datemask2").inputmask("mm/dd/yyyy", { "placeholder": "mm/dd/yyyy" });
-                                    //Money Euro
-                                    $("[data-mask]").inputmask();
-                            });
-                </script>-->
+                    $(function () {
+                    //Datemask dd/mm/yyyy
+                    $("#datemask").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
+                            //Datemask2 mm/dd/yyyy
+                            $("#datemask2").inputmask("mm/dd/yyyy", { "placeholder": "mm/dd/yyyy" });
+                            //Money Euro
+                            $("[data-mask]").inputmask();
+                    });
+        </script>-->
 </body>
 </html>
