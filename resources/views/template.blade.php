@@ -51,6 +51,12 @@
         {!! HTML::style('assets/assets/global/plugins/uniform/css/uniform.default.css') !!}
         {!! HTML::style('assets/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') !!}
         <!-- END GLOBAL MANDATORY STYLES -->
+
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        {!! HTML::style('assets/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') !!}
+        {!! HTML::style('assets/assets/global/plugins/typeahead/typeahead.css') !!}
+        <!-- END PAGE LEVEL PLUGINS -->
+
         <!-- BEGIN THEME GLOBAL STYLES -->
         {!! HTML::style('assets/assets/global/css/components.min.css') !!}
         {!! HTML::style('assets/assets/global/css/plugins.min.css') !!}
@@ -436,6 +442,7 @@
 {!! HTML::script('AngularScripts/controllers/infoBasicController.js') !!}
 {!! HTML::script('AngularScripts/controllers/experienceController.js') !!}
 {!! HTML::script('AngularScripts/controllers/formationController.js') !!}
+{!! HTML::script('AngularScripts/controllers/competenceController.js') !!}
 
 
 <!-- BEGIN CORE PLUGINS -->
@@ -469,9 +476,18 @@
 <!-- END PAGE LEVEL SCRIPTS -->
 
 
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+{!! HTML::script('assets/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/typeahead/handlebars.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/typeahead/typeahead.bundle.min.js') !!}
+<!-- END PAGE LEVEL PLUGINS -->
+
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 {!! HTML::script('assets/assets/global/scripts/app.min.js') !!}
 
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+{{-- {!! HTML::script('assets/assets/pages/scripts/components-bootstrap-tagsinput.min.js')  !!} --}}
+<!-- END PAGE LEVEL SCRIPTS -->
 
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 {!! HTML::script('assets/assets/pages/scripts/form-validation.min.js') !!}

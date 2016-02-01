@@ -127,7 +127,7 @@
                                                         </div>
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <input maxlength="25" ng-model="etudiant.telephone" id="etudiant_numTelephone" placeholder='+(212)' type="text" class="form-control" >
+                                                            <input maxlength="25" ng-model="etudiant.telephone" id="etudiant_numTelephone" placeholder='+(212)' type="text" class="form-control etud" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -137,7 +137,7 @@
                                                         <div class="row">
                                                             <label class="control-label"for="etudiant_adresse">Adresse</label>
                                                         </div>
-                                                        <input type="text" class="form-control" id="etudiant_adresse" maxlength="100" ng-model="etudiant.adresse" placeholder="Hay Lalla Meriem">
+                                                        <input type="text" class="form-control etud" id="etudiant_adresse" maxlength="100" ng-model="etudiant.adresse" placeholder="Hay Lalla Meriem">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -421,8 +421,41 @@
 
                     </div><!-- End Edit Experience Modal -->
                 </div> 
-                <div class="tab-pane" id="section-competance"> 
+                <div class="tab-pane" id="section-competance" ng-controller="competenceController"> 
+                    <div class="row" ng-init="initCompetence();">
+                        <div class="col-lg-12">
+                            <div class="card-box">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="m-t-0 header-title"><b>Compétences</b></h4>
+                                        <p class="text-muted font-13 m-b-30">
+                                            Informations sur vos compétances .
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <input type="text" value="" id="object_tagsinput">
+                                        <div class="margin-top-10">
+                                            <input type="text" required class="form-control input-large" ng-model="competence.intitule" placeholder="C#" > 
+                                        </div>
+                                        <div class="margin-top-10">
 
+                                            <select ng-cloak="" required class="form-control input-large"  ng-model="competence.niveau">
+                                                <option ng-repeat="option in niveau.availableOptions" value="<%= option.name %>">
+                                                    <%= option.name %>
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="margin-top-10">
+                                            <a ng-click="addCompetence()" class="btn red" >Ajouter</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div> 
+
+                    </div> 
                 </div> 
                 <div class="tab-pane" id="section-formation" ng-controller="formationController"> 
                     <div class="row">
@@ -982,7 +1015,7 @@
 
 <script>
             window.onload = function() {
-            $('input').maxlength({
+            $('input.etud').maxlength({
             alwaysShow: false,
                     warningClass: "label label-success",
                     limitReachedClass: "label label-danger",
