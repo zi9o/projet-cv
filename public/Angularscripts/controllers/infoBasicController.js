@@ -1,6 +1,7 @@
 app.controller('infoBasicController', ['$scope', '$http', 'API_URL', 'Upload', function ($scope, $http, API_URL, Upload)
     {
         $ID = 2;
+        
         $scope.filename = '';
         $scope.situation = {
             availableOptions: [

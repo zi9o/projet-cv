@@ -2,13 +2,23 @@
 
 @section('contenu')
 
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+{!! HTML::style('assets/assets/global/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css') !!}
+{!! HTML::style('assets/assets/global/plugins/bootstrap-modal/css/bootstrap-modal.css') !!}
+<!-- END PAGE LEVEL PLUGINS -->
 
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+{!! HTML::style('assets/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}
 
-<div class="CV"> <!-- Start content -->	
-    <div id="main">
-        <div id="cv">
-
-            <!--            <div class="controls">
+{!! HTML::style('assets/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css') !!}
+<!-- END PAGE LEVEL PLUGINS -->   
+<style type="text/css">
+    input[type=text],input[type=email]
+    {
+        width: 90%;
+    }
+</style>
+<!--            <div class="controls">
                             <span id="notice" class="notice"> </span>
                             <a href="https://cvmkr.com/Pages/help" target="_blank" class="button" id="bt-help">
                                 <span class="ui-icon ui-icon-info"></span> Help</a>
@@ -17,181 +27,435 @@
             
                             <a href="#" class="button" id="bt-download"><span class="ui-icon ui-icon-check"></span> Download</a>
                         </div>-->
-            <div class="clear"> </div>
+<div class="row"> 
+    <div class="col-lg-12"> 
+        <div class="tabs-vertical-env"> 
+            <ul class="nav tabs-vertical"> 
+                <li class="active">
+                    <a href="#section-basic" data-toggle="tab" aria-expanded="true">Informations</a>
+                </li> 
+                <li class="">
+                    <a href="#section-work" data-toggle="tab" aria-expanded="false">Expérience professionnelle</a>
+                </li> 
+                <li class="">
+                    <a href="#section-competance" data-toggle="tab" aria-expanded="false">Compétences</a>
+                </li> 
+                <li class="">
+                    <a href="#section-formation" data-toggle="tab" aria-expanded="false">Formations</a>
+                </li> 
+                <li class="">
+                    <a href="#section-langue" data-toggle="tab" aria-expanded="false">Langues</a>
+                </li> 
+                <li class="">
+                    <a href="#section-interest" data-toggle="tab" aria-expanded="false">Centres d'intêret</a>
+                </li> 
+            </ul> 
 
+            <div class="tab-content"> 
 
-            <div class="options">	
-                <ul id="cvsections" class="noul ui-sortable">
-                    <li class="item section-basic">
-                        <a href="#">Informations</a>
-                    </li>
-                    <li class="item section-work">
-                        <a href="#">Expérience professionnelle</a>
-                    </li>
-                    <li class="item section-qualifications">
-                        <a href="#">Compétences</a>
-                    </li>
-                    <li class="item section-education">
-                        <a href="#">Formations </a>
-                    </li>
-                    <li class="item section-interests">
-                        <a href="#">Langues</a>
-                    </li>
-                    <li class="item section-references">
-                        <a href="#">Centres d'intêret</a>
-                    </li>
-                </ul>
-<!--                <p>
-                    <a href="#" class="button" id="bt-add-section"><span class="ui-icon ui-icon-plusthick"></span> Add a new section</a>
-                </p>-->
-<!--                <p class="msg">* Click and drag section names in the above list to reorder sections in your CV.</p>
-                <p class="msg">* If you leave the fields in a section empty, the section will not appear in your CV.</p>-->
-            </div>
-
-            <form name="cv" id="cvform" class="edit" enctype="multipart/form-data" target="postframe" novalidate="">
-
-                <div id="section-basic" class="section " style="display: none;" ng-controller="infoBasicController">
-
-                    <h2 class="title">
-                        <span class="name">Informations</span>
-                    </h2>
-                    <div class="sets">
-                        <div class="set">
-                            <input type="hidden" class="action" name="action" value="cv">
-                            <input type="hidden" class="style" name="style" value="executive">
-                            <input type="hidden" class="type" name="type" value="pdf">
-                            <input type="hidden" class="page_size" name="page_size" value="pdf">
-                            <input type="hidden" class="section_name" name="sections[basic][section_name]" value="Informations">
-
-                            <p class="field field_">
-                                <label>Nom de famille</label>
-                                <input maxlength="50" type="text" ng-model="etudiant.nom" class="text" placeholder="Nom" />
-                            </p>
-
-                            <p class="field field_">
-                                <label>Prénom</label>
-                                <input maxlength="50" type="text" ng-model="etudiant.prenom" class="text" placeholder="Prénom" />
-                            </p>
-
-
-                            <p class="field field_">
-                                <label for="email">Adresse E-mail</label>
-                                <input maxlength="100" type="email" ng-model="etudiant.email" id="email" class="text" placeholder='e-mail' />
-                            </p>
-
-                            <p class="field field_">
-                                <label>Numéro de téléphone</label>
-                                <input maxlength="100" type="text" ng-model="etudiant.telephone" class="text" placeholder='+(212)' />
-<!--                                    <span class="info">If you have more than one number, separate with commas</span>-->
-                            </p>
-
-                            <p class="field field_">
-                                <label>Addresse</label>
-                                <input maxlength="100" type="text" ng-model="etudiant.adresse" class="text" placeholder='Hay Lalla Meriem'/>
-                            </p>
-                            <p class="field field_">
-                                <label>Situation familialle</label>
-                                <select ng-model="etudiant.situation">
-                                    <option ng-repeat="option in situation.availableOptions" value="<%= option.name %>">
-                                        <%= option.name %>
-                                    </option>
-                                </select>
-
-                            </p>
-                            <hr>
-                            <div class="btn btn-primary" ngf-select="upload($file,2)" ngf-pattern="'image/*'"
-                                 ngf-accept="'image/*'" ngf-max-size="20MB" >Uploader une nouvelle photo</div> 
-                            <i ng-show="loadingUploadPhoto" class="fa fa-spinner fa-spin"></i>
-
-                            {{-- < img src = "{{asset('assets/images/').'/'.$imgsrc}}"> --}}
-                            <p class="field field_">
-                                <label for="photo">Photo</label>
-                                <img class="img img-responsive" ng-cloack 
-                                     ng-src="<%= '{{ asset('../storage/uploads')}}/' + etudiant.photo %>"
-                                     style="width: inherit; height: inherit;">
-                                <span class="info">gif, jpg, png, jpeg<br>320 x 400 px</span>
-                            </p>
-
-                        </div>
-                        <div class="set row">
-                            <div class="col col-md-2 col-md-offset-5">
-                                <button class="btn btn-primary btn-lg" ng-click="updateInfoBasic(etudiant)" >Sauvegarder</button>
-                                <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                </div>
-                
-                <div id="section-work" class="section addable ui-sortable" ng-controller="experienceController">
-                    <!--<input type="checkbox" ng-change="!displayBlock ? AllExperience='' : init()" ng-model="displayBlock" />-->
-                    <div >
-                    <h2 class="title">
-                        <span class="name">Expérience professionnelle</span>
-                        <!--<a href="#" class="ui-icon ui-icon-pencil rename" title="Rename section">Renommer la section</a>-->
-                        <!--                                                <a href="#" class="ui-icon ui-icon-carat-2-n-s collapse" title="Regrouper les éléments pour faciliter leur tri">
-                                                                            Développer / Regrouper</a>-->
-                    </h2>
-                    <div class="sets">
-                        <div class="set" > 
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="card-box">
-                                        <table id="demo-foo-accordion" class="table m-b-0 toggle-arrow-tiny">
-                                            <thead>
-                                                <tr>
-                                                    
-                                                    <th data-toggle="true">Expérience</th>
-                                                    <th>Date début</th>
-                                                    <th>Date fin</th>
-                                                    <th data-hide="all">Ville</th>
-                                                    <th data-hide="all">Description</th>
-                                                    <th style="text-align: center;">Actions</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td>Isidra</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>Traffic Court Referee</td>
-                                                    <td>22 Jun 1972</td>
-                                                    <td><span class="label label-table label-success">Active</span></td>
-                                                    <td style="text-align: center;">
-                                                        <button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-edit" ></span></button>
-                                                        <button class="btn btn-danger btn-xs" ng-click="deleteExperience($index)"><span class="glyphicon glyphicon-remove" ></span></button>
-                                                    </td>
-                                                </tr>
-                                                
-                                            </tbody>
-<!--                                            <tfoot>
-                                                <tr>
-                                                    <td colspan="5">
-                                                        <div class="text-right">
-                                                            <ul class="pagination pagination-split m-t-30 m-b-0"></ul>
+                <div class="tab-pane active" id="section-basic" ng-controller="infoBasicController"> 
+                    <form class="form-horizontal " role="form" id="form_sample_2" enctype="multipart/form-data" >
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card-box">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-sm-8">
+                                                <h4 class="m-t-0 header-title"><b>Informations</b></h4>
+                                                <p class="text-muted font-13 m-b-30">
+                                                    Some basic informations.
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <button type="submit" class="btn btn-primary btn-lg" ng-click="updateInfoBasic(etudiant)" >Sauvegarder   <i ng-show="loading" class="fa fa-spinner fa-spin"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-body">
+                                                <div class="alert alert-danger display-hide">
+                                                    <button class="close" data-close="alert"></button> You have some form errors. Please check below. </div>
+                                                <div class="alert alert-success display-hide">
+                                                    <button class="close" data-close="alert"></button> Your form validation is successful! </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="control-label" for="etudiant_nom">Nom de famille
+                                                                <span class="required"> * </span>
+                                                            </label>
                                                         </div>
-                                                    </td>
-                                                </tr>
-                                            </tfoot>-->
-                                        </table>
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input maxlength="25" type="text" id="etudiant_nom" class="form-control" ng-model="etudiant.nom" placeholder="Nom">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="control-label"  for="etudiant_prenom">Prénom
+                                                                <span class="required"> * </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input maxlength="25" id="etudiant_prenom" type="text" class="form-control" ng-model="etudiant.prenom" placeholder="Prénom" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="control-label" for="etudiant_email">Addresse E-mail
+                                                                <span class="required"> * </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input maxlength="100" required="" type="email" ng-model="etudiant.email" id="etudiant_email" class="form-control" placeholder="Email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="control-label" for="etudiant_numTelephone" >Numéro de téléphone
+                                                                <span class="required"> * </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input maxlength="25" ng-model="etudiant.telephone" id="etudiant_numTelephone" placeholder='+(212)' type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="control-label"for="etudiant_adresse">Adresse</label>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="etudiant_adresse" maxlength="100" ng-model="etudiant.adresse" placeholder="Hay Lalla Meriem">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="control-label" for="etudiant_situation">Situation familialle</label>
+                                                        </div>
+
+                                                        <select ng-cloak="" style="width: 90%" class="form-control" id="etudiant_situation" ng-model="etudiant.situation">
+                                                            <option ng-repeat="option in situation.availableOptions" value="<%= option.name %>">
+                                                                <%= option.name %>
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <div class="row">
+
+                                                            <div class="col-md-1">
+                                                                <label for="etudiant_photo">Photo</label>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <img id="etudiant_photo" class="img img-responsive" ng-cloack 
+                                                                     ng-src="<%= '{{ asset('../storage/uploads')}}/' + etudiant.photo %>"
+                                                                     style="width: inherit; height: inherit;">
+                                                                <span class="info">gif, jpg, png, jpeg<br>320 x 400 px</span>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <div class="btn btn-primary" ngf-select="upload($file,2)" ngf-pattern="'image/*'"
+                                                                     ngf-accept="'image/*'" ngf-max-size="20MB" >Uploader une nouvelle photo  <i ng-show="loadingUploadPhoto" class="fa fa-spinner fa-spin"></i>
+                                                                </div> 
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- < img src = "{{asset('assets/images/').'/'.$imgsrc}}"> --}}
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            
-
                         </div>
-
-                    </div>
-                    </div>
-                    <!-- for fooTable-->
-                    <!---- forModal ----->
-                    <button class="btn btn-primary waves-effect waves-light" 
-                                    data-toggle="modal" data-target="#con-close-modal">Ajouter une expérience</button>
-                    <!--<a href="#" class="button bt_cloneset"><span class="ui-icon ui-icon-plusthick"></span> Ajouter un élément</a>-->
+                    </form>
                 </div>
+                <div class="tab-pane" id="section-work" ng-controller="experienceController"> 
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card-box"  ng-init="initExperience();" >
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 class="m-t-0 header-title"><b>Expérience professionnelle</b></h4>
+                                        <p class="text-muted font-13 m-b-30">
+                                            Informations about experiences.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <a
+                                            data-target="#custom-modal-AddExperience" data-toggle="modal"
+                                            class="btn btn-primary waves-effect waves-light" data-animation="fadein" 
+                                            data-overlaySpeed="200" data-overlayColor="#36404a">Ajouter une expérience</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                        <div class="panel-group accordion" id="experiences">
+
+                                            <div class="panel panel-default" ng-repeat='exp in Experiences track by exp.id'>
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a class="accordion-toggle accordion-toggle-styled collapsed" 
+                                                           data-toggle="collapse" data-parent="#experiences" href="#experience<%=exp.id %>">  <%=exp.intitule %></a>
+                                                    </h4>
+                                                </div>
+                                                <div id="experience<%=exp.id %>" class="panel-collapse collapse">
+                                                    <div class="panel-body" style="height:200px; overflow-y:auto;">
+                                                        <div class="col-md-12 col-sm-12">
+
+                                                            <div class="portlet-body">
+                                                                <div class="row static-info">
+                                                                    <div class="col-md-5 name"> Entreprise: </div>
+                                                                    <div class="col-md-7 value"> <%=exp.organisation %></div>
+                                                                </div>
+                                                                <div class="row static-info">
+                                                                    <div class="col-md-5 name"> Date début: </div>
+                                                                    <div class="col-md-7 value"> <%=exp.date_dedut | date:'dd/MM/yyyy' %></div>
+                                                                </div>
+                                                                <div class="row static-info">
+                                                                    <div class="col-md-5 name"> Date fin: </div>
+                                                                    <div class="col-md-7 value"> <%=exp.date_fin | date:'dd/MM/yyyy' %></div>
+                                                                </div>
+                                                                <div class="row static-info">
+                                                                    <div class="col-md-5 name"> Ville: </div>
+                                                                    <div class="col-md-7 value"> <%=exp.ville %></div>
+                                                                </div>
+                                                                <div class="row static-info">
+                                                                    <div class="col-md-5 name"> Description: </div>
+                                                                    <div class="col-md-7 value"> <%=exp.description %></div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-footer clearfix">
+                                                        <div class="pull-right">
+                                                            <button class="btn btn-success btn-xs" ng-click="prepareUpdateExperience(exp, $index)"
+                                                                    data-target="#custom-modal-EditExperience" data-toggle="modal"
+                                                                    class="btn btn-primary waves-effect waves-light" data-animation="fadein" 
+                                                                    data-overlaySpeed="200" data-overlayColor="#36404a">
+                                                                <span class="glyphicon glyphicon-edit" ></span>Modifier
+                                                            </button>
+                                                            <button class="btn btn-danger btn-xs" ng-click="prepareDeleteExperience($index)"
+                                                                    data-target="#custom-modal-DeleteExperience" data-toggle="modal"
+                                                                    class="btn btn-primary waves-effect waves-light" data-animation="slidetogether" 
+                                                                    data-overlaySpeed="200" data-overlayColor="#36404a">
+                                                                <span class="glyphicon glyphicon-remove" ></span>Supprimer
+                                                            </button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--                                <div class="row">
+                                                                    <div class="col-md-4 col-md-offset-4">
+                                                                        <a href="#custom-modal-AddExperience" class="btn btn-primary waves-effect waves-light" data-animation="fadein" data-plugin="custommodal" 
+                                                                           data-overlaySpeed="200" data-overlayColor="#36404a">Ajouter une expérience</a>
+                                                                    </div>
+                                                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--Add Experience Modal -->
+                    <div id="custom-modal-AddExperience" class="modal fade" data-width="780" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                        <form class="form-horizontal " >
+                            <div class="modal-header">
+                                <h4 class="custom-modal-title">Expérience professionnelle</h4> 
+                            </div> 
+                            <div class="modal-body">
+                                <div class="row"> 
+                                    <div class="col-md-12"> 
+                                        <div class="form-group"> 
+                                            <label for="field-1" class="control-label">Experience</label> 
+                                            <input type="text" class="form-control" required ng-model="experience.intitule" id="field-1" placeholder="Website Developer"> 
+                                        </div> 
+                                    </div> 
+
+                                </div> 
+                                <div class="row"> 
+                                    <div class="col-md-6"> 
+                                        <div class="form-group"> 
+                                            <label for="field-3" class="control-label">Entreprise</label> 
+                                            <input type="text" class="form-control" required ng-model="experience.organisation" id="field-2" placeholder="Evosolution"> 
+                                        </div> 
+                                    </div> 
+                                    <div class="col-md-6"> 
+                                        <div class="form-group"> 
+                                            <label for="field-1" class="control-label">Ville</label> 
+                                            <input type="text" class="form-control" required ng-model="experience.ville" id="field-3" placeholder="Casablanca"> 
+                                        </div> 
+                                    </div> 
+                                </div> 
+                                <div class="row"> 
+                                    <div class="col-md-6"> 
+                                        <div class="form-group"> 
+                                            <label for="field-4" class="control-label">Date début</label> 
+                                            <input type="date" class="form-control" required ng-model="experience.date_dedut" id="field-4" placeholder="01/03/2016" > 
+                                        </div> 
+                                    </div> 
+                                    <div class="col-md-6"> 
+                                        <div class="form-group"> 
+                                            <label for="field-5" class="control-label">Date fin</label> 
+                                            <input type="date" class="form-control" required ng-model="experience.date_fin" id="field-5" placeholder="30/09/2016" > 
+                                        </div> 
+                                    </div>
+                                </div> 
+                                <div class="row"> 
+                                    <div class="col-md-12"> 
+                                        <div class="form-group no-margin"> 
+                                            <label for="field-7" class="control-label">Autres informations</label> 
+                                            <textarea class="form-control autogrow" ng-model="experience.description" id="field-7" placeholder="Décrire votre expérience" style="overflow: auto; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
+                                        </div> 
+                                    </div> 
+                                </div> 
+                            </div> 
+                            <div class="modal-footer"> 
+                                <button type="button" data-dismiss="modal" ng-click="experience = null" class="btn btn-default waves-effect" >Annuler</button> 
+                                <button type="submit" data-dismiss="modal" class="btn btn-info waves-effect waves-light" ng-click="addExperience()">Sauvegarder</button> 
+                            </div> 
+                        </form>
+                    </div><!-- End Add Experience Modal -->
+                    <!-- Delete Experience Modal-->
+                    <div id="custom-modal-DeleteExperience" class="modal fade" data-width="780" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-header">
+                            <button aria-hidden="true" class="bootbox-close-button close"
+                                    data-dismiss="modal" type="button">×</button>
+                            <h4 class="modal-title">Confirmation</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="bootbox-body">
+                               Êtes-vous sûr de vouloir supprimer ?
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            
+                            <button class="btn red"  data-dismiss="modal" type="button" ng-click="deleteExperience()">Supprimer
+                            </button>
+                            <button class="btn blue"
+                                     data-dismiss="modal" type="button">Annuler
+                            </button>
+                        </div>
+                    </div><!-- End Delete Experience Modal -->
+                    <!-- Edit Experience Modal -->
+                    <div id="custom-modal-EditExperience" class="modal fade" data-width="780" tabindex="-1" data-backdrop="static" data-keyboard="false">
+
+                        <div class="modal-header">
+                            <h4 class="custom-modal-title">Expérience professionnelle</h4> 
+                        </div> 
+                        <div class="modal-body">
+                            <div class="row"> 
+                                <div class="col-md-12"> 
+                                    <div class="form-group"> 
+                                        <label for="field-1" class="control-label">Experience</label> 
+                                        <input type="text" class="form-control" required ng-model="EditExperience.intitule" id="field-1" placeholder="Website Developer"> 
+                                    </div> 
+                                </div> 
+
+                            </div> 
+                            <div class="row"> 
+                                <div class="col-md-6"> 
+                                    <div class="form-group"> 
+                                        <label for="field-3" class="control-label">Entreprise</label> 
+                                        <input type="text" class="form-control" required ng-model="EditExperience.organisation" id="field-2" placeholder="Evosolution"> 
+                                    </div> 
+                                </div> 
+                                <div class="col-md-6"> 
+                                    <div class="form-group"> 
+                                        <label for="field-1" class="control-label">Ville</label> 
+                                        <input type="text" class="form-control" required ng-model="EditExperience.ville" id="field-3" placeholder="Casablanca"> 
+                                    </div> 
+                                </div> 
+                            </div> 
+                            <div class="row"> 
+                                <div class="col-md-6"> 
+                                    <div class="form-group"> 
+                                        <label for="field-4" class="control-label">Date début</label> 
+                                        <input type="date" class="form-control" required ng-model="EditExperience.date_dedut" id="field-4" placeholder="01/03/2016" > 
+                                    </div> 
+                                </div> 
+                                <div class="col-md-6"> 
+                                    <div class="form-group"> 
+                                        <label for="field-5" class="control-label">Date fin</label> 
+                                        <input type="date" class="form-control" required ng-model="EditExperience.date_fin" id="field-5" placeholder="30/09/2016" > 
+                                    </div> 
+                                </div>
+                            </div> 
+                            <div class="row"> 
+                                <div class="col-md-12"> 
+                                    <div class="form-group no-margin"> 
+                                        <label for="field-7" class="control-label">Autres informations</label> 
+                                        <textarea class="form-control autogrow" ng-model="EditExperience.description" id="field-7" placeholder="Décrire votre expérience" style="overflow: auto; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
+                                    </div> 
+                                </div> 
+                            </div> 
+                        </div> 
+                        <div class="modal-footer"> 
+                            <button type="button" data-dismiss="modal" ng-click="EditExperience = null" class="btn btn-default waves-effect" >Annuler</button> 
+                            <button type="button" data-dismiss="modal" class="btn btn-info waves-effect waves-light" ng-click="updateExperience(EditExperience)">Sauvegarder</button> 
+                        </div> 
+
+                    </div><!-- End Edit Experience Modal -->
+                </div> 
+                <div class="tab-pane" id="section-competance"> 
+
+                </div> 
+                <div class="tab-pane" id="section-formation"> 
+                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p> 
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p> 
+                </div> 
+                <div class="tab-pane" id="section-langue"> 
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p> 
+                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p> 
+                </div> 
+                <div class="tab-pane" id="section-interest"> 
+                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p> 
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+</div>
+<div class="CV"> <!-- Start content -->	
+    <div id="main">
+        <div id="cv">
+
+
+            <div class="clear"> </div>
+
+
+
+
+            <form name="cv" id="cvform" class="edit" enctype="multipart/form-data" target="postframe" novalidate="">
+
+
+
 
                 <div id="section-qualifications" class="section addable ui-sortable" style="display: none;">
                     <input type="hidden" class="section_name" name="sections[qualifications][section_name]" value="Compétences">
@@ -404,19 +668,6 @@
 
 
 
-        <script type="text/javascript">
-                    var CV_INIT = true, CV_ID = "", CV_DATA = null, CV_USER = '',
-                    CV_SECTIONS =
-            {
-            "basic": {"addable": false, "renamable": false, "name": "Informations"},
-                    "work": {"addable": true, "renamable": false, "name": "Expérience professionnelle"},
-                    "qualifications": {"addable": true, "renamable": false, "name": "Compétences"},
-                    "education": {"addable": true, "renamable": false, "name": "Formations"},
-                    "interests": {"addable": false, "renamable": false, "name": "Langues"},
-                    "references": {"addable": false, "renamable": false, "name": "Centres d'intêret"}},
-                    CV_ORDER = ["basic", "work", "qualifications", "education", "interests", "references"], CV_MAX_ADDABLES = 2,
-                    CV_MAX_SECTIONS = 0, CV_PHOTO_FILES = ["gif", "jpg", "png", "jpeg"], CV_PHOTO_SIZE = 900;</script>
-
         <noscript>&lt;h2&gt;You need to have javascript enabled in your browser to use this feature.
         &lt;/h2&gt;To know how, &lt;a href="https://www.google.com/adsense/support/bin/answer.py?hl=en&amp;answer=12654"&gt;click here&lt;/a&gt;.
         </noscript>
@@ -492,67 +743,18 @@
 
 </div>
 
-<!-- Modal -->
-<div id="con-close-modal" ng-controller="experienceController" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog"> 
-        <div class="modal-content"> 
-            <div class="modal-header"> 
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
-                <h4 class="modal-title">Expérience professionnelle</h4> 
-            </div> 
-            <div class="modal-body"> 
-                <div class="row"> 
-                    <div class="col-md-12"> 
-                        <div class="form-group"> 
-                            <label for="field-1" class="control-label">Experience</label> 
-                            <input type="text" class="form-control" ng-model="experience.intitule" id="field-1" placeholder="Website Developer"> 
-                        </div> 
-                    </div> 
 
-                </div> 
-                <div class="row"> 
-                    <div class="col-md-6"> 
-                        <div class="form-group"> 
-                            <label for="field-3" class="control-label">Entreprise</label> 
-                            <input type="text" class="form-control" ng-model="experience.organisation" id="field-2" placeholder="Evosolution"> 
-                        </div> 
-                    </div> 
-                    <div class="col-md-6"> 
-                        <div class="form-group"> 
-                            <label for="field-1" class="control-label">Ville</label> 
-                            <input type="text" class="form-control" ng-model="experience.ville" id="field-3" placeholder="Casablanca"> 
-                        </div> 
-                    </div> 
-                </div> 
-                <div class="row"> 
-                    <div class="col-md-6"> 
-                        <div class="form-group"> 
-                            <label for="field-4" class="control-label">Date début</label> 
-                            <input type="text" class="form-control" ng-model="experience.date_dedut" id="field-4" placeholder="01/03/2016" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask> 
-                        </div> 
-                    </div> 
-                    <div class="col-md-6"> 
-                        <div class="form-group"> 
-                            <label for="field-5" class="control-label">Date fin</label> 
-                            <input type="text" class="form-control" ng-model="experience.date_fin" id="field-5" placeholder="30/09/2016" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask> 
-                        </div> 
-                    </div>
-                </div> 
-                <div class="row"> 
-                    <div class="col-md-12"> 
-                        <div class="form-group no-margin"> 
-                            <label for="field-7" class="control-label">Autres informations</label> 
-                            <textarea class="form-control autogrow" ng-model="experience.description" id="field-7" placeholder="Décrire votre expérience" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
-                        </div> 
-                    </div> 
-                </div> 
-            </div> 
-            <div class="modal-footer"> 
-                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Annuler</button> 
-                <button type="button" class="btn btn-info waves-effect waves-light" ng-click="addExperience()">Sauvegarder</button> 
-            </div> 
-        </div> 
-    </div>
-</div><!-- /.modal -->
-
+<script>
+            window.onload = function() {
+            $('input').maxlength({
+            alwaysShow: false,
+                    warningClass: "label label-success",
+                    limitReachedClass: "label label-danger",
+                    separator: ' out of ',
+                    preText: 'You typed ',
+                    postText: ' chars available.',
+                    validate: true
+            });
+            };
+</script>
 @stop

@@ -22,7 +22,7 @@ class CreateExperienceTable extends Migration
             $table->date('date_dedut');
             $table->date('date_fin');
             $table->integer('cv_id')->unsigned();
-            $table->foreign('cv_id')->references('id')->on('cvs')->onDelete('cascade');;
+            $table->foreign('cv_id')->references('id')->on('cvs')->onDelete('cascade');
             $table->timestamps();
         });
     }

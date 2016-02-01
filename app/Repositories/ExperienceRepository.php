@@ -54,12 +54,12 @@ class ExperienceRepository extends BaseRepository {
         if (isset($inputs['ville'])) {
             $this->model->ville = $inputs['ville'];
         }
-        if (isset($inputs['date_debut'])) {
-            $this->model->date_debut = $inputs['date_debut'];
+        if (isset($inputs['date_dedut'])) {
+            $this->model->date_dedut = $inputs['date_dedut'];
         }
 
         if (isset($inputs['date_fin'])) {
-            $this->model->date_fin = $inputs['date_debut'];
+            $this->model->date_fin = $inputs['date_fin'];
         }
         if (isset($inputs['cv_id'])) {
             $this->cv = Cv::find(intval($inputs['cv_id']));
