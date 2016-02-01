@@ -98,17 +98,11 @@ class EtudiantRepository extends BaseRepository
 	
 	public function index($filiere_id = null)
     {
-        $etudiants = DB::table('etudiants');
+        $etudiants = Etudiant::get();
         if ($filiere_id) {
             $etudiants->where('filiere_id', $filiere_id);
         }
-
-        $etudiants = $etudiants->get();
-        foreach ($etudiants as $etudiant) {
-            $cvs[] = $this->getCvsEtudiant($etudiant->id);
-        }
-        
-        return ['etudiants' => $cvs];
+        return $etudiants;
     }
 	
 	public function get($id)

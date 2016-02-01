@@ -180,6 +180,13 @@ Route::group(['middleware' => 'web'], function () {
 			'uses' => 'etudiantController@create',
 			'as' => 'createcv'
 		]);
+
+		Route::post('cv/create',[
+			'uses' => 'etudiantController@createcv',
+			'as' => 'storecv'
+		]);
+
+		
 		Route::get('cv',[
 			'uses' => 'etudiantController@cv',
 			'as' => 'cv'

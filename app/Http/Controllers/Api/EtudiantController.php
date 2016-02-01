@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Session;
 
 class EtudiantController extends Controller {
 
+    
+
     /**
      * The EtudiantRepository instance.
      *

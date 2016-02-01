@@ -62,7 +62,7 @@ class LangueController extends Controller
     public function store(Request $request)
     {
         $langue = $this->langue_gestion->store($request->all());
-        return $langue->cv->langues ;
+        return $langue;
     }
 
     public function langues($id)
@@ -107,7 +107,7 @@ class LangueController extends Controller
     {
         $langue = $this->langue_gestion->update($request->all(), $id);
         
-        return $langue->cv->langues ;
+        return $langue;
     }
 
     /**
@@ -119,6 +119,6 @@ class LangueController extends Controller
     public function destroy ($id)
     {
         $langue = $this->langue_gestion->destroy($id);
-        return $langue->cv->langues;
+        return $langue;
     }
 }

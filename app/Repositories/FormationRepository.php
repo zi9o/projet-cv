@@ -75,10 +75,10 @@ class FormationRepository extends BaseRepository {
             }
         }
 
-        if (isset($inputs['etablissemant_id'])) {
-            $this->etablissement = Cv::find(intval($inputs['etablissemant_id']));
+        if (isset($inputs['etablissement_id'])) {
+            $this->etablissement = Cv::find(intval($inputs['etablissement_id']));
             if($this->cv != null) {
-                $this->model->etablissemant_id = $this->etablissement->id;
+                $this->model->etablissement_id = $this->etablissement->id;
             }
         }
         

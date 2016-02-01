@@ -62,7 +62,7 @@ class LoisirController extends Controller
     public function store(Request $request)
     {
         $loisir = $this->loisir_gestion->store($request->all());
-        return $loisir->cv->loisirs ;
+        return $loisir ;
     }
 
     public function loisirs($id)
@@ -107,7 +107,7 @@ class LoisirController extends Controller
     {
         $loisir = $this->loisir_gestion->update($request->all(), $id);
         
-        return $loisir->cv->loisirs ;
+        return $loisir ;
     }
 
     /**
@@ -119,6 +119,6 @@ class LoisirController extends Controller
     public function destroy ($id)
     {
         $loisir = $this->loisir_gestion->destroy($id);
-        return $loisir->cv->loisirs;
+        return $loisir;
     }
 }

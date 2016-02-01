@@ -62,7 +62,7 @@ class CompetenceController extends Controller
     public function store(Request $request)
     {
         $competence = $this->competence_gestion->store($request->all());
-        return $competence->cv->competences ;
+        return $competence ;
     }
 
     public function competences($id)
@@ -107,7 +107,7 @@ class CompetenceController extends Controller
     {
         $competence = $this->competence_gestion->update($request->all(), $id);
         
-        return $competence->cv->competences ;
+        return $competence ;
     }
 
     /**
@@ -119,6 +119,6 @@ class CompetenceController extends Controller
     public function destroy ($id)
     {
         $competence = $this->competence_gestion->destroy($id);
-        return $competence->cv->competences;
+        return $competence;
     }
 }

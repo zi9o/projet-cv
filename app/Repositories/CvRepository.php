@@ -43,14 +43,14 @@ class CvRepository extends BaseRepository {
      */
     public function save($inputs)
     {
-        if (isset($inputs['nomcv'])) {
-            $this->model->nom_cv = $inputs['nomcv'];
+        if (isset($inputs['nom_cv'])) {
+            $this->model->nom_cv = $inputs['nom_cv'];
         }
         if (isset($inputs['lienVideo'])) {
             $this->model->lienVideo = $inputs['lienVideo'];
         }
-        if (isset($inputs['etudiant'])) {
-            $this->etudiant = Etudiant::find(intval($inputs['etudiant']));
+        if (isset($inputs['etudiant_id'])) {
+            $this->etudiant = Etudiant::find(intval($inputs['etudiant_id']));
             if($this->etudiant != null) {
                 $this->model->etudiant_id = $this->etudiant->id;
             } 

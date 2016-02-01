@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
 	/**
+     * The CvRepository instance.
+     *
+     * @var App\Repositories\CvRepository
+     */ 
+    protected $cv_gestion;
+
+    /**
      * The EtudiantRepository instance.
      *
      * @var App\Repositories\EtudiantRepository
@@ -35,12 +42,20 @@ class AdminController extends Controller
     public function __construct(EtudiantRepository $etudiant_gestion, FiliereRepository $filiere_gestion)
     {
         $this->middleware('auth');
-        if(!(Auth::check() && Auth::user()->admin)){
-    		return redirect()->route('etudiant');
+        if (Auth::check()) {
+                if(!Auth::user()->admin){
+                    return redirect()->route('etudiant');
+                }else{
+                     $this->etudiant_gestion = $etudiant_gestion;
+                     $this->filiere_gestion = $filiere_gestion;
+                }
+
+            
+        }else{
+            return redirect()->guest('login');
         }
 
-        $this->etudiant_gestion = $etudiant_gestion;
-        $this->filiere_gestion = $filiere_gestion;
+       
     }
 
 
@@ -57,7 +72,21 @@ class AdminController extends Controller
 
     public function liste ()
     { 
+        $etudiants = $this->etudiant_gestion->index();
         
+        
+        return view('admin.liste', compact('etudiants'));
     }
+
+    public function view($id)
+    {
+        $cv = $this->etudiant_gestion->getcvDetails($id);
+        $format = "1" ;
+        if ($format==="1") {
+            return view('etudiant.format1', compact('cv'));
+        }
+        return view('etudiant.cv', compact('cv'));
+    }
+
 
 }

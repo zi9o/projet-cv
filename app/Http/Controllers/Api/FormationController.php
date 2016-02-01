@@ -49,7 +49,7 @@ class FormationController extends Controller
      */
     public function index()
     {
-        $cvs = $this->formation_gestion->index(3); 
+        $cvs = $this->formation_gestion->index(); 
         return $cvs;
     }
 
@@ -79,7 +79,7 @@ class FormationController extends Controller
     {
         $formation = $this->formation_gestion->store($request->all());
 
-        return redirect()->route('api.etudiant.cv.show', [$formation->cv_id]);
+        return $formation;
     }
 
     /**
@@ -115,7 +115,7 @@ class FormationController extends Controller
     {
         $formation = $this->formation_gestion->update($request->all(), $id);
 
-        return redirect()->route('api.etudiant.cv.show', [$formation->cv_id]);
+        return $formation;
     }
 
     /**
@@ -127,6 +127,6 @@ class FormationController extends Controller
     public function destroy($id)
     {
         $formation = $this->formation_gestion->destroy($id);
-        return redirect()->route('api.etudiant.cv.show', [$formation->cv_id]);
+        return $formation;
     }
 }

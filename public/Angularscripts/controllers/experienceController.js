@@ -5,8 +5,6 @@ app.controller('experienceController', ['$scope', '$http', 'API_URL', 'Upload', 
 
         
         $scope.addExperience = function () {
-
-
             $http.post(API_URL + '/cv/experience', {
                 intitule: $scope.experience.intitule,
                 organisation: $scope.experience.organisation,

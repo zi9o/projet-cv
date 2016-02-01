@@ -296,9 +296,11 @@
                             </li>
 
                             <li>
-                                <a href="{{ URL::route('createcv') }}" class="waves-effect">
+                                <a class="waves-effect" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="ti-pencil-alt"></i>
+                                    <span> Nouveau cv </span></a>
+                                <!-- <a href="{{ URL::route('createcv') }}" class="waves-effect">
                                     <i class="ti-pencil-alt"></i>
-                                    <span> Nouveau cv </span> </a>
+                                    <span> Nouveau cv </span> </a> -->
                             </li>
 
                             <li>
@@ -330,15 +332,46 @@
                 <div class="content">
                     <div class="container">
                         <!-- Page-Title -->
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-sm-12">
                                 <div class="panel panel-primary" id="panelBody">
-
+ -->
                                     @yield('contenu')
 
+                                    @if (!Auth::guest())
+
+                                        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">                                                                      
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <strong>création d'un nouveau cv</strong>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div>&nbsp;</div>
+                                                        <form class="form-horizontal" role="form" method="post" action="{{ url('/etudiant/cv/create') }}">
+                                                                {{ csrf_field() }}
+                                                                <div class="form-group">
+                                                                    <div class="col-xs-12">
+                                                                        <input type="text" class="form-control" name="nom_cv" placeholder="entrez un nom pour votre cv">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group text-center m-t-40">
+                                                                    <div class="col-xs-12">
+                                                                        <input type="hidden" name="etudiant_id" value="{{Auth::user()->etudiant_id}}">
+                                                                        <button class="btn btn-inverse btn-block waves-effect waves-light" type="submit">envoyer</button>
+                                                                    </div>
+                                                                </div>
+                                                        </form>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+                                    @endif  
+<!-- 
                                 </div>
 
-                            </div>
+                            </div -->
                         </div>
                     </div>
                 </div>
