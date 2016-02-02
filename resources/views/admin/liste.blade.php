@@ -1,7 +1,6 @@
 @extends('template')
 
 @section('contenu')
-	 
                         <div class="row">
                         	<div class="col-sm-8">
                         		<form role="form">
@@ -14,21 +13,13 @@
 
 
 										<div class="col-md-4">
-											<div class="p-20">
-												
 												<select class="selectpicker" data-style="btn-default btn-custom">
-													<option>Mustard</option>
-													<option>Ketchup</option>
-													<option>Relish</option>
+													<option>filtrer par : </option>
+													<option>filière</option>
+													<option>niveau</option>
 												</select>
-												
-					
-												
-											</div>
 										</div>
-										
-
-                        	
+								         	
                         </div>
                         <div class="row">
                         	<div class="col-sm-8">
@@ -41,7 +32,7 @@
                         	  	<div class="card-box m-b-10">
                         			<div class="table-box opport-box" id="etudiants">
                         				<div class="table-detail">
-                        					<img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="imrana" alt="img" class="img-circle thumb-lg m-r-15" />
+                        					<img src='{{ asset("../storage/uploads/team1.jpg")}}' alt="imrana" alt="img" class="img-circle thumb-lg m-r-15" />
                         				</div>
                         				
                         				<div class="table-detail">
@@ -72,11 +63,13 @@
                                                         <div class="col-md-12 col-sm-12">
 
                                                             <div class="portlet-body">
-                                                                <div class="row static-info">
-                                                                    <div class="col-md-5 name"> Entreprise: </div>
-                                                                    <div class="col-md-7 value"> </div>
-                                                                </div>
-                                                                
+                                                            	<div class="row static-info">
+                                                            		
+							                        					<a href="#" class="btn btn-sm btn-primary waves-effect waves-light">le nom du 1er cv</a>
+						                        						<a href="#" class="btn btn-sm btn-primary waves-effect waves-light">le nom du 2ème cv</a>
+						                        						<a href="#" class="btn btn-sm btn-primary waves-effect waves-light">...</a>
+						                        					
+						                        				</div>
                                                             </div>
 
                                                         </div>
@@ -86,6 +79,8 @@
                         		
                         		</div>
 
+
+                        		<br/><br/>
                                       
 
                         		@foreach ($etudiants as $etudiant)
@@ -93,7 +88,7 @@
                         			<div class="card-box m-b-10">
                         			<div class="table-box opport-box" id="etudiants">
                         				<div class="table-detail">
-                        					<img src="{{$etudiant->photo}}" alt="img" class="img-circle thumb-lg m-r-15" />
+                        					<img src='{{ asset("../storage/uploads/$etudiant->photo")}}' alt="img" class="img-circle thumb-lg m-r-15" />
                         				</div>
                         				
                         				<div class="table-detail">
@@ -107,7 +102,7 @@
                         				
                         				 
                         				 		<a class="accordion-toggle accordion-toggle-styled collapsed" 
-                                                           data-toggle="collapse" data-parent="#etudiants" href="#etud{{$etudiant->id}}">  mes cv</a>
+                                                           data-toggle="collapse" data-parent="#etudiants" href="#etud{{$etudiant->id}}">  les cv</a>
 	                        					
                         				</div>
 

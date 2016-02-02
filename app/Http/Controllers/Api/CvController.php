@@ -9,7 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Cv;
 use App\Models\Etudiant;
-
+use App\Models\Loisir;
 class CvController extends Controller
 {
     /**
@@ -81,6 +81,9 @@ class CvController extends Controller
     {
         $cv = $this->cv_gestion->store($request->all());
 
+        $loisir = new Loisir();
+        $loisir->cv_id = $cv->id ;
+        $loisir->save();
         return ['cv_id'=>$cv->id, 'etudiant_id'=>$cv->etudiant_id];
     }
 

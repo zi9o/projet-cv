@@ -1,17 +1,78 @@
 @extends('template')
 
+@section('cv')
+  {!! HTML::style('assets/css/miniaturecv.css') !!}
+@endSection
+
+
 @section('contenu')
-@if(isset($etudiant['mes_cv']))
-    {{extract($etudiant)}}
-    	<p>mes cv</p>
-    	@foreach ($etudiant['mes_cv'] as $index => $cv)
-            <div id="autre">&nbsp;</div>
-               	
+@if($mes_cv)
+
+    
+      @foreach ($mes_cv as $index => $cv)
+
+
+        <div class="col-lg-3">
+            <div class="card-box"  style="height:400px;">
+
+
+              <a href="{{ URL::route('cv.show', $cv['id']) }}">
+
+                <div class="page">
+                  <div class="infophoto">
+                    <div class="info">
+                      <p>
+                        <strong>{{$nom}}&nbsp;{{$prenom}}</strong><br/>
+                        
+                      </p>
+                     
+                    </div>
+                    <div class="photo">
+                      <img src='{{ asset("../storage/uploads/team1.jpg")}}' alt="Photo diallo imran" height="45" width="35">
+                    </div>
+                  </div>
+
+                  <div class="section">
+                    <h2>Formation</h2><hr/>
+                    
+                  </div>
+
+                  <div class="section">
+                    <h2>Expériences Professionneles</h2><hr/>
+                    
+                  </div>
+
+                  <div class="section">
+                    <h2>Langues parlées</h2><hr/>
+                    
+                  </div>
+
+                  <div class="section">
+                    <h2>Centres d'interet</h2><hr/>
+                    
+                  </div>
+              </div>
+
+                </a>
+
+                
+
+              <div id="autre">&nbsp;</div>
+                
                 <div id="infosPersonnel">
-                    <div><strong> nom du cv : </strong> {{ $cv['nomcv'] }}</div>
-                    <div><strong> lien video : </strong> {{ $cv['lienVideo'] }}</div>
-       				{!! link_to_route('cv.show', 'details', [$cv["id"]], ['class' => 'lien']) !!}
-            	</div>
+
+                    <div><strong><a href="{{ URL::route('cv.show', $cv['id']) }}">{{ $cv['nomcv'] }}</a></strong></div>
+                    
+                    @if ($cv['lienVideo'])
+                        <div><strong> lien video : </strong> {{ $cv['lienVideo'] }}</div>
+                    @endif
+                    
+              </div>
+
+            </div>
+        </div>
+
+              
             
         @endforeach                        
    @else

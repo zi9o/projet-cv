@@ -1,0 +1,82 @@
+
+.page{
+
+	width: 100%;
+	margin: auto ;
+	font-size: 0.5em ;
+	font-family: 'Source sans Pro', Calibri, Tahoma, sans-serif;
+	padding: 0.3em ;
+	border: 1px solid #3388CC ;
+	border-radius: 2px ;
+	box-shadow: 1px 1.5px 1.8px black ;
+	height: 83%;
+	Line-Height: 1pt;
+}
+
+
+
+.infopage{
+	height: 4%;
+	margin-bottom: 1px ;
+}
+
+.info{
+	float: left;
+}
+
+.photo{
+	float: right;
+}
+
+.sec-gauche{
+	float: left;
+	font-weight: bold;
+	font-size: 0.7em;
+	margin-bottom: 1px;
+}
+
+.sec-droite{
+	margin-left: 25% ;
+	margin-top: 1px ;
+	margin-bottom: 1px;
+}
+
+
+strong{
+	font-size: 1em ;
+}
+
+.section{
+	clear: both;
+	text-align: justify;
+	padding-bottom: 1px;
+	padding-top: 1px;
+	margin : 1px;
+}
+
+h2{
+	font-size: 1.1em ;
+	color: #3388bb;
+	margin: 0;
+	padding: 0;
+	height: 1px;
+
+}
+
+.duree{
+	font-weight: normal;
+	font-style: italic;
+	font-size: 0.8em ;
+}
+
+.titre{
+	font-weight: bold;
+	font-size: 0.9em ;
+}
+
+
+/*éléments d'intéraction*/
+
+/*.section:hover{
+	color: #00AA00 ;
+}*/

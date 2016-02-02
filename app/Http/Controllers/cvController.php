@@ -96,7 +96,8 @@ class cvController extends Controller
     public function cv()
     {
         $etudiant = $this->etudiant_gestion->getCvsEtudiant(Auth::user()->etudiant_id);
-        return view('etudiant.cv', compact('etudiant'));
+        extract($etudiant);
+        return view('etudiant.cv', compact('mes_cv', 'nom', 'prenom'));
     }
 
     
@@ -127,7 +128,7 @@ class cvController extends Controller
         //return $cv;
         //$format = "1" ;
         
-        return view('etudiant.format1', compact('cv'));
+        return view('cv.format1', compact('cv'));
         
     }
 }
