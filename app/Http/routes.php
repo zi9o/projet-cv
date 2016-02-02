@@ -181,18 +181,18 @@ Route::group(['middleware' => 'web'], function () {
 		])->where('id', '[0-9]+');
 		
 		Route::get('cv/create',[
-			'uses' => 'cvController@create',
+			'uses' => 'etudiantController@create',
 			'as' => 'createcv'
 		]);
 
 		Route::post('cv/create',[
-			'uses' => 'cvController@store',
+			'uses' => 'etudiantController@store',
 			'as' => 'storecv'
 		]);
 
 		
 		Route::get('cv',[
-			'uses' => 'cvController@cv',
+			'uses' => 'etudiantController@cv',
 			'as' => 'cv'
 		]);
 

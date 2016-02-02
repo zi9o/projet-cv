@@ -62,9 +62,10 @@ class etudiantController extends Controller
                 $this->filiere_gestion = $filiere_gestion;
                 $this->cv_gestion = $cv_gestion ;
             }
-        }else{
-            return redirect()->guest('login');
         }
+
+            return redirect()->guest('login');
+        
     }
 
     /**
@@ -82,7 +83,67 @@ class etudiantController extends Controller
                 $aujourdhui = date("F j, Y, g:i a"); 
                 return view('etudiant.index', compact('etudiant', 'aujourdhui'));
         }
+
         
         //return $this->etudiant ;
     }
+
+
+    public function create()
+    { 
+            return view('etudiant.create');
+    }
+        
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $cv = $this->cv_gestion->update($request->all(), $id);
+
+        return redirect()->route('api.etudiant.etudiant.show', [$cv->etudiant_id]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $cv = $this->cv_gestion->destroy($id);
+        return redirect()->route('api.etudiant.etudiant.show', [$cv->etudiant_id]);
+    }
+
+    public function cv()
+    {
+        $etudiant = $this->etudiant_gestion->getCvsEtudiant(Auth::user()->etudiant_id);
+        extract($etudiant) ;
+        return view('etudiant.cv', compact('mes_cv', 'nom', 'prenom'));
+    }
+
+    
+    
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function store(Request $request = null)
+    {
+        $cv = $this->cv_gestion->store($request->all());
+            
+        return redirect()->route('createcv');;
+    }
+
 }
