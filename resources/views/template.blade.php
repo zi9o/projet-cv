@@ -57,6 +57,10 @@
         {!! HTML::style('assets/assets/global/plugins/typeahead/typeahead.css') !!}
         <!-- END PAGE LEVEL PLUGINS -->
 
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        {!! HTML::style('assets/assets/global/plugins/icheck/skins/all.css') !!}
+        <!-- END PAGE LEVEL PLUGINS -->
+
         <!-- BEGIN THEME GLOBAL STYLES -->
         {!! HTML::style('assets/assets/global/css/components.min.css') !!}
         {!! HTML::style('assets/assets/global/css/plugins.min.css') !!}
@@ -443,6 +447,8 @@
 {!! HTML::script('AngularScripts/controllers/experienceController.js') !!}
 {!! HTML::script('AngularScripts/controllers/formationController.js') !!}
 {!! HTML::script('AngularScripts/controllers/competenceController.js') !!}
+{!! HTML::script('AngularScripts/controllers/langueController.js') !!}
+{!! HTML::script('AngularScripts/controllers/loisirController.js') !!}
 
 
 <!-- BEGIN CORE PLUGINS -->
