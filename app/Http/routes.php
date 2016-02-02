@@ -16,13 +16,11 @@
 
 Route::get('confirm','ConfirmController@confirm');
 
+
 Route::group (['prefix' =>  'api'], function ()
-{
-	
+{	
 	Route::resource('etablissement', 'Api\EtablissementController') ;
-	
 	Route::resource('etudiant', 'Api\EtudiantController');
-    
     Route::post('etudiant/upload', 'Api\EtudiantController@upload');
 	Route::group(['prefix' =>  'etudiant'], function (){
 		Route::resource('cv', 'Api\CvController');
@@ -151,6 +149,8 @@ Route::get('/', function ()
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
+    Route::get('api','Api\AuthController@logged');
+
     Route::get('home', 'HomeController@index');
 
     Route::get('user',[
@@ -180,10 +180,10 @@ Route::group(['middleware' => 'web'], function () {
 			'as' => 'cv.show'
 		])->where('id', '[0-9]+');
 		
-		Route::get('cv/create',[
+		Route::get('cv/{id}/create',[
 			'uses' => 'etudiantController@create',
 			'as' => 'createcv'
-		]);
+		])->where('id', '[0-9]+');
 
 		Route::post('cv/create',[
 			'uses' => 'etudiantController@store',
@@ -200,6 +200,7 @@ Route::group(['middleware' => 'web'], function () {
 			'uses' => 'ConfirmController@help',
 			'as' => 'cv.help'
 		]);
+
 });
 
 });

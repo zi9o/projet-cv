@@ -12,6 +12,7 @@ use App\Models\Filiere;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\CvRepository;
 use App\Models\Cv;
+use App\Models\Loisir;
 
 class etudiantController extends Controller
 {
@@ -89,13 +90,11 @@ class etudiantController extends Controller
     }
 
 
-    public function create()
+    public function create($id)
     { 
-            return view('etudiant.create');
+            return view('etudiant.create', compact('id'));
     }
         
-
-
     /**
      * Update the specified resource in storage.
      *
@@ -143,7 +142,10 @@ class etudiantController extends Controller
     {
         $cv = $this->cv_gestion->store($request->all());
             
-        return redirect()->route('createcv');;
+        $loisir = new Loisir() ;
+        $loisir->cv_id = $cv->id ;
+        $loisir->save() ;
+        return redirect()->route('createcv', [$cv->id]);;
     }
 
 }

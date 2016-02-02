@@ -294,11 +294,7 @@
                                 <span> Accueil </span> </a>
                         </li>
 
-                        <!--                        <li>
-                                                    <a href="{{ URL::route('createcv') }}" class="waves-effect">
-                                                        <i class="ti-pencil-alt"></i>
-                                                        <span> Nouveau cv </span> </a>
-                                                </li>-->
+                       
 
                         <li>
                             <a href="{{ URL::route('cv') }}" class="waves-effect">
