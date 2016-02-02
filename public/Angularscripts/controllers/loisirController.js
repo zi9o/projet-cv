@@ -5,12 +5,13 @@ app.controller('loisirController', ['$scope', '$http', 'API_URL', 'Upload', func
 
         $scope.loisir = null;
         $scope.loadingLoisir=false;
+        $scope.text = "Hello World";
 
         $scope.initLoisir = function () {
             $scope.loadingLoisir=true;
             $http.get(API_URL + '/cv/' + $ID_CV + '/loisir').
                     success(function (data, status, headers, config) {
-                        $scope.loisir = data;
+                        $scope.loisir = data[0];
                         $scope.loadingLoisir=false;
                     });
         };
@@ -21,11 +22,13 @@ app.controller('loisirController', ['$scope', '$http', 'API_URL', 'Upload', func
                 description: lsr.description,
                 cv_id: $ID_CV
             }).success(function (data, status, headers, config) {
-                lsr = data;
+                lsr = data[0];
                 $scope.loadingLoisir=false;
             });
             ;
         };
+        
+        $scope.initLoisir();
     }]);
 
 

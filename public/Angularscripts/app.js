@@ -1,4 +1,4 @@
-var app = angular.module('Cv', ['ngFileUpload','ngRoute','ngResource','ngAnimate'], function($interpolateProvider) {
+var app = angular.module('Cv', ['ngFileUpload','ngRoute','ngResource','ngAnimate','ngSanitize','summernote'], function($interpolateProvider) {
 	$interpolateProvider.startSymbol('<%=');
 	$interpolateProvider.endSymbol('%>');
 }).constant('API_URL', 'http://localhost/projet-cv/public/api/etudiant');

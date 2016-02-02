@@ -14,7 +14,7 @@
 
 
         <title>cv-generator</title>
-
+{!! HTML::style('../bower_components/summernote/dist/summernote.css') !!}
         <!--Morris Chart CSS -->
 
         {!! HTML::style('assets/plugins/morris/morris.css') !!}
@@ -434,6 +434,13 @@
 {!! HTML::script('AngularJS/angular-resource.min.js') !!}
 {!! HTML::script('AngularJS/angular-route.min.js') !!}
 {!! HTML::script('AngularJS/angular-animate.min.js') !!}
+{!! HTML::script('AngularJS/angular-sanitize.min.js') !!}
+<!--summernote-->
+{!! HTML::script('../bower_components/summernote/dist/summernote.js') !!}
+{!! HTML::script('../bower_components/summernote/lang/summernote-fr-FR.js') !!}
+{!! HTML::script('../bower_components/angular-summernote/dist/angular-summernote.js') !!}
+
+
 <!-- activate ng upload file -->
 {!! HTML::script('ng-file-upload/ng-file-upload-shim.min.js') !!} <!-- for no html5 browsers support -->
 {!! HTML::script('ng-file-upload/ng-file-upload.min.js') !!}
@@ -473,8 +480,6 @@
 {!! HTML::script('assets/assets/global/plugins/jquery-validation/js/jquery.validate.min.js') !!}
 {!! HTML::script('assets/assets/global/plugins/jquery-validation/js/additional-methods.min.js') !!}
 {!! HTML::script('assets/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') !!}
-{!! HTML::script('assets/assets/global/plugins/bootstrap-markdown/lib/markdown.js') !!}
-{!! HTML::script('assets/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js') !!}
 <!-- END PAGE LEVEL SCRIPTS -->
 
 
