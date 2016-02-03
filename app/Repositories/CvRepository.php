@@ -266,9 +266,9 @@ class CvRepository extends BaseRepository {
         $data = DB::table('cvs')
                 ->join('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id')
                 ->join('filieres', 'filieres.id', '=', 'etudiants.filiere_id')
-                ->select('filieres.id','filieres.code', 'filieres.designation', DB::raw('count(cvs.id) as nombre'))
+                ->select('filieres.code', 'filieres.designation', DB::raw('count(cvs.id) as nombre'))
                 
-                ->groupBy('filieres.id')->get();
+                ->groupBy('filieres.code')->get();
 
 
         return $data ;  
@@ -279,11 +279,11 @@ class CvRepository extends BaseRepository {
     public function statCompetence($filiere=null)
     {
         $data = DB::table('competences')
-                ->join('cvs', 'cvs.id', '=', 'competences.cv_id')
-                ->join('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id')
-                ->select('competences.niveau', DB::raw('count(competences.niveau) as nombreNiveau'))
-                ->groupBy('competences.niveau')
-                ->get();
+                   ->join ('cvs', 'cvs.id', '=', 'competences.cv_id')
+                   ->join ('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id')
+                   ->select ('competences.niveau', DB::raw('count(competences.niveau) as nombreNiveau'))
+                   ->groupBy ('competences.niveau')
+                   ->get();
         return $data ;  
     }
 
