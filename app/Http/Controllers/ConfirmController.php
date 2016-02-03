@@ -22,20 +22,21 @@ class ConfirmController extends Controller
         $this->etudiant_gestion = $etudiant_gestion;
     }
 
-    public function confirm($cne)
+    public function confirm(Request $request)
     {
         
+        extract($request->all()) ;
         $etudiant = $this->etudiant_gestion->getByCne($cne);
         if (!empty($etudiant)) {
           
             session(['id' => $etudiant->id]);
             
             var_dump(session('id')) ;
-            //return redirect('register');
+            return redirect('register');
         }else{
             
             var_dump($etudiant) ;
-            //return redirect('login')->with('error', 'ce cne n existe pas dans l annuaire de l ensa');       
+            return redirect('login')->with('error', 'ce cne n existe pas dans l annuaire de l ensa');       
         }
 
         

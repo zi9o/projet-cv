@@ -71,8 +71,10 @@
                 </div>
             </div>
 
+
+            <?=  var_dump(session('id')) ?>
             
-                <div class="alert alert-danger">{{ session('id') }}</div>
+                <div class="alert alert-danger">id : {{ session('id') }}</div>
             
                 
             
