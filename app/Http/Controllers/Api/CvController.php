@@ -134,4 +134,10 @@ class CvController extends Controller
         
         return $this->cv_gestion->destroy($id);
     }
+
+
+    public function statFiliere()
+    {
+        return $this->cv_gestion->statFiliere();
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\EtudiantRepository;
 use App\Http\Controllers\Controller;
+use Session ;
 
 class ConfirmController extends Controller
 {
@@ -21,17 +22,20 @@ class ConfirmController extends Controller
         $this->etudiant_gestion = $etudiant_gestion;
     }
 
-    public function confirm(Request $request)
+    public function confirm($cne)
     {
-        extract($request->all());
+        
         $etudiant = $this->etudiant_gestion->getByCne($cne);
         if (!empty($etudiant)) {
-            /*var_dump($etudiant);*/
-           
-            var_dump($request->session()->all()) ;
-            return redirect('register')->with('etudiant', $etudiant);
+          
+            session(['id' => $etudiant->id]);
+            
+            return session('id');
+            //return redirect('register');
         }else{
-            return redirect('login')->with('error', 'ce cne n existe pas dans l annuaire de l ensa');       
+            
+            return $etudiant;
+            //return redirect('login')->with('error', 'ce cne n existe pas dans l annuaire de l ensa');       
         }
 
         

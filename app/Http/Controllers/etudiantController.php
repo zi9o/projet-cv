@@ -92,7 +92,8 @@ class etudiantController extends Controller
 
     public function create($id)
     { 
-            return view('etudiant.create', compact('id'));
+        $etudiant_id = $etudiant->id ;
+            return view('etudiant.create', compact('id', 'etudiant_id'));
     }
         
     /**
@@ -145,7 +146,7 @@ class etudiantController extends Controller
         $loisir = new Loisir() ;
         $loisir->cv_id = $cv->id ;
         $loisir->save() ;
-        return redirect()->route('createcv', [$cv->id]);;
+        return redirect()->route('createcv', [$cv->id]);
     }
 
 }

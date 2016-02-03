@@ -72,7 +72,7 @@
             </div>
 
             
-                <div class="alert alert-danger">{{ session('etudiant') }}</div>
+                <div class="alert alert-danger">{{ session('id') }}</div>
             
                 
             

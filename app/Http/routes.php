@@ -14,16 +14,24 @@
 |
 */
 
-Route::get('confirm','ConfirmController@confirm');
+Route::get('confirm/{cne}','ConfirmController@confirm');
 
 
 Route::group (['prefix' =>  'api'], function ()
 {	
+	Route::get('statFiliere', [
+			'uses' => 'Api\CvController@statFiliere',
+			'as' => 'statFiliere'
+		]);
+
 	Route::resource('etablissement', 'Api\EtablissementController') ;
 	Route::resource('etudiant', 'Api\EtudiantController');
     Route::post('etudiant/upload', 'Api\EtudiantController@upload');
 	Route::group(['prefix' =>  'etudiant'], function (){
 		Route::resource('cv', 'Api\CvController');
+
+		
+
 		Route::get('filiere/{id}', [
 			'uses' => 'Api\EtudiantController@etudiantsfiliere',
 			'as' => 'filiere.etudiants'
