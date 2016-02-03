@@ -92,7 +92,7 @@ class etudiantController extends Controller
 
     public function create($id)
     { 
-        $etudiant_id = $etudiant->id ;
+        $etudiant_id = Auth::user()->etudiant->id ;
             return view('etudiant.create', compact('id', 'etudiant_id'));
     }
         

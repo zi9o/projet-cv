@@ -1,9 +1,13 @@
 app.controller('competenceController', ['$scope', '$http', 'API_URL', 'Upload', function ($scope, $http, API_URL, Upload)
     {
-        $ID = 2;
-        $ID_CV = 4;
-
-
+        $ID;
+        $ID_CV;
+        $scope.initUser = function (id, id_cv)
+        {
+            $ID = id;
+            $ID_CV = id_cv;
+        };
+        
         $scope.niveau = {
             availableOptions: [
                 {id: '1', name: '10%'},

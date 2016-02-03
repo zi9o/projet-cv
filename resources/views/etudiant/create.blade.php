@@ -52,7 +52,7 @@
                                             <div class="col-sm-8">
                                                 <h4 class="m-t-0 header-title"><b>Informations</b></h4>
                                                 <p class="text-muted font-13 m-b-30">
-                                                    Some basic informations.
+                                                    Some basic informations. 
                                                 </p>
                                             </div>
                                             <div class="col-sm-4">
@@ -180,7 +180,7 @@
                 <div class="tab-pane" id="section-work" ng-controller="experienceController"> 
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="card-box"  ng-init="initExperience();" >
+                            <div class="card-box"  ng-init="initUser({{$etudiant_id}},{{$id}});initExperience();" >
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h4 class="m-t-0 header-title"><b>Expérience professionnelle</b></h4>
@@ -411,7 +411,7 @@
                     </div><!-- End Edit Experience Modal -->
                 </div> 
                 <div class="tab-pane" id="section-competance" ng-controller="competenceController"> 
-                    <div class="row" ng-init="initCompetence();">
+                    <div class="row" ng-init="initUser({{$etudiant_id}},{{$id}});initCompetence();">
                         <div class="col-lg-12">
                             <div class="card-box">
                                 <div class="row">
@@ -449,7 +449,7 @@
                 <div class="tab-pane" id="section-formation" ng-controller="formationController"> 
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="card-box"  ng-init="initFormation();" >
+                            <div class="card-box"  ng-init="initUser({{$etudiant_id}},{{$id}});initFormation();" >
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h4 class="m-t-0 header-title"><b>Formation</b></h4>
@@ -691,7 +691,7 @@
                 <div class="tab-pane" id="section-langue" ng-controller="langueController"> 
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="card-box" ng-init="initLangue();"  >
+                            <div class="card-box" ng-init="initUser({{$etudiant_id}},{{$id}});initLangue();"  >
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h4 class="m-t-0 header-title"><b>Langues</b></h4>
@@ -752,7 +752,7 @@
                 <div class="tab-pane" id="section-interest" ng-controller="loisirController"> 
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="card-box" ng-init="initLoisir();" >
+                            <div class="card-box" ng-init="initUser({{$etudiant_id}},{{$id}});initLoisir();" >
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <h4 class="m-t-0 header-title"><b>Centres d'intêret</b></h4>

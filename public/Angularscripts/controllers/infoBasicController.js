@@ -1,6 +1,12 @@
 app.controller('infoBasicController', ['$scope', '$http', 'API_URL', 'Upload', function ($scope, $http, API_URL, Upload)
     {
-        $ID = 2;
+        $ID;
+        $ID_CV;
+        $scope.initUser = function (id, id_cv)
+        {
+            $ID = id;
+            $ID_CV = id_cv;
+        };
         
         $scope.filename = '';
         $scope.situation = {
