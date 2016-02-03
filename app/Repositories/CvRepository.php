@@ -219,45 +219,99 @@ class CvRepository extends BaseRepository {
     }
 
 
-    public function statFiliere()
+    // public function statFiliere()
+    // {
+    //     return [[    
+    //                 'key' => "Cumulative Return",
+    //                 'values' => [
+    //                                   [ 
+    //                                     'label' => "A" ,
+    //                                     'value' => -29.765957771107
+    //                                   ] , 
+    //                                   [ 
+    //                                     'label' => "B" , 
+    //                                     'value' => 0
+    //                                   ] , 
+    //                                   [ 
+    //                                     'label' => "C" , 
+    //                                     'value' => 32.807804682612
+    //                                   ] , 
+    //                                   [ 
+    //                                     'label' => "D" , 
+    //                                     'value' => 196.45946739256
+    //                                   ] , 
+    //                                   [ 
+    //                                     'label' => "E" ,
+    //                                     'value' => 0.19434030906893
+    //                                   ] , 
+    //                                   [ 
+    //                                     'label' => "F" , 
+    //                                     'value' => -98.079782601442
+    //                                   ] , 
+    //                                   [ 
+    //                                     'label' => "G" , 
+    //                                     'value' => -13.925743130903
+    //                                   ] , 
+    //                                   [ 
+    //                                     'label' => "H" , 
+    //                                     'value' => -5.1387322875705
+    //                                   ]                            
+    //                             ]
+    //             ]];   
+    // }
+
+
+    public function statFiliere($annee=null)
     {
-        return [[    
-                    'key' => "Cumulative Return",
-                    'values' => [
-                                      [ 
-                                        'label' => "A" ,
-                                        'value' => -29.765957771107
-                                      ] , 
-                                      [ 
-                                        'label' => "B" , 
-                                        'value' => 0
-                                      ] , 
-                                      [ 
-                                        'label' => "C" , 
-                                        'value' => 32.807804682612
-                                      ] , 
-                                      [ 
-                                        'label' => "D" , 
-                                        'value' => 196.45946739256
-                                      ] , 
-                                      [ 
-                                        'label' => "E" ,
-                                        'value' => 0.19434030906893
-                                      ] , 
-                                      [ 
-                                        'label' => "F" , 
-                                        'value' => -98.079782601442
-                                      ] , 
-                                      [ 
-                                        'label' => "G" , 
-                                        'value' => -13.925743130903
-                                      ] , 
-                                      [ 
-                                        'label' => "H" , 
-                                        'value' => -5.1387322875705
-                                      ]                            
-                                ]
-                ]];   
+        $data = DB::table('cvs')
+                ->join('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id')
+                ->join('filieres', 'filieres.id', '=', 'etudiants.filiere_id')
+                ->select('filieres.id','filieres.code', 'filieres.designation', DB::raw('count(cvs.id) as nombre'))
+                
+                ->groupBy('filieres.id')->get();
+
+
+        return $data ;  
     }
+
+
+
+    public function statCompetence($filiere=null)
+    {
+        $data = DB::table('competences')
+                ->join('cvs', 'cvs.id', '=', 'competences.cv_id')
+                ->join('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id')
+                ->select('competences.niveau', DB::raw('count(competences.niveau) as nombreNiveau'))
+                ->groupBy('competences.niveau')
+                ->get();
+        return $data ;  
+    }
+
+
+    public function statVille($filiere=null)
+    {
+        $data = DB::table('experiences')
+                ->join('cvs', 'cvs.id', '=', 'experiences.cv_id')
+                ->join('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id')
+                ->select('experiences.ville', DB::raw('count(experiences.ville) as nombre'))
+                ->groupBy('experiences.ville')
+                ->get();
+
+
+        return $data ;  
+    }
+
+    public function statEntreprise($filiere=null)
+    {
+        $data = DB::table('experiences')
+                ->join('cvs', 'cvs.id', '=', 'experiences.cv_id')
+                ->join('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id')
+                ->select('experiences.organisation', DB::raw('count(experiences.organisation) as nombre'))
+                ->groupBy('experiences.organisation')
+                ->get();
+
+        return $data ;  
+    }
+
     
 }

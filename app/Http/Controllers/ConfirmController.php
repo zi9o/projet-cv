@@ -30,11 +30,11 @@ class ConfirmController extends Controller
           
             session(['id' => $etudiant->id]);
             
-            return session('id');
+            var_dump(session('id')) ;
             //return redirect('register');
         }else{
             
-            return $etudiant;
+            var_dump($etudiant) ;
             //return redirect('login')->with('error', 'ce cne n existe pas dans l annuaire de l ensa');       
         }
 

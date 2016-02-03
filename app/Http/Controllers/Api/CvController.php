@@ -140,4 +140,19 @@ class CvController extends Controller
     {
         return $this->cv_gestion->statFiliere();
     }
+
+    public function statCompetence()
+    {
+        return $this->cv_gestion->statCompetence();
+    }
+
+    public function statVille()
+    {
+        return $this->cv_gestion->statVille();
+    }
+
+    public function statEntreprise()
+    {
+        return $this->cv_gestion->statEntreprise();
+    }
 }

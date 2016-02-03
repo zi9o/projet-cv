@@ -24,6 +24,21 @@ Route::group (['prefix' =>  'api'], function ()
 			'as' => 'statFiliere'
 		]);
 
+	Route::get('statCompetence', [
+			'uses' => 'Api\CvController@statCompetence',
+			'as' => 'statCompetence'
+		]);
+
+	Route::get('statVille', [
+			'uses' => 'Api\CvController@statVille',
+			'as' => 'statVille'
+		]);
+
+	Route::get('statEntreprise', [
+			'uses' => 'Api\CvController@statEntreprise',
+			'as' => 'statEntreprise'
+		]);
+
 	Route::resource('etablissement', 'Api\EtablissementController') ;
 	Route::resource('etudiant', 'Api\EtudiantController');
     Route::post('etudiant/upload', 'Api\EtudiantController@upload');
