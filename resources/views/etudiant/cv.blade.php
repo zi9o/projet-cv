@@ -13,10 +13,22 @@
 
 
         <div class="col-lg-3">
+
+
+            <div class="portlet-widgets">
+                  <a href="{{ URL::route('createcv', $cv['id']) }}"><i class="ion-edit"></i></a>
+                  <span class="divider"></span>
+                  <a data-toggle="collapse" data-parent="#accordion1" href="#bg-default">&nbsp;</i></a>
+                  <span class="divider"></span>
+                  <a href="{{ URL::route('deletecv', $cv['id']) }}" data-toggle="remove"><i class="ion-close-round"></i></a>
+              </div>
+
             <div class="card-box"  style="height:400px;">
-
-
+              
+              
+                
               <a href="{{ URL::route('cv.show', $cv['id']) }}">
+
 
                 <div class="page">
                   <div class="infophoto">
@@ -51,11 +63,11 @@
                     <h2>Centres d'interet</h2><hr/>
                     
                   </div>
-              </div>
+                </div>
 
-                </a>
+              </a>
 
-                
+
 
               <div id="autre">&nbsp;</div>
                 

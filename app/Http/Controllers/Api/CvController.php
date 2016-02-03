@@ -141,18 +141,18 @@ class CvController extends Controller
         return $this->cv_gestion->statFiliere();
     }
 
-    public function statCompetence()
+    public function statCompetence($filiere=null)
     {
-        return $this->cv_gestion->statCompetence();
+        return $this->cv_gestion->statCompetence($filiere);
     }
 
-    public function statVille()
+    public function statVille($filiere=null)
     {
-        return $this->cv_gestion->statVille();
+        return $this->cv_gestion->statVille($filiere=null);
     }
 
-    public function statEntreprise()
+    public function statEntreprise($filiere=null)
     {
-        return $this->cv_gestion->statEntreprise();
+        return $this->cv_gestion->statEntreprise($filiere);
     }
 }

@@ -24,20 +24,36 @@ Route::group (['prefix' =>  'api'], function ()
 			'as' => 'statFiliere'
 		]);
 
+	Route::get('statCompetence/{filiere}', [
+			'uses' => 'Api\CvController@statCompetence',
+			'as' => 'statCompetence'
+		])->where('filiere', '[0-9]+');
+
 	Route::get('statCompetence', [
 			'uses' => 'Api\CvController@statCompetence',
 			'as' => 'statCompetence'
-		]);
+		])->where('filiere', '[0-9]+');
 
 	Route::get('statVille', [
 			'uses' => 'Api\CvController@statVille',
 			'as' => 'statVille'
 		]);
 
+	Route::get('statVille/{filiere}', [
+			'uses' => 'Api\CvController@statVille',
+			'as' => 'statVille'
+		])->where('filiere', '[0-9]+');
+
+
 	Route::get('statEntreprise', [
 			'uses' => 'Api\CvController@statEntreprise',
 			'as' => 'statEntreprise'
 		]);
+
+	Route::get('statEntreprise/{filiere}', [
+			'uses' => 'Api\CvController@statEntreprise',
+			'as' => 'statEntreprise'
+		])->where('filiere', '[0-9]+');
 
 	Route::resource('etablissement', 'Api\EtablissementController') ;
 	Route::resource('etudiant', 'Api\EtudiantController');
@@ -207,6 +223,13 @@ Route::group(['middleware' => 'web'], function () {
 			'uses' => 'etudiantController@create',
 			'as' => 'createcv'
 		])->where('id', '[0-9]+');
+
+
+		Route::get('cv/{id}/delete',[
+			'uses' => 'etudiantController@destroy',
+			'as' => 'deletecv'
+		])->where('id', '[0-9]+');
+
 
 		Route::post('cv/create',[
 			'uses' => 'etudiantController@store',

@@ -5,6 +5,8 @@ namespace App\Repositories;
 use App\Models\Cv;
 use App\Models\Etudiant;
 use App\Models\Filiere;
+use App\Models\Competence;
+use App\Models\Experience;
 use DB;
 class CvRepository extends BaseRepository {
 
@@ -151,43 +153,7 @@ class CvRepository extends BaseRepository {
     }
 
     
-    /**
-     * Get cv collection.
-     *
-     * @param  string  $slug
-     * @return array
-     */
-    public function show($slug)
-    {
-        $cv = $this->model->with('user', 'tags')->whereSlug($slug)->firstOrFail();
 
-        $comments = $this->comment
-                ->wherecv_id($this->model->id)
-                ->with('user')
-                ->whereHas('user', function($q) {
-                    $q->whereValid(true);
-                })
-                ->get();
-
-        return compact('cv', 'comments');
-    }
-
-    /**
-     * Get cv collection.
-     *
-     * @param  App\Models\cv $cv
-     * @return array
-     */
-    public function edit($cv)
-    {
-        $tags = [];
-
-        foreach ($this->model->tags as $tag) {
-            array_push($tags, $tag->tag);
-        }
-
-        return compact('cv', 'tags');
-    }
 
 
     /**
@@ -219,54 +185,14 @@ class CvRepository extends BaseRepository {
     }
 
 
-    // public function statFiliere()
-    // {
-    //     return [[    
-    //                 'key' => "Cumulative Return",
-    //                 'values' => [
-    //                                   [ 
-    //                                     'label' => "A" ,
-    //                                     'value' => -29.765957771107
-    //                                   ] , 
-    //                                   [ 
-    //                                     'label' => "B" , 
-    //                                     'value' => 0
-    //                                   ] , 
-    //                                   [ 
-    //                                     'label' => "C" , 
-    //                                     'value' => 32.807804682612
-    //                                   ] , 
-    //                                   [ 
-    //                                     'label' => "D" , 
-    //                                     'value' => 196.45946739256
-    //                                   ] , 
-    //                                   [ 
-    //                                     'label' => "E" ,
-    //                                     'value' => 0.19434030906893
-    //                                   ] , 
-    //                                   [ 
-    //                                     'label' => "F" , 
-    //                                     'value' => -98.079782601442
-    //                                   ] , 
-    //                                   [ 
-    //                                     'label' => "G" , 
-    //                                     'value' => -13.925743130903
-    //                                   ] , 
-    //                                   [ 
-    //                                     'label' => "H" , 
-    //                                     'value' => -5.1387322875705
-    //                                   ]                            
-    //                             ]
-    //             ]];   
-    // }
-
+    
 
     public function statFiliere($annee=null)
     {
         $data = DB::table('cvs')
                 ->join('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id')
                 ->join('filieres', 'filieres.id', '=', 'etudiants.filiere_id')
-                ->select('filieres.code', 'filieres.designation', DB::raw('count(cvs.id) as nombre'))
+                ->select('filieres.code', DB::raw('count(cvs.id) as nombre'))
                 
                 ->groupBy('filieres.code')->get();
 
@@ -278,24 +204,82 @@ class CvRepository extends BaseRepository {
 
     public function statCompetence($filiere=null)
     {
-        $data = DB::table('competences')
-                   ->join ('cvs', 'cvs.id', '=', 'competences.cv_id')
-                   ->join ('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id')
-                   ->select ('competences.niveau', DB::raw('count(competences.niveau) as nombreNiveau'))
-                   ->groupBy ('competences.niveau')
-                   ->get();
-        return $data ;  
+        $competence = new Competence();
+        $query = $competence
+                ->select ('competences.niveau', DB::raw('count(competences.niveau) as nombre'))
+                ->orderby('nombre', 'desc')
+                ->join ('cvs', 'cvs.id', '=', 'competences.cv_id')
+                ->join ('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id');
+                
+        if ($filiere) {
+            $query->where('etudiants.filiere_id', $filiere);
+        }
+
+        $query->groupBy ('competences.niveau');
+                   
+
+        $data = $query->get();
+
+
+        for ($i=0; $i<4 ; $i++) { 
+            if (!isset($data[$i])) {
+                $niveau = $i+1;
+                $valeur = ['niveau'=>$niveau, 'nombre'=>0];
+                $data[$i] = $valeur;
+            }
+        }
+
+        $sortie = array();
+        foreach ($data as $value) {
+            if ($value['niveau'] == 1) {
+
+                $value['niveau'] = 'Débutant' ;
+
+            }
+            if ($value['niveau'] == 2) {
+                $value['niveau'] = 'Intermediaire' ;
+            }
+            if ($value['niveau'] == 3) {
+                $value['niveau'] = 'Avancé' ;
+            }
+            if ($value['niveau'] == 4) {
+                $value['niveau'] = 'Expert' ;
+            }
+
+            $sortie[] = ['niveau' => $value['niveau'],'nombre' => $value['nombre']] ;
+        }
+        
+
+        //var_dump($data) ;
+        return $sortie;
+        
     }
 
 
     public function statVille($filiere=null)
     {
-        $data = DB::table('experiences')
+        $experience = new Experience();
+        $query = $experience->select('experiences.ville', DB::raw('count(experiences.ville) as nombre'))
+                ->orderby('nombre', 'desc')
+                ->limit(5)
                 ->join('cvs', 'cvs.id', '=', 'experiences.cv_id')
-                ->join('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id')
-                ->select('experiences.ville', DB::raw('count(experiences.ville) as nombre'))
-                ->groupBy('experiences.ville')
+                ->join('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id');
+                
+                
+
+
+        if ($filiere) {
+            $query->where('etudiants.filiere_id', $filiere);
+        }
+
+        $query ->groupBy('experiences.ville')
                 ->get();
+                   
+
+        $data = $query->get();
+
+
+               
 
 
         return $data ;  
@@ -307,6 +291,8 @@ class CvRepository extends BaseRepository {
                 ->join('cvs', 'cvs.id', '=', 'experiences.cv_id')
                 ->join('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id')
                 ->select('experiences.organisation', DB::raw('count(experiences.organisation) as nombre'))
+                ->orderby('nombre', 'desc')
+                ->limit(5)
                 ->groupBy('experiences.organisation')
                 ->get();
 

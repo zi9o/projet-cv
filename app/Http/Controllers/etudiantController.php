@@ -119,7 +119,7 @@ class etudiantController extends Controller
     public function destroy($id)
     {
         $cv = $this->cv_gestion->destroy($id);
-        return redirect()->route('api.etudiant.etudiant.show', [$cv->etudiant_id]);
+        return redirect()->route('cv.show', [$cv->etudiant_id]);
     }
 
     public function cv()
