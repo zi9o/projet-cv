@@ -238,7 +238,7 @@
 
                             <li class="dropdown">
                                 <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">
-                                    <img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" class="img-circle">
+                                    <img src="{{asset('../storage/uploads').'/'.Auth::user()->etudiant->photo}}" alt="user-img" class="img-circle">
                                     {{-- < img src = "{{asset('assets/images/').'/'.$imgsrc}}"> --}}
                                 </a>
                                 <ul class="dropdown-menu">

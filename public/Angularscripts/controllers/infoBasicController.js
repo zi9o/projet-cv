@@ -1,7 +1,7 @@
 app.controller('infoBasicController', ['$scope', '$http', 'API_URL', 'Upload', function ($scope, $http, API_URL, Upload)
     {
-        $ID;
-        $ID_CV;
+        $ID=0;
+        $ID_CV=0;
         $scope.initUser = function (id, id_cv)
         {
             $ID = id;
@@ -68,6 +68,6 @@ app.controller('infoBasicController', ['$scope', '$http', 'API_URL', 'Upload', f
                 console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
             });
         };
-        $scope.init();
+        
     }]);
 

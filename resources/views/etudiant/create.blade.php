@@ -44,7 +44,7 @@
 
                 <div class="tab-pane active" id="section-basic" ng-controller="infoBasicController"> 
                     <form class="form-horizontal " role="form" id="form_sample_2" enctype="multipart/form-data" >
-                        <div class="row">
+                        <div class="row" ng-init="initUser({{$etudiant_id}},{{$id}});init();">
                             <div class="col-lg-12">
                                 <div class="card-box">
                                     <div class="row">
