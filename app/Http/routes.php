@@ -14,7 +14,7 @@
 |
 */
 
-Route::get('confirm','ConfirmController@confirm');
+Route::post('confirm','ConfirmController@confirm');
 
 
 Route::group (['prefix' =>  'api'], function ()

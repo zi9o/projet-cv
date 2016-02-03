@@ -68,9 +68,14 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'admin' => isset($data['admin']),
-            'etudiant_id' => session('id'),    
+            'etudiant_id' => 1,    
         ]);
 
         return $user ;
+    }
+
+    public function confirm()
+    {
+       
     }
 }

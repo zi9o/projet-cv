@@ -30,9 +30,14 @@ class ConfirmController extends Controller
         if (!empty($etudiant)) {
           
             session(['id' => $etudiant->id]);
-            
+            $cookie = cookie('id1' , $etudiant->id);
             var_dump(session('id')) ;
-            return redirect('register');
+            return redirect('register')->withCookie($cookie);
+
+
+            
+            
+            // return $cookie;
         }else{
             
             var_dump($etudiant) ;

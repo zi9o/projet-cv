@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>Register
+                                    <i class="fa fa-btn fa-user"></i> Register
                                 </button>
                             </div>
                         </div>
@@ -72,13 +72,39 @@
             </div>
 
 
-            <?=  var_dump(session('id')) ?>
-            
-                <div class="alert alert-danger">id : {{ session('id') }}</div>
-            
-                
-            
-            
+            <div class="modal fade" id="confirm-cne" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <div>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel"><center>entrez votre cne pour confirmer que vous etes bien de l'ensa</center></h4>
+                </div>
+
+                <div class="modal-body">
+                  <form class="form-horizontal" role="form" method="post" action="{{ url('/confirm') }}">
+                                {!! csrf_field() !!}
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="text" class="form-control" name="cne">
+                                    </div>
+                                </div>
+                                <div class="form-group text-center m-t-40">
+                                    <div class="col-xs-12">
+                                        <button class="btn btn-inverse btn-block waves-effect waves-light" type="submit">envoyer</button>
+                                    </div>
+                                </div>
+                    </form> 
+                </div>
+
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-danger btn-ok">Delete</a>
+                </div> -->
+              </div>
+            </div>
+          </div>
+
             
       
 @endsection

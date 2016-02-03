@@ -89,8 +89,8 @@
                 </div>
 
                 <div class="modal-body">
-                  <form class="form-horizontal" role="form" method="get" action="{{ url('/confirm') }}">
-                            
+                  <form class="form-horizontal" role="form" method="post" action="{{ url('/confirm') }}">
+                                {!! csrf_field() !!}
                                 <div class="form-group">
                                     <div class="col-xs-12">
                                         <input type="text" class="form-control" name="cne">
