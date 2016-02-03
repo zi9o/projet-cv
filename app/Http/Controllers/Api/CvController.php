@@ -141,9 +141,9 @@ class CvController extends Controller
         return $this->cv_gestion->statFiliere();
     }
 
-    public function statCompetence($filiere=null)
+    public function statCompetence(Request $request, $filiere=null)
     {
-        return $this->cv_gestion->statCompetence($filiere);
+        return $this->cv_gestion->statCompetence($request->all(), $filiere);
     }
 
     public function statVille($filiere=null)

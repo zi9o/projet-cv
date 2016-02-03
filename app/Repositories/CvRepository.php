@@ -202,12 +202,12 @@ class CvRepository extends BaseRepository {
 
 
 
-    public function statCompetence($filiere=null)
+    public function statCompetence($inputs=null, $filiere=null)
     {
         $competence = new Competence();
         $query = $competence
-                ->select ('competences.niveau', DB::raw('count(competences.niveau) as nombre'))
-                ->orderby('nombre', 'desc')
+                ->select ('competences.intitule', DB::raw('count(competences.intitule) as nombre'))
+
                 ->join ('cvs', 'cvs.id', '=', 'competences.cv_id')
                 ->join ('etudiants', 'etudiants.id', '=', 'cvs.etudiant_id');
                 
@@ -215,19 +215,18 @@ class CvRepository extends BaseRepository {
             $query->where('etudiants.filiere_id', $filiere);
         }
 
-        $query->groupBy ('competences.niveau');
+        if(isset($inputs['idNiveau'])){
+            $query->where('competences.niveau', $inputs['idNiveau']);
+        }
+
+        $query->orderby('nombre', 'desc')
+                ->limit(5);
+        $query->groupBy ('competences.intitule');
                    
 
         $data = $query->get();
 
 
-        for ($i=0; $i<4 ; $i++) { 
-            if (!isset($data[$i])) {
-                $niveau = $i+1;
-                $valeur = ['niveau'=>$niveau, 'nombre'=>0];
-                $data[$i] = $valeur;
-            }
-        }
 
         $sortie = array();
         foreach ($data as $value) {
@@ -251,7 +250,7 @@ class CvRepository extends BaseRepository {
         
 
         //var_dump($data) ;
-        return $sortie;
+        return $data;
         
     }
 
