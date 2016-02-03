@@ -39,9 +39,6 @@ var ChartsAmcharts = function() {
                 "year": 2014,
                 "income": 34.1,
                 "expenses": 29.9,
-                "dashLengthColumn": 5,
-                "alpha": 0.2,
-                "additional": "(projection)"
             }],
             "valueAxes": [{
                 "axisAlpha": 0,
@@ -56,7 +53,8 @@ var ChartsAmcharts = function() {
                 "title": "Income",
                 "type": "column",
                 "valueField": "income"
-            }, {
+            }
+            , {
                 "balloonText": "<span style='font-size:13px;'>[[title]] in [[category]]:<b>[[value]]</b> [[additional]]</span>",
                 "bullet": "round",
                 "dashLengthField": "dashLengthLine",
@@ -70,7 +68,8 @@ var ChartsAmcharts = function() {
                 "lineAlpha": 1,
                 "title": "Expenses",
                 "valueField": "expenses"
-            }],
+            }
+        ],
             "categoryField": "year",
             "categoryAxis": {
                 "gridPosition": "start",
@@ -3231,17 +3230,17 @@ var ChartsAmcharts = function() {
         init: function() {
 
             initChartSample1();
-            initChartSample2();
-            initChartSample3();
-            initChartSample4();
-            initChartSample5();
-            initChartSample6();
-            initChartSample7();
-            initChartSample8();
-            initChartSample9();
-            initChartSample10();
-            initChartSample11();
-            initChartSample12();
+//            initChartSample2();
+//            initChartSample3();
+//            initChartSample4();
+//            initChartSample5();
+//            initChartSample6();
+//            initChartSample7();
+//            initChartSample8();
+//            initChartSample9();
+//            initChartSample10();
+//            initChartSample11();
+//            initChartSample12();
         }
 
     };

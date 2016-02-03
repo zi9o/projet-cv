@@ -14,7 +14,7 @@
 
 
         <title>cv-generator</title>
-{!! HTML::style('../bower_components/summernote/dist/summernote.css') !!}
+        {!! HTML::style('../bower_components/summernote/dist/summernote.css') !!}
         <!--Morris Chart CSS -->
 
         {!! HTML::style('assets/plugins/morris/morris.css') !!}
@@ -294,7 +294,7 @@
                                 <span> Accueil </span> </a>
                         </li>
 
-                       
+
 
                         <li>
                             <a href="{{ URL::route('cv') }}" class="waves-effect">
@@ -489,8 +489,31 @@
 {!! HTML::script('assets/assets/global/plugins/typeahead/typeahead.bundle.min.js') !!}
 <!-- END PAGE LEVEL PLUGINS -->
 
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+{!! HTML::script('assets/assets/global/plugins/amcharts/amcharts/amcharts.js') !!}
+{!! HTML::script('assets/assets/global/plugins/amcharts/amcharts/serial.js') !!}
+{!! HTML::script('assets/assets/global/plugins/amcharts/amcharts/pie.js') !!}
+{!! HTML::script('assets/assets/global/plugins/amcharts/amcharts/radar.js') !!}
+{!! HTML::script('assets/assets/global/plugins/amcharts/amcharts/themes/light.js') !!}
+{!! HTML::script('assets/assets/global/plugins/amcharts/amcharts/themes/patterns.js') !!}
+{!! HTML::script('assets/assets/global/plugins/amcharts/amcharts/themes/chalk.js') !!}
+{!! HTML::script('assets/assets/global/plugins/amcharts/amcharts/themes/dark.js') !!}
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+{!! HTML::script('assets/assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
+<!-- END PAGE LEVEL PLUGINS -->
+
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 {!! HTML::script('assets/assets/global/scripts/app.min.js') !!}
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+{!! HTML::script('assets/assets/pages/scripts/portlet-draggable.min.js') !!}
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+{!! HTML::script('AngularScripts/controllers/statisticController.js') !!}
+<!-- END PAGE LEVEL SCRIPTS -->
 
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 {{-- {!! HTML::script('assets/assets/pages/scripts/components-bootstrap-tagsinput.min.js')  !!} --}}

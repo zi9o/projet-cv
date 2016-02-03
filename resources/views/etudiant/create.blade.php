@@ -431,7 +431,7 @@
                                         <div class="margin-top-10">
 
                                             <select ng-cloak="" required class="form-control input-large"  ng-model="competence.niveau">
-                                                <option ng-repeat="option in niveau.availableOptions" value="<%= option.name %>">
+                                                <option ng-repeat="option in niveau.availableOptions track by option.id" value="<%= option.id %>">
                                                     <%= option.name %>
                                                 </option>
                                             </select>
