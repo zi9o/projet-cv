@@ -24,6 +24,8 @@ class EtudiantRepository extends BaseRepository
 	 * @param  App\Models\Role $role
 	 * @return void
 	 */
+
+
 	public function __construct(
 		Etudiant $etudiant, 
 		Filiere $filiere)

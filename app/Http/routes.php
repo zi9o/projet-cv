@@ -24,6 +24,12 @@ Route::group (['prefix' =>  'api'], function ()
 			'as' => 'statFiliere'
 		]);
 
+	Route::get('etudiants/{filiere}', [
+			'uses' => 'Api\Admin@etudiants',
+			'as' => 'etudiants'
+		])->where('filiere', '[0-9]+');
+
+	
 	Route::get('statCompetence/{filiere}', [
 			'uses' => 'Api\CvController@statCompetence',
 			'as' => 'statCompetence'
