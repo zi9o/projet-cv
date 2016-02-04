@@ -58,77 +58,37 @@
                             
                                 <div class="form-group text-center m-t-40">
                                     <div class="col-xs-12">
-                                        <button class="btn btn-inverse btn-block waves-effect waves-light" type="submit">Log In</button>
+                                        <button class="btn btn-inverse btn-block waves-effect waves-light" type="submit">Connexion</button>
                                     </div>
                                 </div>
 
                                 <div class="form-group m-t-30 m-b-0">
                                     <div class="col-sm-12">
-                                        <a href="password" class="text-dark"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+                                        <a href="password" class="text-dark"><i class="fa fa-lock m-r-5"></i> Mot de passe oublié?</a>
                                     </div>
                                 </div>
                             </form>                         
                         </div>   
                 </div> 
    
-        <!-- <div class="row">
+         <div class="row">
                 <div class="col-sm-12 text-center">
                     <p>
-                        Already have account?<a href="register" class="text-primary m-l-5"><b>Sign In</b></a>
+                       Vous n'avez pas de compte?<a href="register" class="text-primary m-l-5"><b>Register</b></a>
                     </p>
                 </div>
-        </div> -->
+        </div> 
 
-            <div class="modal fade" id="confirm-cne" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
+           
 
-                <div>
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title" id="myModalLabel"><center>entrez votre cne pour confirmer que vous etes bien de l'ensa</center></h4>
-                </div>
-
-                <div class="modal-body">
-                  <form class="form-horizontal" role="form" method="post" action="{{ url('/confirm') }}">
-                                {!! csrf_field() !!}
-                                <div class="form-group">
-                                    <div class="col-xs-12">
-                                        <input type="text" class="form-control" name="cne">
-                                    </div>
-                                </div>
-                                <div class="form-group text-center m-t-40">
-                                    <div class="col-xs-12">
-                                        <button class="btn btn-inverse btn-block waves-effect waves-light" type="submit">envoyer</button>
-                                    </div>
-                                </div>
-                    </form> 
-                </div>
-
-                <!-- <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <a class="btn btn-danger btn-ok">Delete</a>
-                </div> -->
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-                <div class="col-sm-12 text-center">
-                    <p>Already have account?
-                        <a href="#" data-toggle="modal" data-target="#confirm-cne" class="text-primary m-l-5">Sign In</a>
-
-                    </p>
-                </div>
-        </div>
-      <br>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-      <script>
+<!--      <script>
         $('#confirm-cne').on('show.bs.modal', function(e) {
           $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 
           $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
         });
-      </script>
+      </script>-->
 
       @if (session()->has('error'))
             <span class="help-block">

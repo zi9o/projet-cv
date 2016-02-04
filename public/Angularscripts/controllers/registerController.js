@@ -33,12 +33,20 @@ app.controller('registerController', ['$scope', '$http', 'root_URL', function ($
 
             $http.post(root_URL + 'confirm', {
                 cne: $scope.cne,
-            }).success(function (data, status, headers, config) {
-                jQuery('#RegisterForm').show();
-                toastr['success']("Votre CNE est valide. <br><br>Inscrivez vous maintenant!", "Vérification de CNE");
+            }).then(function (resp) {
+                if (resp.data != -1)
+                {
+                    jQuery('#RegisterForm').show();
+                    toastr['success']("Votre CNE est valide. <br><br>Inscrivez vous maintenant!", "Vérification de CNE");
 
-                $scope.CNEForm = false;
-                $scope.id_etud = data;
+                    $scope.CNEForm = false;
+                    $scope.id_etud = resp.data;
+                } else
+                {
+                    toastr['error']("<br>Votre CNE est invalide. <br><br>Réessayer !", "Vérification de CNE");
+                }
+            }, function (resp) {
+                console.log('Error status: ' + resp.status);
             });
         };
 
