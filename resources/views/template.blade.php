@@ -503,7 +503,7 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 {!! HTML::script('assets/assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
 <!-- END PAGE LEVEL PLUGINS -->
-
+@yield('scriptsBefore')
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 {!! HTML::script('assets/assets/global/scripts/app.min.js') !!}
 
@@ -553,5 +553,6 @@
                             $("[data-mask]").inputmask();
                     });
         </script>-->
+@yield('scriptsAfter')
 </body>
 </html>

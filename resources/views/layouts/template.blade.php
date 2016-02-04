@@ -16,6 +16,9 @@
                 <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
                 <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
                 <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+                <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="assets/assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL PLUGINS -->
 
                 <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
                 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,22 +42,69 @@
 			var resizefunc = [];
 		</script>
 
-                <script src="assets/js/modernizr.min.js"></script>
+                <!-- jQuery  -->
 
 
-		<!-- jQuery  -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/detect.js"></script>
-        <script src="assets/js/fastclick.js"></script>
-        <script src="assets/js/jquery.slimscroll.js"></script>
-        <script src="assets/js/jquery.blockUI.js"></script>
-        <script src="assets/js/waves.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/jquery.nicescroll.js"></script>
-        <script src="assets/js/jquery.scrollTo.min.js"></script>
-        <script src="assets/js/jquery.core.js"></script>
-        <script src="assets/js/jquery.app.js"></script>
+{!! HTML::script('assets/assets/global/plugins/jquery.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/bootstrap/js/bootstrap.min.js') !!}
+
+{!! HTML::script('assets/js/detect.js') !!}
+{!! HTML::script('assets/js/fastclick.js') !!}
+{!! HTML::script('assets/js/jquery.slimscroll.js') !!}
+{!! HTML::script('assets/js/jquery.blockUI.js') !!}
+{!! HTML::script('assets/js/waves.js') !!}
+{!! HTML::script('assets/js/wow.min.js') !!}
+{!! HTML::script('assets/js/jquery.nicescroll.js') !!}
+{!! HTML::script('assets/js/jquery.scrollTo.min.js') !!}
+
+{!! HTML::script('assets/plugins/peity/jquery.peity.min.js') !!}
+
+<!-- jQuery  -->
+{!! HTML::script('assets/plugins/waypoints/lib/jquery.waypoints.js') !!}
+{!! HTML::script('assets/plugins/counterup/jquery.counterup.min.js') !!}
+
+{!! HTML::script('assets/plugins/morris/morris.min.js') !!}
+{!! HTML::script('assets/plugins/raphael/raphael-min.js') !!}
+
+{!! HTML::script('assets/plugins/jquery-knob/jquery.knob.js') !!}
+
+{{-- {!! HTML::script('assets/pages/jquery.dashboard.js') !!} --}}
+
+{!! HTML::script('assets/js/jquery.core.js') !!}
+{!! HTML::script('assets/js/jquery.app.js') !!}
+
+
+<!--AngularJS-->
+
+{!! HTML::script('AngularJS/angular.min.js') !!}
+{!! HTML::script('AngularJS/angular-resource.min.js') !!}
+{!! HTML::script('AngularJS/angular-route.min.js') !!}
+{!! HTML::script('AngularJS/angular-animate.min.js') !!}
+{!! HTML::script('AngularJS/angular-sanitize.min.js') !!}
+<!--summernote-->
+{!! HTML::script('../bower_components/summernote/dist/summernote.js') !!}
+{!! HTML::script('../bower_components/summernote/lang/summernote-fr-FR.js') !!}
+{!! HTML::script('../bower_components/angular-summernote/dist/angular-summernote.js') !!}
+
+
+<!-- activate ng upload file -->
+{!! HTML::script('ng-file-upload/ng-file-upload-shim.min.js') !!} <!-- for no html5 browsers support -->
+{!! HTML::script('ng-file-upload/ng-file-upload.min.js') !!}
+
+{!! HTML::script('AngularScripts/app.js') !!}
+{!! HTML::script('AngularScripts/controllers/registerController.js') !!}
+
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="assets/assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+{!! HTML::script('assets/assets/global/scripts/app.min.js') !!}
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="assets/assets/pages/scripts/ui-toastr.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
 
         @yield('scripts')
 	</body>
