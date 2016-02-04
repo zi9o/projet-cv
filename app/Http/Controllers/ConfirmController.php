@@ -30,18 +30,16 @@ class ConfirmController extends Controller
         if (!empty($etudiant)) {
           
             session(['id' => $etudiant->id]);
-            $cookie = cookie('id1' , $etudiant->id);
-            var_dump(session('id')) ;
-            return redirect('register')->withCookie($cookie);
+//            return redirect('register')->withCookie($cookie);
 
 
             
             
-            // return $cookie;
+             return $etudiant->id;
         }else{
             
-            var_dump($etudiant) ;
-            return redirect('login')->with('error', 'ce cne n existe pas dans l annuaire de l ensa');       
+            return -1;
+//            return redirect('login')->with('error', 'ce cne n existe pas dans l annuaire de l ensa');       
         }
 
         

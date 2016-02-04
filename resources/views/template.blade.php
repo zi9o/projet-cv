@@ -106,7 +106,10 @@
                             </button>
                             <span class="clearfix"></span>
                         </div>
-
+ <form role="search" class="navbar-left app-search pull-left hidden-xs">
+                                 <input type="text" placeholder="Search..." class="form-control">
+                                 <a href=""><i class="fa fa-search"></i></a>
+                            </form>
                         <!-- <div id="bar">
                                          <div class="language">
                                                                     <select id="language">
@@ -503,7 +506,7 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 {!! HTML::script('assets/assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
 <!-- END PAGE LEVEL PLUGINS -->
-
+@yield('scriptsBefore')
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 {!! HTML::script('assets/assets/global/scripts/app.min.js') !!}
 
@@ -553,5 +556,6 @@
                             $("[data-mask]").inputmask();
                     });
         </script>-->
+@yield('scriptsAfter')
 </body>
 </html>

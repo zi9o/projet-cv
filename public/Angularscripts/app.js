@@ -1,19 +1,20 @@
-var app = angular.module('Cv', ['ngFileUpload','ngRoute','ngResource','ngAnimate','ngSanitize','summernote'], function($interpolateProvider) {
-	$interpolateProvider.startSymbol('<%=');
-	$interpolateProvider.endSymbol('%>');
+var app = angular.module('Cv', ['ngFileUpload', 'ngRoute', 'ngResource', 'ngAnimate', 'ngSanitize', 'summernote'], function ($interpolateProvider) {
+    $interpolateProvider.startSymbol('<%=');
+    $interpolateProvider.endSymbol('%>');
 }).constant('API_URL', 'http://localhost/projet-cv/public/api/etudiant')
-        .constant('API_Statistic_URL','http://localhost/projet-cv/public/api/');
+        .constant('API_Statistic_URL', 'http://localhost/projet-cv/public/api/')
+        .constant('root_URL', 'http://localhost/projet-cv/public/');
 
-app.config(['$routeProvider', function ($routeProvider) {        
+app.config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider
-        
+
                 .when('/welcome', {
-            templateUrl: 'app/welcome.html',
-            controller: 'welcome',
-            controllerAs: 'vm',
-            caseInsensitiveMatch: true
-        });
+                    templateUrl: 'app/welcome.html',
+                    controller: 'welcome',
+                    controllerAs: 'vm',
+                    caseInsensitiveMatch: true
+                });
     }]);
 
 app.directive('cvSectionBasic', function () {
