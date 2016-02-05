@@ -25,7 +25,7 @@ Route::group (['prefix' =>  'api'], function ()
 		]);
 
 	Route::get('etudiants/{filiere}', [
-			'uses' => 'Api\Admin@etudiants',
+			'uses' => 'Api\AdminController@etudiants',
 			'as' => 'etudiants'
 		])->where('filiere', '[0-9]+');
 

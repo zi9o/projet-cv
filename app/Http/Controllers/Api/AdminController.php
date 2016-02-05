@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\EtudiantRepository;
 use App\Http\Controllers\Controller;
 
-class Admin extends Controller
+class AdminController extends Controller
 {
     /**
      * The EtudiantRepository instance.
