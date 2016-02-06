@@ -24,10 +24,22 @@ Route::group (['prefix' =>  'api'], function ()
 			'as' => 'statFiliere'
 		]);
 
+        Route::get('allEtudiants', [
+			'uses' => 'Api\AdminController@allEtudiants',
+			'as' => 'etudiants'
+		])->where('filiere', '[0-9]+');
 	Route::get('etudiants/{filiere}', [
 			'uses' => 'Api\AdminController@etudiants',
 			'as' => 'etudiants'
 		])->where('filiere', '[0-9]+');
+        Route::get('etudiants', [
+			'uses' => 'Api\AdminController@etudiants',
+			'as' => 'etudiants'
+		])->where('filiere', '[0-9]+');
+//        Route::get('etudiants', [
+//			'uses' => 'Api\AdminController@etudiants',
+//			'as' => 'etudiants'
+//		]);
 
 	
 	Route::get('statCompetence/{filiere}', [

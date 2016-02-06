@@ -1,4 +1,4 @@
-var app = angular.module('Cv', ['ngFileUpload', 'ngRoute', 'ngResource', 'ngAnimate', 'ngSanitize', 'summernote'], function ($interpolateProvider) {
+var app = angular.module('Cv', ['ngFileUpload', 'ngRoute', 'ngResource', 'ngAnimate', 'ngSanitize', 'summernote','angularUtils.directives.dirPagination'], function ($interpolateProvider) {
     $interpolateProvider.startSymbol('<%=');
     $interpolateProvider.endSymbol('%>');
 }).constant('API_URL', 'http://localhost/projet-cv/public/api/etudiant')
@@ -16,7 +16,9 @@ app.config(['$routeProvider', function ($routeProvider) {
                     caseInsensitiveMatch: true
                 });
     }]);
-
+//app.config(function(paginationTemplateProvider) {
+//    paginationTemplateProvider.setPath('http://localhost/projet-cv/public/AngularScripts/views/dirPagination.tpl.html');
+//});
 app.directive('cvSectionBasic', function () {
     return {
         restrict: 'EA',

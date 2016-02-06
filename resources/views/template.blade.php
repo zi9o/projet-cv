@@ -60,11 +60,21 @@
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         {!! HTML::style('assets/assets/global/plugins/icheck/skins/all.css') !!}
         <!-- END PAGE LEVEL PLUGINS -->
+        
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+{!! HTML::style('assets/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}
+{!! HTML::style('assets/assets/global/plugins/fancybox/source/jquery.fancybox.css') !!}
+<!-- END PAGE LEVEL PLUGINS -->
 
         <!-- BEGIN THEME GLOBAL STYLES -->
         {!! HTML::style('assets/assets/global/css/components.min.css') !!}
         {!! HTML::style('assets/assets/global/css/plugins.min.css') !!}
         <!-- END THEME GLOBAL STYLES -->
+        
+        <!-- BEGIN PAGE LEVEL STYLES -->
+        {!! HTML::style('assets/assets/pages/css/search.min.css') !!}
+        <!-- END PAGE LEVEL STYLES -->
+        
         <!-- BEGIN THEME LAYOUT STYLES -->
         {!! HTML::style('assets/assets/layouts/layout/css/layout.min.css') !!}
         {!! HTML::style('assets/assets/layouts/layout/css/themes/light2.min.css') !!}
@@ -92,7 +102,7 @@
             <!-- LOGO -->
             <div class="topbar-left">
                 <div class="text-center">
-                    <a href="{{ url('/user')}}" class="logo"><i class="icon-magnet icon-c-logo"></i><span>CV-generator</span></a>
+                    <a href="{{ url('/user')}}" class="logo"><i class="icon-c-logo">CvG</i><span>CV-generator</span></a>
                 </div>
             </div>
 
@@ -106,11 +116,7 @@
                             </button>
                             <span class="clearfix"></span>
                         </div>
- <form role="search" class="navbar-left app-search pull-left hidden-xs">
-                                 <input type="text" placeholder="Search..." class="form-control">
-                                 <a href=""><i class="fa fa-search"></i></a>
-                            </form>
-                        <!-- <div id="bar">
+<!--                         <div id="bar">
                                          <div class="language">
                                                                     <select id="language">
                                                                                     <option value="en" class="en">English</option>
@@ -127,116 +133,13 @@
                             <li><a href="{{ url('/login')}}">Login</a></li>
                             <li><a href="{{ url('/register')}}">Register</a></li>
                             @else
-                            <li class="dropdown hidden-xs">
-                                <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
-                                    <i class="icon-bell"></i> <span class="badge badge-xs badge-danger">3</span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-lg">
-                                    <li class="notifi-title"><span class="label label-default pull-right">New 3</span>Notification</li>
-                                    <li class="list-group nicescroll notification-list">
-                                        <!-- list item-->
-                                        <a href="javascript:void(0);" class="list-group-item">
-                                            <div class="media">
-                                                <div class="pull-left p-r-10">
-                                                    <em class="fa fa-diamond fa-2x text-primary"></em>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">A new order has been placed A new order has been placed</h5>
-                                                    <p class="m-0">
-                                                        <small>There are new settings available</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <!-- list item-->
-                                        <a href="javascript:void(0);" class="list-group-item">
-                                            <div class="media">
-                                                <div class="pull-left p-r-10">
-                                                    <em class="fa fa-cog fa-2x text-custom"></em>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New settings</h5>
-                                                    <p class="m-0">
-                                                        <small>There are new settings available</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <!-- list item-->
-                                        <a href="javascript:void(0);" class="list-group-item">
-                                            <div class="media">
-                                                <div class="pull-left p-r-10">
-                                                    <em class="fa fa-bell-o fa-2x text-danger"></em>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">Updates</h5>
-                                                    <p class="m-0">
-                                                        <small>There are <span class="text-primary font-600">2</span> new updates available</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <!-- list item-->
-                                        <a href="javascript:void(0);" class="list-group-item">
-                                            <div class="media">
-                                                <div class="pull-left p-r-10">
-                                                    <em class="fa fa-user-plus fa-2x text-info"></em>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New user registered</h5>
-                                                    <p class="m-0">
-                                                        <small>You have 10 unread messages</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <!-- list item-->
-                                        <a href="javascript:void(0);" class="list-group-item">
-                                            <div class="media">
-                                                <div class="pull-left p-r-10">
-                                                    <em class="fa fa-diamond fa-2x text-primary"></em>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">A new order has been placed A new order has been placed</h5>
-                                                    <p class="m-0">
-                                                        <small>There are new settings available</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <!-- list item-->
-                                        <a href="javascript:void(0);" class="list-group-item">
-                                            <div class="media">
-                                                <div class="pull-left p-r-10">
-                                                    <em class="fa fa-cog fa-2x text-custom"></em>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New settings</h5>
-                                                    <p class="m-0">
-                                                        <small>There are new settings available</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class="list-group-item text-right">
-                                            <small class="font-600">See all notifications</small>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                            
                             <li class="hidden-xs">
                                 <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="icon-size-fullscreen"></i></a>
                             </li>
-                            <li class="hidden-xs">
+<!--                            <li class="hidden-xs">
                                 <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="icon-settings"></i></a>
-                            </li>
+                            </li>-->
 
 
                             <li class="dropdown">
@@ -246,8 +149,8 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ url('/etudiant')}}"><i class="ti-user m-r-5"></i> {{ Auth::user()->name }}</a></li>
-                                    <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
-                                    <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
+                                    <!--<li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>-->
+                                    <!--<li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>-->
                                     <li><a href="{{ url('/logout')}}"><i class="ti-power-off m-r-5"></i>Logout</a></li>
                                 </ul>
 
@@ -287,7 +190,7 @@
                         <li>
                             <a href="{{ URL::route('listecv') }}" class="waves-effect">
                                 <i class="ti-pencil-alt"></i>
-                                <span> liste de cv's </span> </a>
+                                <span> Liste de CV's </span> </a>
                         </li>
 
                         @else
@@ -455,6 +358,7 @@
 {!! HTML::script('AngularScripts/controllers/competenceController.js') !!}
 {!! HTML::script('AngularScripts/controllers/langueController.js') !!}
 {!! HTML::script('AngularScripts/controllers/loisirController.js') !!}
+{!! HTML::script('AngularScripts/controllers/dirPagination.js') !!}
 
 
 <!-- BEGIN CORE PLUGINS -->
@@ -506,9 +410,18 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 {!! HTML::script('assets/assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
 <!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+{!! HTML::script('assets/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') !!}
+{!! HTML::script('assets/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js') !!}
+        <!-- END PAGE LEVEL PLUGINS -->
 @yield('scriptsBefore')
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 {!! HTML::script('assets/assets/global/scripts/app.min.js') !!}
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+{!! HTML::script('assets/assets/pages/scripts/search.min.js') !!}
+        <!-- END PAGE LEVEL SCRIPTS -->
 
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 {!! HTML::script('assets/assets/pages/scripts/portlet-draggable.min.js') !!}

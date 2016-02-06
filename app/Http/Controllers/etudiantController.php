@@ -55,7 +55,7 @@ class etudiantController extends Controller
     {
         $this->middleware('auth');
         if (Auth::check()) {
-            if(Auth::user()->admin){
+            if(Auth::user()->admin==true){
                 return redirect()->route('admin');
             }else{
                 $this->etudiant = Etudiant::find(Auth::user()->etudiant_id) ;
@@ -126,7 +126,7 @@ class etudiantController extends Controller
     {
         $etudiant = $this->etudiant_gestion->getCvsEtudiant(Auth::user()->etudiant_id);
         extract($etudiant) ;
-        return view('etudiant.cv', compact('mes_cv', 'nom', 'prenom'));
+        return view('etudiant.cv', compact('mes_cv', 'nom', 'prenom','photo'));
     }
 
     

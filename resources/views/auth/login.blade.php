@@ -6,7 +6,7 @@
     <div class=" card-box">
 
                         <div class="panel-heading"> 
-                            <h3 class="text-center"> Sign In to
+                            <h3 class="text-center"> Se connecter
                                 <a href="home">
                                     <strong class="text-custom">cv-generator</strong>
                                 </a> 
@@ -64,7 +64,7 @@
 
                                 <div class="form-group m-t-30 m-b-0">
                                     <div class="col-sm-12">
-                                        <a href="password" class="text-dark"><i class="fa fa-lock m-r-5"></i> Mot de passe oublié?</a>
+                                        <a href="#" class="text-dark"><i class="fa fa-lock m-r-5"></i> Mot de passe oublié?</a>
                                     </div>
                                 </div>
                             </form>                         

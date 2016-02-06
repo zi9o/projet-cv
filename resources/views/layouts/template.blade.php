@@ -81,6 +81,7 @@
 {!! HTML::script('AngularJS/angular-route.min.js') !!}
 {!! HTML::script('AngularJS/angular-animate.min.js') !!}
 {!! HTML::script('AngularJS/angular-sanitize.min.js') !!}
+{!! HTML::script('AngularScripts/controllers/dirPagination.js') !!}
 <!--summernote-->
 {!! HTML::script('../bower_components/summernote/dist/summernote.js') !!}
 {!! HTML::script('../bower_components/summernote/lang/summernote-fr-FR.js') !!}

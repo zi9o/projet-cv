@@ -36,7 +36,7 @@
                                                         <div class="carousel-caption">
                                                             <h3 class="text-green font-600">Qu'est ce que donc cv-générator?</h3>
                                                             <p>
-                                                                C'est un platform de création de cv dédié aux étudiants de l'ENSA de tanger
+                                                                C'est un platform de création de cv dédié aux étudiants de l'ENSA de Tanger
                                                             </p>
                                                         </div>
                                                     </div>

@@ -1,133 +1,112 @@
 @extends('template')
 
 @section('contenu')
-<div class="row">
-    <div class="col-sm-8">
-        <form role="form">
-            <div class="form-group contact-search m-b-30">
-                <input type="text" id="search" class="form-control" placeholder="Search...">
-                <button type="submit" class="btn btn-white"><i class="fa fa-search"></i></button>
-            </div> <!-- form-group -->
-        </form>
-    </div>
 
-
-    <div class="col-md-4">
-        <div class="btn-group">
-                            <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" 
-                               data-toggle="dropdown" data-hover="dropdown" 
-                               data-close-others="true"> Filtrage par filière
-                                <span class="fa fa-angle-down"> </span>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li ng-class="{active :All}">
-                                    <a href="javascript:;" ng-click="idFiliere = 0;
-                                                initStatisticCompetence();"> Tout
-
-                                    </a>
-                                </li>
-                                <li ng-class="{active :isGINFActive}">
-                                    <a href="javascript:;" ng-click="idFiliere = 1;
-                                                getStatisticCompetence();"> GINF
-
-                                    </a>
-                                </li>
-                                <li ng-class="{active :isGINDActive}">
-                                    <a href="javascript:;" ng-click="idFiliere = 2;
-                                                getStatisticCompetence();"> GIND
-
-                                    </a>
-                                </li>
-                                <li ng-class="{active :isGSEAActive}">
-                                    <a href="javascript:;" ng-click="idFiliere = 3;
-                                                getStatisticCompetence();"> GSEA
-
-                                    </a>
-                                </li>
-                                <li ng-class="{active :isGSTRActive}">
-                                    <a href="javascript:;" ng-click="idFiliere = 4;
-                                                getStatisticCompetence();"> GSTR
-
-                                    </a>
-                                </li>
-                                <li ng-class="{active :isG3EIActive}">
-                                    <a href="javascript:;" ng-click="idFiliere = 5;
-                                                getStatisticCompetence();"> G3EI
-
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-    </div>
-
-</div>
-<div class="row">
-    <div class="col-sm-8">
-        <center><h3><b>listes des étudiants</b></h3></center>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-8">
-
-        <div class="card-box m-b-10">
-            <div class="table-box opport-box" id="etudiants">
-                <div class="table-detail">
-                    <img src='{{ asset("../storage/uploads/hqdefault.__33485.jpg")}}' alt="imrana" alt="img" class="img-circle thumb-lg m-r-15" />
+<div class="search-page search-content-3" ng-controller="listeCVController" ng-init="init()">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="search-filter ">
+                
+                <div class="search-label uppercase">Recherche par</div>
+                <div class="input-icon right">
+                    <i class="icon-magnifier"></i>
+                    <input ng-model="q.$" id="search" type="text" class="form-control" placeholder="Filtrer par mots clés"> 
                 </div>
-
-                <div class="table-detail">
-                    <div class="member-info">
-                        <h4 class="m-t-0"><b>DIALLO &nbsp;Imrana </b></h4>
-                        <p class="text-dark m-b-5"><b>E-mail: </b> <span class="text-muted">dialloimran@gmail.com</span></p>
+                <div class="search-label uppercase">Filtrage par filière</div>
+                <select class="form-control" ng-model="q.filiere.id">
+                    <option value="">Tout</option>
+                    <option value="1">GINF</option>
+                    <option value="2">GIND</option>
+                    <option value="3">GSEA</option>
+                    <option value="4">GSTR</option>
+                    <option value="5">G3EI</option>
+                </select>
+<!--                <div class="search-label uppercase">Date</div>
+                <div class="input-icon right">
+                    <i class="icon-calendar"></i>
+                    <input class="form-control date-picker"  data-date-format="dd/mm/yyyy" type="text" placeholder="Date" />
+                </div>-->
+<button class="btn green bold uppercase btn-block" ng-click="init()">Update Search Results
+    <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+</button>
+                <div class="search-filter-divider bg-grey-steel"></div>
+<!--                <div class="row">
+                    <div class="col-xs-6">
+                        <button class="btn grey bold uppercase btn-block">Reset Search</button>
                     </div>
-                </div>
-                <!-- 
-                <div class="table-detail lable-detail">
-                        <span class="label label-info">Hot</span>
-                </div>
-                -->
-                <div class="table-detail table-actions-bar">
-
-
-                    <a class="accordion-toggle accordion-toggle-styled collapsed" 
-                       data-toggle="collapse" data-parent="#etudiants" href="#etud">  mes cv</a>
-                    <!-- <a href="#" class="btn btn-sm btn-primary waves-effect waves-light">mes cv</a>
-                    -->
-                </div>
-
-
+                    <div class="col-xs-6">
+                        <button class="btn grey-cararra font-blue bold btn-block">Advanced Search</button>
+                    </div>
+                </div>-->
             </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="row">
+<div class="search-pagination pagination-rounded">
+                <dir-pagination-controls boundary-links="true" ></dir-pagination-controls>
+                
+            </div>
+                <div class="col-lg-12" ng-cloak dir-paginate="etudiant in etudiants | filter:q | itemsPerPage: pageSize" current-page="currentPage">
 
-            <div id="etud" class="panel-collapse collapse">
-                <div class="panel-body" style=" overflow-y:auto;">
-                    <div class="col-md-12 col-sm-12">
+                    <div class="card-box m-b-10">
+                        <div class="table-box opport-box" id="etudiant<%=etudiant.id%>">
+                            <div class="table-detail">
+                                <img ng-src="<%= '{{ asset('../storage/uploads')}}/' + etudiant.photo %>" alt="photo" class="img-circle thumb-lg m-r-15" />
+                            </div>
 
-                        <div class="portlet-body">
-                            <div class="row static-info">
-
-                                <a href="#" class="btn btn-sm btn-primary waves-effect waves-light">le nom du 1er cv</a>
-                                <a href="#" class="btn btn-sm btn-primary waves-effect waves-light">le nom du 2ème cv</a>
-                                <a href="#" class="btn btn-sm btn-primary waves-effect waves-light">...</a>
-
+                            <div class="table-detail" ng-cloak>
+                                <div class="member-info">
+                                    <h4 class="m-t-0"><b><%=etudiant.nom %> &nbsp;<%=etudiant.prenom %> </b></h4>
+                                    <p class="text-dark m-b-5"><b>E-mail: </b> <span class="text-muted"><%=etudiant.email %></span></p>
+                                </div>
+                            </div>
+                            <!-- 
+                            <div class="table-detail lable-detail">
+                                    <span class="label label-info">Hot</span>
+                            </div>
+                            -->
+                            <div class="table-detail table-actions-bar">
+                                <a class="accordion-toggle accordion-toggle-styled collapsed" 
+                                   data-toggle="collapse" data-parent="#etudiant<%=etudiant.id%>" href="#etud<%=etudiant.id%>">Les CVs
+                                </a>
                             </div>
                         </div>
-
+                        <div id="etud<%=etudiant.id%>" class="panel-collapse collapse">
+                            <div class="panel-body" style=" overflow-y:auto;">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="portlet-body">
+                                        <div class="row static-info">
+                                            <a ng-cloak style="margin-right: 10px;" ng-repeat="cv in etudiant.mes_cv" href="<%= '{{ url('etudiant/cv')}}/'+ cv.id%>"
+                                               class="btn btn-sm btn-primary waves-effect waves-light"><%=cv.nomcv%>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
-
+            <div class="search-pagination pagination-rounded">
+                <dir-pagination-controls boundary-links="true" ></dir-pagination-controls>
+                
+            </div>
         </div>
-
-
-        <br/><br/>
-
-
-
-
     </div>
 </div>
+
 
 
 
 @stop
+@section('scriptsBefore')
+
+
+
+
+@endsection
+@section('scriptsAfter')
+
+
+{!! HTML::script('AngularScripts/controllers/listeCVController.js') !!}
+@endsection

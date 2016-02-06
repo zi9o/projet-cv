@@ -6,7 +6,7 @@
     <div class="col-lg-12">
         <div class="card-box" id="RegisterForm" style="display: none">
         <div class="panel-heading">
-            <h3 class="text-center"> Sign Up to <strong class="text-custom">cv-generator</strong> </h3>
+            <h3 class="text-center"> S'inscrire à <strong class="text-custom">cv-generator</strong> </h3>
         </div>
 
         <div class="panel-body">

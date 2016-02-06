@@ -729,11 +729,41 @@
                                                     <input type="text" class="form-control" ng-model="langue.intitule">
                                                     <div class="input-group">
                                                         <div class="icheck-inline">
-                                                            <label ng-repeat='niv in niveaux.availableOptions track by niv.id' >
+                                                            <label>
                                                                 <input type="radio" name="radio<%=lang.id%>" class="icheck"
                                                                        data-radio="iradio_square-grey" 
-                                                                       ng-model="langue.niveau" value="<%= niv.id%>" > 
-                                                                <a href="#" data-toggle="tooltip" title="<%= niv.name%>"><%= niv.id%></a>
+                                                                       ng-model="langue.niveau" value="1" > 
+                                                                <a href="#" data-toggle="tooltip" title="Bilingue (ou trilingue...)">1</a>
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="radio<%=lang.id%>" class="icheck"
+                                                                       data-radio="iradio_square-grey" 
+                                                                       ng-model="langue.niveau" value="2" > 
+                                                                <a href="#" data-toggle="tooltip" title="Courant">2</a>
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="radio<%=lang.id%>" class="icheck"
+                                                                       data-radio="iradio_square-grey" 
+                                                                       ng-model="langue.niveau" value="3" > 
+                                                                <a href="#" data-toggle="tooltip" title="Moyen">3</a>
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="radio<%=lang.id%>" class="icheck"
+                                                                       data-radio="iradio_square-grey" 
+                                                                       ng-model="langue.niveau" value="4" > 
+                                                                <a href="#" data-toggle="tooltip" title="Bonnes notions">4</a>
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="radio<%=lang.id%>" class="icheck"
+                                                                       data-radio="iradio_square-grey" 
+                                                                       ng-model="langue.niveau" value="5" > 
+                                                                <a href="#" data-toggle="tooltip" title="Notions">5</a>
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="radio<%=lang.id%>" class="icheck"
+                                                                       data-radio="iradio_square-grey" 
+                                                                       ng-model="langue.niveau" value="6" > 
+                                                                <a href="#" data-toggle="tooltip" title="Scolaire">6</a>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -770,9 +800,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                               
-
                             </div> 
                         </div> 
                     </div> 
