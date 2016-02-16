@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'sql307.byethost7.com'),
-            'database'  => env('DB_DATABASE', 'b7_17322062_cvdb'),
-            'username'  => env('DB_USERNAME', 'b7_17322062'),
-            'password'  => env('DB_PASSWORD', 'adminN92'),
+            'host'      => env('DB_HOST', 'localhost'),
+            'database'  => env('DB_DATABASE', 'cvdb'),
+            'username'  => env('DB_USERNAME', 'root'),
+            'password'  => env('DB_PASSWORD', ''),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
